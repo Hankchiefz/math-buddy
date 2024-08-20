@@ -16,6 +16,7 @@ const TActiveTasks = () => {
       <StudentHeader />{/* Top navbar */}
       <div className="TQcontent-wrapper"> {/* Updated content wrapper class */}
         <TeacherSNav /> {/* Side navbar */}
+        <div className = "TQmain-content">
         <div className="TQtable-container">
           <div className = "TQhome-message">
           <h1>Active Quizzes</h1>
@@ -45,6 +46,8 @@ const TActiveTasks = () => {
           <h5>no other quizzes</h5>
           <button className='TQcreate-quiz-button' onClick={handleCreateClassClick}>Create Quiz</button>
         </div>
+        </div>
+      
       </div>
     </div>
   );
