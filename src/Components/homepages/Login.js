@@ -15,7 +15,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    const url = 'http://60.242.212.243:5000/login';
+    const url = 'http://35.187.237.127/login';
     const data = {
       email: formData.email,
       password: formData.password,
