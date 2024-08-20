@@ -1,0 +1,148 @@
+/* src/components/studentPages/StudentProfile.css */
+
+/* Container styling */
+.student-profile-page {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vh;
+}
+
+/* Styling for the sidebar and main content */
+.Side-navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Main content styling */
+.main-content {
+    flex: 1;
+    margin-left: 1rem;
+    padding: 2rem; /* Adjust as needed */
+}
+
+/* Styling for the outer container */
+.spp-outer {
+    display: flex;
+    flex-direction: column; /* Stack h2 elements vertically */
+    align-items: flex-start; /* Align items to the left */
+    background-color: #71A2FF; /* Background color */
+    color: white; /* Text color */
+    padding: 10px; /* Adjust padding as needed */
+    border: 1px solid #71A2FF; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Adjust width to content */
+}
+
+/* Styling for the profile section */
+.s-profile {
+    width: 100%;
+    padding-top: 5rem;
+}
+
+/* Header bar styling */
+.spp-header-bar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Space below the header bar */
+}
+
+.spp-header-bar th {
+    text-align: left;
+    border: 1px solid #71A2FF;
+    padding: 10px;
+    background-color: #E8F1FF;
+}
+
+.spp-header-bar td {
+    padding: 10px;
+}
+
+.spp-edit-button {
+    padding: 10px 20px;
+    background-color: #71A2FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.spp-edit-button:hover {
+    background-color: #5a8dda;
+}
+
+/* Table container styling */
+.spp-tables-container {
+    display: flex; /* Use flexbox to align tables horizontally */
+    width: 100%; /* Set width to 100% of parent */
+    gap: 20px; /* Space between tables */
+}
+
+.spp-table-con {
+    flex: 1;
+}
+
+/* Full-width table container for guardian details */
+.spp-table-con-full {
+    width: 100%;
+    margin-top: 20px; /* Add space between the top tables and the bottom table */
+}
+
+/* Personal info table styling */
+.spp-Personal-info {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #71A2FF;
+    border-radius: 10px;
+}
+
+.spp-Personal-info th, .spp-Personal-info td {
+    border: 1px solid #71A2FF;
+    padding: 10px;
+}
+
+.spp-Personal-info th {
+    background-color: #E8F1FF;
+}
+
+/* Contact details table styling */
+.spp-contact-details {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #71A2FF;
+    border-radius: 10px;
+}
+
+.spp-contact-details th, .spp-contact-details td {
+    border: 1px solid #71A2FF;
+    padding: 10px;
+}
+
+.spp-contact-details th {
+    background-color: #E8F1FF;
+}
+
+/* Guardian details table styling */
+.spp-guardian-details {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #71A2FF;
+    border-radius: 10px;
+}
+
+.spp-guardian-details th, .spp-guardian-details td {
+    border: 1px solid #71A2FF;
+    padding: 10px;
+}
+
+.spp-guardian-details th {
+    background-color: #E8F1FF;
+}
+
+/* Styling for h2 elements */
+.spp-txt {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}

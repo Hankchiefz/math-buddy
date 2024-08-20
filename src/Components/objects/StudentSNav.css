@@ -1,0 +1,58 @@
+.student-sidebar {
+  background-color: #E8F1FF;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  margin-left: 15px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.student-menu-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.student-menu-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.student-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.student-nav-item:nth-child(2) {
+  margin-bottom: 60px;
+}
+
+.student-nav-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.student-nav-text {
+  font-size: 16px;
+  color: #71A2FF;
+  text-align: center;
+  text-decoration: none;
+}
+
+.student-nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
