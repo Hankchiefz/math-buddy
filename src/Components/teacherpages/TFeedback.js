@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StudentHeader from '../objects/StudentHeader'; // Using StudentHeader
-import StudentSNav from '../objects/StudentSNav'; // Using StudentSNav
+import TeacherSNav from '../objects/TeacherSNav';
 import '../teacherstyle/TFeedback.css';
 
 const TFeedback = () => {
@@ -16,7 +16,7 @@ const TFeedback = () => {
         <div className="teacher-feedback-container">
             <StudentHeader /> {/* Top navbar */}
             <div className="teacher-side-navbar">
-                <StudentSNav /> {/* Side navbar */}
+                <TeacherSNav /> {/* Side navbar */}
                 <div className="teacher-feedback-content">
                     <h1 className="teacher-feedback-message">Feedback</h1>
                     <hr />
