@@ -1,98 +1,124 @@
-/* src/components/pagestyle/Login.css */
+/* Existing Login Page Styles */
 .login-page {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh; /* Full viewport height to center vertically */
-    padding: 0 20px; /* Adjust padding for smaller screens */
-  }
-  
-  .login-page h1 {
-    font-size: 2em;
-    margin-bottom: 5px; /* Reduced margin-bottom */
-  }
-  
-  .login-page h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    margin-top: 5px; /* Added margin-top to bring it closer to h1 */
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    max-width: 300px;
-    align-items: center;
-  }
-  
-  .input-container {
-    position: relative;
-    width: 100%;
-  }
-  
-  .input-container input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  .options {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 12px;
-  }
-  
-  .login-button {
-    background-color: #71A2FF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-    width: 100%; /* Make the button full width */
-    text-align: center; /* Center text inside button */
-    max-width: 300px; /* Set a maximum width for the button */
-  }
-  
-  .Tlogin-button {
-    background-color: #71A2FF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-    width: 100%; /* Make the button full width */
-    text-align: center; /* Center text inside button */
-    max-width: 300px; /* Set a maximum width for the button */
-  }
-  
-  .Plogin-button {
-    background-color: #71A2FF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-    width: 100%; /* Make the button full width */
-    text-align: center; /* Center text inside button */
-    max-width: 300px; /* Set a maximum width for the button */
-  }
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh; /* Full viewport height to center vertically */
+  padding: 0 20px; /* Adjust padding for smaller screens */
+}
 
-  .login-button:hover {
-    background-color: #0056b3;
-  }
-  
-  
+.login-page h1 {
+  font-size: 2em;
+  margin-bottom: 5px; /* Reduced margin-bottom */
+}
+
+.login-page h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  margin-top: 5px; /* Added margin-top to bring it closer to h1 */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  align-items: center;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+}
+
+.login-button {
+  background-color: #71A2FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%; /* Make the button full width */
+  text-align: center; /* Center text inside button */
+  max-width: 300px; /* Set a maximum width for the button */
+}
+
+.Tlogin-button {
+  background-color: #71A2FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%; /* Make the button full width */
+  text-align: center; /* Center text inside button */
+  max-width: 300px; /* Set a maximum width for the button */
+}
+
+.Plogin-button {
+  background-color: #71A2FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%; /* Make the button full width */
+  text-align: center; /* Center text inside button */
+  max-width: 300px; /* Set a maximum width for the button */
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Loading Screen Styles */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it covers the entire screen */
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #71A2FF;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
