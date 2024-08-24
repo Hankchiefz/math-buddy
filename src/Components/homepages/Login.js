@@ -6,6 +6,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // State for loading screen
 
   const handleChange = (e) => {
     setFormData({
@@ -21,6 +22,7 @@ const Login = () => {
       password: formData.password,
     };
 
+    setLoading(true); // Show loading screen
     fetch(url, {
       method: 'POST',
       headers: {
@@ -49,6 +51,9 @@ const Login = () => {
       .catch(error => {
         console.error('There was an error!', error);
         setError('There was an error during login');
+      })
+      .finally(() => {
+        setLoading(false); // Hide loading screen
       });
   };
 
@@ -68,6 +73,11 @@ const Login = () => {
 
   return (
     <div className="login-page">
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <h1>Welcome Back</h1>
       <h2>Sign In!</h2>
       <form className="login-form" onSubmit={handleSubmit}>
