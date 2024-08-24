@@ -50,7 +50,7 @@ const Login = () => {
       })
       .catch(error => {
         console.error('There was an error!', error);
-        setError('There was an error during login');
+        setError('Invalid email or password');
       })
       .finally(() => {
         setLoading(false); // Hide loading screen
