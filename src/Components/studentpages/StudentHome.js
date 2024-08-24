@@ -1,5 +1,5 @@
-// src/Components/studentpages/StudentClasses.js
-import React from 'react';
+// src/Components/studentpages/StudentHome.js
+import React, { useEffect, useState } from 'react';
 import StudentHeader from '../objects/StudentHeader';
 import StudentSNav from '../objects/StudentSNav';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,18 @@ import '../studentstyle/StudentHome.css';
 
 const StudentHome = () => {
   const navigate = useNavigate();
+  const [studentName, setStudentName] = useState('');
+
+  useEffect(() => {
+    // Retrieve the student's name from localStorage
+    const fullName = localStorage.getItem('full_name');
+    if (fullName) {
+      setStudentName(fullName);
+    } else {
+      // If no name is found, navigate back to login
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const handleQuizButton = () => {
     navigate('/studentquiz'); // Navigate to the quiz page
@@ -29,7 +41,7 @@ const StudentHome = () => {
         <StudentSNav /> {/* Side navbar */}
         <div className="SHmain-content">
           <div className="home-message">
-            <div className="SHwelcome-message"> Welcome Olivia Bennet </div> 
+            <div className="SHwelcome-message"> Welcome {studentName} </div> 
             <div className="SHactive-message"> Active Quizzes </div> 
           </div>
           <div className="SHMain-Container">
