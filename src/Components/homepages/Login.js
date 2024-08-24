@@ -15,7 +15,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    const url = 'http://35.187.237.127/login';
+    const url = 'https://mathbuddyapi.com/login';
     const data = {
       email: formData.email,
       password: formData.password,
