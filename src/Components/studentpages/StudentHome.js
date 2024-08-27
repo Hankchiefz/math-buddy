@@ -18,7 +18,7 @@ const StudentHome = () => {
       setStudentName(fullName);
     } else {
       // If no name is found, navigate back to login
-      navigate('/login');
+      console.log("name not found");
     }
   }, [navigate]);
 
