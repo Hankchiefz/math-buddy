@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = () => {
     const url = 'https://mathbuddyapi.com/login';
-    const data = {
+    const data = {    
       email: formData.email,
       password: formData.password,
     };
@@ -50,7 +50,7 @@ const Login = () => {
       })
       .catch(error => {
         console.error('There was an error!', error);
-        setError('Invalid email or password');
+        setError('There was an error during login');
       })
       .finally(() => {
         setLoading(false); // Hide loading screen
