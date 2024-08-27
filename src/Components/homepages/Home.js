@@ -35,8 +35,8 @@ const Home = () => {
             </p>
           </div>
           <div className="images-section">
-            <img src={`${process.env.PUBLIC_URL}/images/home/screenshot1.png`} alt="Screenshot 1" className="screenshot" />
-            <img src={`${process.env.PUBLIC_URL}/images/home/screenshot2.png`} alt="Screenshot 2" className="screenshot" />
+            <img src={`${process.env.PUBLIC_URL}/images/home/screenshot1.png`} alt="Screenshot 1" className="screenshot1" />
+            <img src={`${process.env.PUBLIC_URL}/images/home/screenshot2.png`} alt="Screenshot 2" className="screenshot2" />
           </div>
         </main>
       </div>

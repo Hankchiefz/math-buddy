@@ -10,12 +10,12 @@
 }
 
 .login-page h1 {
-  font-size: 2em;
+  font-size: 3em;
   margin-bottom: 5px; /* Reduced margin-bottom */
 }
 
 .login-page h2 {
-  font-size: 1.5em;
+  font-size: 2em;
   margin-bottom: 20px;
   margin-top: 5px; /* Added margin-top to bring it closer to h1 */
 }
@@ -50,34 +50,6 @@
 }
 
 .login-button {
-  background-color: #71A2FF;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-top: 10px;
-  width: 100%; /* Make the button full width */
-  text-align: center; /* Center text inside button */
-  max-width: 300px; /* Set a maximum width for the button */
-}
-
-.Tlogin-button {
-  background-color: #71A2FF;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-top: 10px;
-  width: 100%; /* Make the button full width */
-  text-align: center; /* Center text inside button */
-  max-width: 300px; /* Set a maximum width for the button */
-}
-
-.Plogin-button {
   background-color: #71A2FF;
   color: white;
   border: none;

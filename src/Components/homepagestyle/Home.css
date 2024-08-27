@@ -80,7 +80,13 @@
   align-items: center;
 }
 
-.screenshot {
+.screenshot1 {
+  width: 300px;
+  height: auto;
+}
+
+.screenshot2 {
+  margin-left: 100px;
   width: 300px;
   height: auto;
 }

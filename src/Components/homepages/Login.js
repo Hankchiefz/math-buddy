@@ -112,16 +112,6 @@ const Login = () => {
           {loading ? 'Logging in...' : 'Sign In'}
         </button>
       </form>
-
-      {/* Additional Buttons for Direct Navigation */}
-      <div className="additional-buttons">
-        <button onClick={() => navigate('/studenthome')} className="login-button">
-          Go to Student Home
-        </button>
-        <button onClick={() => navigate('/teacherhomepage')} className="login-button">
-          Go to Teacher Home
-        </button>
-      </div>
     </div>
   );
 };
