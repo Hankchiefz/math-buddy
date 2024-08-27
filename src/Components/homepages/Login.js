@@ -39,11 +39,18 @@ const Login = () => {
       .then(data => {
         console.log('Backend response:', data); // Log the response for debugging
         if (data.access_token) {
-          // Save the access token (typically in localStorage or sessionStorage)
+          // Save the access token and user info
           localStorage.setItem('access_token', data.access_token);
+          localStorage.setItem('userInfo', JSON.stringify(data.personObj));
 
-          // Navigate to the student home page
-          navigate('/studenthome');
+          // Redirect based on role
+          if (data.personObj.role === 'student') {
+            navigate('/studenthome');
+          } else if (data.personObj.role === 'teacher') {
+            navigate('/teacherhomepage');
+          } else {
+            setError('Invalid role');
+          }
         } else {
           setError(data.message || 'Invalid email or password');
         }
@@ -60,15 +67,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin(); // Trigger the login process
-  };
-
-  // Direct navigation functions
-  const goToStudentHome = () => {
-    navigate('/studenthome');
-  };
-
-  const goToTeacherHome = () => {
-    navigate('/teacherhomepage');
   };
 
   return (
@@ -115,10 +113,10 @@ const Login = () => {
 
       {/* Additional Buttons for Direct Navigation */}
       <div className="additional-buttons">
-        <button onClick={goToStudentHome} className="login-button">
+        <button onClick={() => navigate('/studenthome')} className="login-button">
           Go to Student Home
         </button>
-        <button onClick={goToTeacherHome} className="login-button">
+        <button onClick={() => navigate('/teacherhomepage')} className="login-button">
           Go to Teacher Home
         </button>
       </div>
