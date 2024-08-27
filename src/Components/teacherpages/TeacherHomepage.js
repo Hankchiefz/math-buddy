@@ -26,11 +26,11 @@ const TeacherHome = () => {
   };
 
   const handleLessonsButton = () => {
-    navigate('/teacherLessons');
+    navigate('/teacherlessons');
   };
 
   const handleFeedbackButton = () => {
-    navigate('/Tfeedback');
+    navigate('/tfeedback');
   };
 
   return (
@@ -46,6 +46,7 @@ const TeacherHome = () => {
             <div className="THactive-message">Active Quizzes</div>
           </div>
           <div className="THMain-Container">
+            
             <div className="THbutton-container">
               <button
                 type="button"
@@ -55,6 +56,7 @@ const TeacherHome = () => {
                 <img src="/images/home/classes-icon.png" alt="Classes Icon" className="THbutton-icon" />
                 Classes
               </button>
+
               <button
                 type="button"
                 className="THB THLessonsButton"
@@ -63,6 +65,7 @@ const TeacherHome = () => {
                 <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="THbutton-icon" />
                 Lessons
               </button>
+
               <button
                 type="button"
                 className="THB THFeedbackButton"
@@ -71,6 +74,7 @@ const TeacherHome = () => {
                 <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="THbutton-icon" />
                 Feedback
               </button>
+              
             </div>
             <div className="THrecently-accessed-container">
               <div className="THmessage-recently">Recently Accessed</div>
