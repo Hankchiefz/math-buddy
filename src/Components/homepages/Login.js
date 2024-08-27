@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie'; // Import js-cookie library
 import '../homepagestyle/Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // State for loading screen
 
   const handleChange = (e) => {
     setFormData({
@@ -15,43 +15,51 @@ const Login = () => {
     });
   };
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     const url = 'https://mathbuddyapi.com/login';
-    const data = {
+    const data = {    
       email: formData.email,
       password: formData.password,
     };
 
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+    setLoading(true); // Show loading screen
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Backend response:', data); // Log the response for debugging
+        if (data.access_token) {
+          // Save the access token (typically in localStorage or sessionStorage)
+          localStorage.setItem('access_token', data.access_token);
+
+          // Navigate to the student home page
+          navigate('/studenthome');
+        } else {
+          setError(data.message || 'Invalid email or password');
+        }
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+        setError('There was an error during login');
+      })
+      .finally(() => {
+        setLoading(false); // Hide loading screen
       });
-
-      if (response.ok) {
-        const { access_token, personObj } = await response.json();
-
-        // Store the access token and user info in cookies
-        Cookies.set('authToken', access_token, { expires: 7 }); // Expires in 7 days
-        Cookies.set('userInfo', JSON.stringify(personObj), { expires: 7 });
-
-        // Navigate to the student home page
-        navigate('/studenthome');
-      } else {
-        setError('Invalid email or password');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      setError('There was an error during login');
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin();
+    handleLogin(); // Trigger the login process
   };
 
   // Direct navigation functions
@@ -65,6 +73,11 @@ const Login = () => {
 
   return (
     <div className="login-page">
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <h1>Welcome Back</h1>
       <h2>Sign In!</h2>
       <form className="login-form" onSubmit={handleSubmit}>
