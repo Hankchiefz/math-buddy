@@ -1,5 +1,5 @@
+// src/Components/studentpages/StudentHome.js
 import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie'; // Import js-cookie library
 import StudentHeader from '../objects/StudentHeader';
 import StudentSNav from '../objects/StudentSNav';
 import { useNavigate } from 'react-router-dom';
@@ -8,48 +8,46 @@ import TaskBox from '../objects/TaskBox';
 import '../studentstyle/StudentHome.css';
 
 const StudentHome = () => {
-  const [userInfo, setUserInfo] = useState(null);
+  const [fullName, setFullName] = useState('');
 
   useEffect(() => {
-    // Get userInfo from cookies
-    const storedUserInfo = Cookies.get('userInfo');
-    if (storedUserInfo) {
-      setUserInfo(JSON.parse(storedUserInfo));
+    // Fetch the full name from localStorage
+    const storedName = localStorage.getItem('full_name');
+    if (storedName) {
+      setFullName(storedName);
     }
   }, []);
 
   const navigate = useNavigate();
 
   const handleQuizButton = () => {
-    navigate('/studentquiz');
+    navigate('/studentquiz'); // Navigate to the quiz page
   };
 
   const handleLessonsButton = () => {
-    navigate('/studentLessons');
+    navigate('/studentLessons'); // Navigate to the lessons page
   };
 
   const handleFeedbackButton = () => {
-    navigate('/studentfeedback');
+    navigate('/studentfeedback'); // Navigate to the feedback page
   };
 
   return (
     <div className="studenthome-container">
-      <StudentHeader />
+      <StudentHeader /> {/* Top navbar */}
       <div className="SHcontent-wrapper">
-        <StudentSNav />
+        <StudentSNav /> {/* Side navbar */}
         <div className="SHmain-content">
           <div className="home-message">
-            <div className="SHwelcome-message">
-              {userInfo ? `Welcome ${userInfo.full_name}` : 'Welcome'}
-            </div>
-            <div className="SHactive-message">Active Quizzes</div>
+            <div className="SHwelcome-message"> Welcome {fullName} </div> 
+            <div className="SHactive-message"> Active Quizzes </div> 
           </div>
           <div className="SHMain-Container">
             <div className="SHbutton-container">
               <button
                 type="button"
                 className="SHB SHQuizButton"
-                onClick={handleQuizButton}
+                onClick={handleQuizButton} // Navigate to Quizzes
               >
                 <img src="/images/home/quizzes-icon.png" alt="Quizzes Icon" className="SHbutton-icon" />
                 Quizzes
@@ -57,7 +55,7 @@ const StudentHome = () => {
               <button
                 type="button"
                 className="SHB SHLessonsButton"
-                onClick={handleLessonsButton}
+                onClick={handleLessonsButton} // Navigate to Lessons
               >
                 <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="SHbutton-icon" />
                 Lessons
@@ -65,7 +63,7 @@ const StudentHome = () => {
               <button
                 type="button"
                 className="SHB SHFeedbackButton"
-                onClick={handleFeedbackButton}
+                onClick={handleFeedbackButton} // Navigate to Feedback
               >
                 <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="SHbutton-icon" />
                 Feedback

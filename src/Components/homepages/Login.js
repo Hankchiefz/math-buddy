@@ -6,7 +6,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // State for loading screen
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -16,13 +16,13 @@ const Login = () => {
   };
 
   const handleLogin = () => {
+    setLoading(true);
     const url = 'https://mathbuddyapi.com/login';
-    const data = {    
+    const data = {
       email: formData.email,
       password: formData.password,
     };
 
-    setLoading(true); // Show loading screen
     fetch(url, {
       method: 'POST',
       headers: {
@@ -31,6 +31,7 @@ const Login = () => {
       body: JSON.stringify(data),
     })
       .then(response => {
+        setLoading(false);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -39,28 +40,29 @@ const Login = () => {
       .then(data => {
         console.log('Backend response:', data); // Log the response for debugging
         if (data.access_token) {
-          // Save the access token and user info
+          // Save the access token and user details (full_name, role)
           localStorage.setItem('access_token', data.access_token);
-          localStorage.setItem('userInfo', JSON.stringify(data.personObj));
+          localStorage.setItem('full_name', data.personObj.full_name);
+          localStorage.setItem('role', data.personObj.role);
 
-          // Redirect based on role
+          // Redirect based on the user's role
           if (data.personObj.role === 'student') {
             navigate('/studenthome');
           } else if (data.personObj.role === 'teacher') {
             navigate('/teacherhomepage');
+          } else if (data.personObj.role === 'parent') {
+            navigate('/parenthomepage'); // Assuming there's a parent home page
           } else {
-            setError('Invalid role');
+            setError('Unknown role'); // Handle unknown roles
           }
         } else {
           setError(data.message || 'Invalid email or password');
         }
       })
       .catch(error => {
+        setLoading(false);
         console.error('There was an error!', error);
         setError('There was an error during login');
-      })
-      .finally(() => {
-        setLoading(false); // Hide loading screen
       });
   };
 
@@ -106,8 +108,8 @@ const Login = () => {
           <a href="#forgot-password">Forgot Password?</a>
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit" className="login-button">
-          Sign In
+        <button type="submit" className="login-button" disabled={loading}>
+          {loading ? 'Logging in...' : 'Sign In'}
         </button>
       </form>
 

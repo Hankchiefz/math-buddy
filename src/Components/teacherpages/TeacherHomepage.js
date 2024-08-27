@@ -1,7 +1,6 @@
 // src/Components/teacherpages/TeacherHome.js
 import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import StudentHeader from '../objects/StudentHeader';
+import StudentHeader from '../objects/StudentHeader'; // Correct header import
 import TeacherSNav from '../objects/TeacherSNav';
 import { useNavigate } from 'react-router-dom';
 import RecentlyAccessedBox from '../objects/RecentlyAccessedBox';
@@ -9,72 +8,66 @@ import TaskBox from '../objects/TaskBox';
 import '../teacherstyle/TeacherHomepage.css';
 
 const TeacherHome = () => {
-  const [userInfo, setUserInfo] = useState(null);
+  const [fullName, setFullName] = useState('');
 
   useEffect(() => {
-    // Get userInfo from cookies
-    const storedUserInfo = Cookies.get('userInfo');
-    if (storedUserInfo) {
-      setUserInfo(JSON.parse(storedUserInfo));
+    // Fetch the full name from localStorage
+    const storedName = localStorage.getItem('full_name');
+    if (storedName) {
+      setFullName(storedName);
     }
   }, []);
 
   const navigate = useNavigate();
 
   const handleClassesButton = () => {
-    navigate('/Tclasses');
+    navigate('/teacherclasses'); // Navigate to the classes page
   };
 
   const handleLessonsButton = () => {
-    navigate('/teacherlessons');
+    navigate('/teacherlessons'); // Navigate to the lessons page
   };
 
   const handleFeedbackButton = () => {
-    navigate('/tfeedback');
+    navigate('/tfeedback'); // Navigate to the feedback page
   };
 
   return (
     <div className="teacherhome-container">
-      <StudentHeader />
+      <StudentHeader /> {/* Top navbar */}
       <div className="THcontent-wrapper">
-        <TeacherSNav />
+        <TeacherSNav /> {/* Side navbar */}
         <div className="THmain-content">
           <div className="THhome-message">
-            <div className="THwelcome-message">
-              {userInfo ? `Welcome ${userInfo.full_name}` : 'Welcome'}
-            </div>
-            <div className="THactive-message">Active Quizzes</div>
+            <div className="THwelcome-message"> Welcome {fullName} </div> 
+            <div className="THactive-message"> Active Quizzes </div> 
           </div>
           <div className="THMain-Container">
-            
             <div className="THbutton-container">
               <button
                 type="button"
                 className="THB THClassesButton"
-                onClick={handleClassesButton}
+                onClick={handleClassesButton} // Navigate to Classes
               >
                 <img src="/images/home/classes-icon.png" alt="Classes Icon" className="THbutton-icon" />
                 Classes
               </button>
-
               <button
                 type="button"
                 className="THB THLessonsButton"
-                onClick={handleLessonsButton}
+                onClick={handleLessonsButton} // Navigate to Lessons
               >
                 <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="THbutton-icon" />
                 Lessons
               </button>
-
               <button
                 type="button"
                 className="THB THFeedbackButton"
-                onClick={handleFeedbackButton}
+                onClick={handleFeedbackButton} // Navigate to Feedback
               >
                 <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="THbutton-icon" />
                 Feedback
               </button>
-              
             </div>
             <div className="THrecently-accessed-container">
               <div className="THmessage-recently">Recently Accessed</div>
