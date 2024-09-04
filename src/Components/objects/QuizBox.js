@@ -1,7 +1,7 @@
 import React from 'react';
 import './QuizBox.css';
 
-const Quizbox = ({ status, title, dueDate, timeLimit, marks }) => {
+const Quizbox = ({ quizId, status, title, dueDate, timeLimit, marks, onOpenQuiz }) => {
   return (
     <div className="quizbox">
       <div className={`status ${status === 'incomplete' ? 'incomplete' : 'complete'}`}>
@@ -15,6 +15,9 @@ const Quizbox = ({ status, title, dueDate, timeLimit, marks }) => {
           <span className="marks">Marks: {marks}</span>
         </div>
       </div>
+      <button className="OpenQuiz-button" onClick={() => onOpenQuiz(quizId)}>
+        Open Quiz
+      </button>
     </div>
   );
 };

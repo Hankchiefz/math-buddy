@@ -1,16 +1,66 @@
-// src/Components/studentpages/StudentQuizI.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import StudentHeader from '../objects/StudentHeader';
 import StudentSNav from '../objects/StudentSNav';
 import '../studentstyle/StudentQuizI.css';
 
 const StudentQuizI = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [quizData, setQuizData] = useState(null);
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    const fetchQuizData = async () => {
+      try {
+        const token = localStorage.getItem('access_token');
+        const quizId = location.state.quizId; // Assuming the quiz ID is passed from the previous page
+
+        const response = await fetch('https://mathbuddyapi.com/current_quiz', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token, quiz_id: quizId }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setQuizData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching quiz data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchQuizData();
+  }, [location.state.quizId]);
 
   const handleNextButtonClick = () => {
-    navigate('/studentquizcomplete'); // Navigate to StudentQuizComplete on click
+    // Submit the answers and navigate to StudentQuizComplete on click
+    navigate('/studentquizcomplete');
   };
+
+  const handleLeaveButtonClick = () => {
+    // Show a confirmation pop-up
+    const confirmLeave = window.confirm('Are you sure you want to leave the quiz? Your progress may not be saved.');
+    if (confirmLeave) {
+      // Navigate to the student homepage if the user confirms leaving
+      navigate('/studentquiz');
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading indicator while fetching data
+  }
+
+  if (!quizData) {
+    return <div>Error loading quiz data.</div>; // Handle errors or no data
+  }
 
   return (
     <div className="studentquiz-container">
@@ -18,57 +68,36 @@ const StudentQuizI = () => {
       <div className="SQIcontent-wrapper">
         <StudentSNav /> {/* Side navbar */}
         <div className="SQImain-content">
-          <h1 className="quiz-message">Quiz - Addition</h1>
+          <h1 className="quiz-message">Quiz</h1>
           <div className="question-container">
-            <div className="question q-1">
-              <p>Q1. Sally has 12 apples. She gives 4 apples to her friend. How many apples does she have left?</p>
-              <form className="answer-form">
-                <input type="text" name="answer1" placeholder="Enter your answer" />
-                <div className="SQIButton">
-                  <button type="submit">Submit</button>
-                </div>
-              </form>
-            </div>
-            <div className="question q-2">
-              <p>Q2. Tom has 3 boxes of crayons. Each box contains 8 crayons. How many crayons does he have in total?</p>
-              <form className="answer-form">
-                <input type="text" name="answer2" placeholder="Enter your answer" />
-                <div className="SQIButton">
-                  <button type="submit">Submit</button>
-                </div>
-              </form>
-            </div>
-            <div className="question q-3">
-              <p>Q3. Ben has 15 marbles. He buys 9 more marbles from the store and then gives 5 marbles to his friend. How many marbles does Ben have now?</p>
-              <form className="answer-form">
-                <input type="text" name="answer3" placeholder="Enter your answer" />
-                <div className="SQIButton">
-                  <button type="submit">Submit</button>
-                </div>
-              </form>
-            </div>
+            {quizData.questions.map((question, index) => (
+              <div key={question.question_id} className={`question q-${index + 1}`}>
+                <p>{`Q${index + 1}. ${question.question_text}`}</p>
+                <form className="answer-form">
+                  <input type="text" name={`answer${index + 1}`} placeholder="Enter your answer" />
+                </form>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* Question-box Section */}
         <div className="Question-box">
-          <div className="header-box">Questions</div>
+          <div className="header-box">Quiz Navigation</div>
           <div className="SQI-questionsbox">
-            <div className="SQI1">1</div>
-            <div className="SQI2">2</div>
-            <div className="SQI3">3</div>
-            <div className="SQI4">4</div>
-            <div className="SQI5">5</div>
-          </div>
-          <div className="SQI-questionsbox">
-            <div className="SQI6">6</div>
-            <div className="SQI7">7</div>
-            <div className="SQI8">8</div>
-            <div className="SQI9">9</div>
-            <div className="SQI10">10</div>
+            {quizData.questions.map((_, index) => (
+              <div key={index} className={`SQI${index + 1}`}>
+                {index + 1}
+              </div>
+            ))}
           </div>
         </div>
+
         <div className="next-button">
-          <button type="button" className="next-btn" onClick={handleNextButtonClick}>Submit</button>
-        </div>
+  <button type="button" className="next-btn" onClick={handleNextButtonClick}>Submit</button>
+  <button type="button" className="leave-btn" onClick={handleLeaveButtonClick}>Leave</button>
+</div>
+
       </div>
     </div>
   );

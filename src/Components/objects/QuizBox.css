@@ -7,6 +7,7 @@
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .status {
@@ -38,6 +39,7 @@
   margin: 0 0 5px 0;
   font-size: 24px;
   font-weight: 700;
+  color: black;
 }
 
 .details {
@@ -48,8 +50,17 @@
 
 .details span {
   margin-right: 15px;
+  color: black;
 }
 
-.details span:last-child {
-  margin-right: 0;
+.OpenQuiz-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }

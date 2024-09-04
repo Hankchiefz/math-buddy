@@ -308,15 +308,50 @@
     margin-left: 2rem;
   }
 
-  .SHTaskbox-Container{
+  .SHTaskbox-Container {
     width: 100%;
     display: flex;
-    border: 2px ;
-    justify-content: flex-end;
-    margin-top: -36rem;
-    padding-right: 2rem;
-    
+    flex-direction: column; /* Stack the items vertically */
+    border: 2px;
+    justify-content: flex-start; /* Align items to the top */
+    align-items: flex-end; /* Align items to the right */
+    padding-left: 2rem; /* Add padding on the left side if needed */
+    gap: 1rem; /* Add some space between the task boxes */
+    margin-top: -40rem; /* Adjust the margin-top as needed */
+    margin-left: -1rem; /* Ensure the right margin is adequate */
   }
+  
+  
+
+  /* Loading spinner overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  z-index: 9999;
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
 }
 
 

@@ -45,13 +45,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border: 1px solid black;
   background-color: #E8F1FF;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header-box {
   font-weight: 700;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
   font-size: 20px;
 }
 
@@ -59,10 +60,10 @@
   display: flex;
   flex-direction: row;
   align-items: center; /* Center items horizontally */
-  padding-top: 0.25rem;
+  padding-top: 0.10rem;
   padding-left: 0.30rem;
   justify-content: space-evenly;
-  gap: 0.30rem; /* Add gap between items */
+  gap: 0.10rem; /* Add gap between items */
 }
 
 .SQI1, .SQI2, .SQI3, .SQI4, .SQI5, .SQI6, .SQI7, .SQI8, .SQI9, .SQI10 {
@@ -79,7 +80,7 @@
 
 /* Content for the quiz */
 .SQImain-content {
-  width: 70vh;
+  width: 100vh;
   height: 100vh;
   margin: 0 auto;
   margin-right: 30vh;
@@ -139,8 +140,11 @@
 }
 
 .next-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  padding-right: 2.5rem;
   top: 32vh; /* Adjust this value to position the button below the Question-box */
   right: 2vh; /* Align with the right position of the Question-box */
 }
@@ -165,4 +169,23 @@
   background-color: #5090FF;
 }
 
+.leave-btn {
+  width: 80px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff6b6b;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px; /* Add margin between the buttons */
+}
 
+.leave-btn:hover {
+  background-color: #ff4b4b;
+}
