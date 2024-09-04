@@ -8,7 +8,9 @@ const StudentQuizI = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [quizData, setQuizData] = useState(null);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true); // Loading state for fetching quiz data
+  const [submitting, setSubmitting] = useState(false); // Loading state for submitting answers
+  const [answers, setAnswers] = useState({}); // Store user's answers
 
   useEffect(() => {
     const fetchQuizData = async () => {
@@ -40,22 +42,57 @@ const StudentQuizI = () => {
     fetchQuizData();
   }, [location.state.quizId]);
 
-  const handleNextButtonClick = () => {
-    // Submit the answers and navigate to StudentQuizComplete on click
-    navigate('/studentquizcomplete');
+  const handleInputChange = (questionId, value) => {
+    setAnswers(prevAnswers => ({
+      ...prevAnswers,
+      [questionId]: value,
+    }));
+  };
+
+  const handleNextButtonClick = async () => {
+    setSubmitting(true); // Show loading spinner during submission
+
+    try {
+      const token = localStorage.getItem('access_token');
+      const quizId = location.state.quizId;
+
+      const response = await fetch('https://mathbuddyapi.com/submit_quiz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          quiz_id: quizId,
+          answers: answers,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error submitting quiz');
+      }
+
+      // After successful submission, navigate back to the quiz list
+      navigate('/studentquiz');
+
+      // Display "Thank you!" message after navigation
+      alert('Thank you for completing the quiz!');
+    } catch (error) {
+      console.error('Error submitting quiz:', error);
+    } finally {
+      setSubmitting(false); // Hide loading spinner after submission
+    }
   };
 
   const handleLeaveButtonClick = () => {
-    // Show a confirmation pop-up
     const confirmLeave = window.confirm('Are you sure you want to leave the quiz? Your progress may not be saved.');
     if (confirmLeave) {
-      // Navigate to the student homepage if the user confirms leaving
       navigate('/studentquiz');
     }
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Display a loading indicator while fetching data
+    return <div>Loading...</div>; // Loading state while fetching data
   }
 
   if (!quizData) {
@@ -74,7 +111,12 @@ const StudentQuizI = () => {
               <div key={question.question_id} className={`question q-${index + 1}`}>
                 <p>{`Q${index + 1}. ${question.question_text}`}</p>
                 <form className="answer-form">
-                  <input type="text" name={`answer${index + 1}`} placeholder="Enter your answer" />
+                  <input
+                    type="text"
+                    name={`answer${index + 1}`}
+                    placeholder="Enter your answer"
+                    onChange={(e) => handleInputChange(question.question_id, e.target.value)}
+                  />
                 </form>
               </div>
             ))}
@@ -94,10 +136,20 @@ const StudentQuizI = () => {
         </div>
 
         <div className="next-button">
-  <button type="button" className="next-btn" onClick={handleNextButtonClick}>Submit</button>
-  <button type="button" className="leave-btn" onClick={handleLeaveButtonClick}>Leave</button>
-</div>
+          <button type="button" className="next-btn" onClick={handleNextButtonClick} disabled={submitting}>
+            {submitting ? 'Submitting...' : 'Submit'}
+          </button>
+          <button type="button" className="leave-btn" onClick={handleLeaveButtonClick}>
+            Leave
+          </button>
+        </div>
 
+        {/* Spinner Overlay */}
+        {submitting && (
+          <div className="loading-overlay">
+            <div className="loading-spinner"></div>
+          </div>
+        )}
       </div>
     </div>
   );

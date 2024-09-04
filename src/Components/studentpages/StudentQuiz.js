@@ -7,6 +7,7 @@ import Quizbox from '../objects/QuizBox';
 
 const StudentQuiz = () => {
   const [quizzes, setQuizzes] = useState([]); // State to hold quizzes
+  const [loading, setLoading] = useState(false); // State to manage loading overlay
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const StudentQuiz = () => {
 
   const handleOpenQuiz = async (quizId) => {
     try {
+      setLoading(true); // Show loading spinner
       const token = localStorage.getItem('access_token');
       const response = await fetch('https://mathbuddyapi.com/current_quiz', {
         method: 'POST',
@@ -55,6 +57,8 @@ const StudentQuiz = () => {
       navigate('/studentquizi', { state: { quizData, quizId } }); // Pass quizId and quizData
     } catch (error) {
       console.error('Error fetching quiz data:', error);
+    } finally {
+      setLoading(false); // Hide loading spinner after navigating
     }
   };
 
@@ -77,7 +81,7 @@ const StudentQuiz = () => {
                       dueDate={new Date(quiz.due_date).toLocaleDateString()}
                       timeLimit={quiz.time_limit || 'No time limit'}
                       marks="20"
-                      onOpenQuiz={handleOpenQuiz} // Pass the handleOpenQuiz function
+                      onOpenQuiz={() => handleOpenQuiz(quiz.quiz_id)} // Call the function with quizId
                     />
                   </div>
                 ))
@@ -88,6 +92,13 @@ const StudentQuiz = () => {
           </div>
         </div>
       </div>
+
+      {/* Loading Spinner Overlay */}
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
     </div>
   );
 };
