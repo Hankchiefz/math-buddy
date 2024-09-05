@@ -8,7 +8,10 @@ import "../studentstyle/StudentHome.css";
 
 const StudentHome = () => {
     const [fullName, setFullName] = useState("");
-    const [quizzes, setQuizzes] = useState([]); // State to hold quizzes
+    const [quizzes, setQuizzes] = useState([]);
+    const [recentlyAccessed, setRecentlyAccessed] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch the full name from localStorage
@@ -33,46 +36,50 @@ const StudentHome = () => {
                 return response.json();
             })
             .then((data) => {
-                setQuizzes(data); // fetchquizzes data
+                setQuizzes(data); // fetch quizzes data
             })
             .catch((error) => {
                 console.error("Error fetching quizzes:", error);
             });
+
+        // Fetch the recently accessed pages from localStorage
+        const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
+        setRecentlyAccessed(storedRecentlyAccessed);
     }, []);
 
-    const navigate = useNavigate();
+    const handleNavigation = (page, label) => {
+        // Navigate to a specific page and add it to recently accessed
+        navigate(page);
 
-    const handleQuizButton = () => {
-        navigate("/studentquiz"); // Navigate to the quiz page
-    };
-
-    const handleLessonsButton = () => {
-        navigate("/studentLessons"); // Navigate to the lessons page
-    };
-
-    const handleFeedbackButton = () => {
-        navigate("/studentfeedback"); // Navigate to the feedback page
+        // Add the page to the recently accessed list and update localStorage
+        const newItem = { page, label };
+        setRecentlyAccessed(prevItems => {
+            const updatedItems = [newItem, ...prevItems.filter(item => 
+                item.page !== newItem.page || item.label !== newItem.label
+            )].slice(0, 5);
+            localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+            return updatedItems;
+        });
     };
 
     return (
         <div className="studenthome-container">
-            <StudentHeader /> {/* Top navbar */}
+            <StudentHeader />
             <div className="SHcontent-wrapper">
-                <StudentSNav /> {/* Side navbar */}
+                <StudentSNav />
                 <div className="SHmain-content">
                     <div className="home-message">
                         <div className="SHwelcome-message">
-                            {" "}
-                            Welcome {fullName}{" "}
+                            Welcome {fullName}
                         </div>
-                        <div className="SHactive-message"> Active Quizzes </div>
+                        <div className="SHactive-message">Active Quizzes</div>
                     </div>
                     <div className="SHMain-Container">
                         <div className="SHbutton-container">
                             <button
                                 type="button"
                                 className="SHB SHQuizButton"
-                                onClick={handleQuizButton} // Navigate to Quizzes
+                                onClick={() => handleNavigation("/studentquiz", "Quiz")}
                             >
                                 <img
                                     src="/images/home/quizzes-icon.png"
@@ -84,7 +91,7 @@ const StudentHome = () => {
                             <button
                                 type="button"
                                 className="SHB SHLessonsButton"
-                                onClick={handleLessonsButton} // Navigate to Lessons
+                                onClick={() => handleNavigation("/studentLessons", "Lessons")}
                             >
                                 <img
                                     src="/images/home/lessons-icon.png"
@@ -96,7 +103,7 @@ const StudentHome = () => {
                             <button
                                 type="button"
                                 className="SHB SHFeedbackButton"
-                                onClick={handleFeedbackButton} // Navigate to Feedback
+                                onClick={() => handleNavigation("/studentfeedback", "Feedback")}
                             >
                                 <img
                                     src="/images/home/feedback-icon.png"
@@ -110,12 +117,18 @@ const StudentHome = () => {
                             <div className="message-recently">
                                 Recently Accessed
                             </div>
-                            <div className="RAB recently-accessed-box1">
-                                <RecentlyAccessedBox
-                                    iconColor="#FFA07A"
-                                    text="Quiz: Fun Wordy Math"
-                                />
-                            </div>
+                            {recentlyAccessed.length > 0 ? (
+                                recentlyAccessed.map((item, index) => (
+                                    <RecentlyAccessedBox
+                                        key={index}
+                                        iconColor="#FFA07A"
+                                        text={item.label}
+                                        onClick={() => handleNavigation(item.page, item.label)}
+                                    />
+                                ))
+                            ) : (
+                                <p>No recently accessed pages.</p>
+                            )}
                         </div>
                     </div>
                     <div className="SHTaskbox-Container">
@@ -125,9 +138,7 @@ const StudentHome = () => {
                                     key={quiz.quiz_id}
                                     title={quiz.quiz_title}
                                     task={quiz.quiz_description}
-                                    dueDate={new Date(
-                                        quiz.due_date
-                                    ).toLocaleDateString()}
+                                    dueDate={new Date(quiz.due_date).toLocaleDateString()}
                                 />
                             ))
                         ) : (
