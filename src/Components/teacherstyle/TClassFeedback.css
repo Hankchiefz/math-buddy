@@ -1,0 +1,100 @@
+/* Ensure no extra margin or padding from the top navigation bar */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.teacher-class-feedback-page {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vh;
+}
+
+/* Styling for the sidebar and main content */
+.teacher-side-navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Main content styling */
+.teacher-class-feedback-content {
+    flex: 1;
+    margin-left: 1rem;
+    padding: 2rem; /* Adjust as needed */
+    flex-direction: column;
+}
+
+.class-feedback-container {
+    border: 1px solid #71A2FF;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 80px; /* Increase bottom padding to accommodate buttons */
+    margin-top: 0; /* Remove extra top margin if any */
+    position: relative; /* Set relative positioning to act as a reference for absolute positioning */
+}
+
+.cf-info-container {
+    display: flex;
+    font-size: smaller;
+    width: 100%;
+}
+
+hr {
+    width: 100%;
+}
+
+.cf-table-container {
+    border: 1px solid;
+}
+
+.cf-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cf-table-head {
+    background-color: #BAD0FB;
+    border: 1px solid;
+}
+
+.cf-table-body {
+    background-color: #E8F1FF;
+    border: 1px solid;
+}
+
+tr {
+    border: 1px solid grey;
+    padding: 1px;
+}
+
+.cf-table-body input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.save-feedback-button, .approve-submit-feedback-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #71A2FF; /* Change to your desired color */
+    border: none;
+    border-radius: 5px; /* Adjust border radius as needed */
+    color: white; /* Adjust text color as needed */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.save-feedback-button:hover, .approve-submit-feedback-button:hover {
+    background-color: #5a8dda; /* Slightly darker shade of blue for hover */
+}
+
+.buttons-container {
+    position: absolute; /* Position buttons absolutely within the relative container */
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px; /* Optional: space between buttons */
+}
