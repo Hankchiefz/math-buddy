@@ -1,16 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../teacherstyle/Tclassview.css";
 
 const Tclassview = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [studentEmail, setStudentEmail] = useState("");
+  const [classData, setClassData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleStudentOverview = () => {
-    console.log("Student Overview clicked");
+  const fetchClassData = async () => {
+    const token = localStorage.getItem("access_token");
+    const classId = location.state?.classId; // Get classId from location state
+
+    if (!token || !classId) {
+      setError("Missing token or class ID");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://mathbuddyapi.com/class_view", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token, class_id: classId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch class data");
+      }
+
+      const data = await response.json();
+      setClassData(data);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchClassData();
+  }, [location.state?.classId]); // Depend on classId
+
+  const handleStudentOverview = (studentId) => {
+    console.log("Student Overview clicked for student ID:", studentId);
+    // Navigate to student overview page or open a modal with student details
   };
 
   const handleAddStudent = () => {
@@ -26,12 +67,44 @@ const Tclassview = () => {
     setStudentEmail("");
   };
 
-  const handleSubmitStudent = (e) => {
+  const handleSubmitStudent = async (e) => {
     e.preventDefault();
-    console.log("Adding student with email:", studentEmail);
-    // Here you would typically make an API call to add the student
-    handleCloseModal();
+
+    const classId = location.state?.classId; // Get classId from location state
+
+    if (!classId) {
+      setError("Class ID is missing");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://mathbuddyapi.com/addStudent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          new_class_id: classId,
+          student_email: studentEmail,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add student");
+      }
+
+      // Refresh class data after adding student
+      await fetchClassData();
+
+      setStudentEmail("");
+      handleCloseModal();
+    } catch (err) {
+      setError(err.message);
+    }
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="tclassview-container">
@@ -39,33 +112,32 @@ const Tclassview = () => {
       <div className="content-wrapper">
         <TeacherSNav />
         <div className="main-content">
-          <h2>Class Name</h2>
+          <h2>{classData?.class?.class_name || "Class Name"}</h2>
           <table className="student-table">
             <thead>
               <tr>
                 <th>Student Name</th>
                 <th>Student Email</th>
                 <th>Average Mark</th>
-                <th>Parent Email</th>
                 <th>Student Overview</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Olivia Bennet</td>
-                <td>olivia@example.com</td>
-                <td>100%</td>
-                <td>oliviaparent@example.com</td>
-                <td>
-                  <button
-                    onClick={handleStudentOverview}
-                    className="overview-button"
-                  >
-                    Click here!
-                  </button>
-                </td>
-              </tr>
-              {/* Add more rows as needed */}
+              {classData?.students.map((student) => (
+                <tr key={student.student_id}>
+                  <td>{student.student_name}</td>
+                  <td>{student.email}</td>
+                  <td>{student.average_mark}</td>
+                  <td>
+                    <button
+                      onClick={() => handleStudentOverview(student.student_id)}
+                      className="overview-button"
+                    >
+                      Click here!
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
 
