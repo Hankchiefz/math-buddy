@@ -59,7 +59,7 @@ const Tclassview = () => {
   };
 
   const handleAddQuiz = () => {
-    navigate("/quizzes");
+    navigate("/tnewquiz");
   };
 
   const handleCloseModal = () => {
