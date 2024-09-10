@@ -3,7 +3,7 @@
   import "../homepagestyle/Contact.css";
 
   const Contact = () => {
-      return (
+      return ( 
           <div className="contact-page">
               <div className="form-container">
                   <div className="form-section">
@@ -33,6 +33,7 @@
                   </div>
                   <div className="form-section">
                       <h2>Feedback</h2>
+                       {/*test */}
                       <form>
                           <input type="text" placeholder="Name" required />
                           <input type="email" placeholder="Email" required />
@@ -46,5 +47,6 @@
           </div>
       );
   };
+ 
 
   export default Contact;
