@@ -22,6 +22,10 @@ import TNewClass from './Components/teacherinner/TNewClass';
 import StudentQuizComplete from './Components/studentinner/StudentQuizComplete';
 import TNewQuiz from './Components/teacherinner/TNewQuiz';
 import TClassFeedback from './Components/teacherinner/TClassFeedback.js';
+import HelpFAQ from './Components/homepages/HelpFAQ.js';
+import GuideTeacher from './Components/homepages/GuideTeacher.js';
+import Help from './Components/homepages/Help.js';
+import GuideStudent from './Components/homepages/GuideStudent.js';
 
 
 function App() {
@@ -58,6 +62,10 @@ function App() {
         <Route path = '/tprofile' element= {<Tprofile />} />
         <Route path = '/tfeedback' element= {<TFeedback />} />
         <Route path = '/tclassfeedback' element= {<TClassFeedback />} />
+        <Route path ='/faq' element={<HelpFAQ/>}/>
+        <Route path ='/teacherguide' element={<GuideTeacher/>}/>
+        <Route path ='/help' element={<Help/>}/>
+        <Route path='/studentguide' element={<GuideStudent/>}/>
 
       </Routes>
     </>

@@ -1,0 +1,64 @@
+/* src/components/pagestyle/Help.css */
+.help-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.help-header {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+}
+
+.help-line {
+border: 1px solid #71A2FF;
+}
+
+.help-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+max-width: 1000px;
+}
+
+.help-title {
+font-size: 2.5rem;
+font-weight: bold;
+margin-bottom: 30px;
+text-align: center;
+}
+
+.help-button-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+}
+
+.help-button-link {
+display: block; /* Make the link behave like a block element */
+width: 70%; /* Set the same width as the button */
+text-align: center; /* Center the text inside the link */
+margin: 10px 0; /* Same margin as the button */
+}
+
+.help-button {
+border: 3px solid #71A2FF;
+background-color: white;
+border-radius: 5px;
+width: 100%; /* Use 100% width inside the link container */
+font-size: medium;
+font-weight: bold;
+padding: 15px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.help-button:hover {
+background-color: #e0e7ff;
+}
