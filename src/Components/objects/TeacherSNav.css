@@ -11,7 +11,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
     margin-top: 10px; /* Move the sidebar down */
     margin-left: 15px; /* Move the sidebar to the right */
-    border: 1px solid black; /* Add black outline */
+    border: 2px solid #a4c2f4;
     margin-bottom: 10px;
   }
   
