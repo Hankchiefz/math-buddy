@@ -54,6 +54,10 @@ const Tclasses = () => {
     navigate("/tnewclass"); // Navigate to the TNewClass component
   };
 
+  const handleRowClick = (classId) => {
+    navigate("/tclassview", { state: { classId } }); // Pass classId in state
+  };
+
   return (
     <div className="teacherclasses-container">
       <StudentHeader /> {/* Top navbar */}
@@ -78,7 +82,11 @@ const Tclasses = () => {
             <tbody>
               {classes.length > 0 ? (
                 classes.map((classItem) => (
-                  <tr className="TCtable-row" key={classItem.class_id}>
+                  <tr
+                    className="TCtable-row"
+                    key={classItem.class_id}
+                    onClick={() => handleRowClick(classItem.class_id)}
+                  >
                     <td>
                       <div className="color"></div>
                     </td>
