@@ -151,6 +151,19 @@
   margin-left: 2rem;
 }
 
+.SHTaskbox-Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  border: 2px;
+  justify-content: flex-start; /* Align items to the top */
+  align-items: flex-end; /* Align items to the right */
+  padding-left: 2rem; /* Add padding on the left side if needed */
+  gap: 1rem; /* Add some space between the task boxes */
+  margin-top: -40rem; /* Adjust the margin-top as needed */
+  margin-left: -1rem; /* Ensure the right margin is adequate */
+}
+
 /* Media queries for smaller screens */
 @media (max-width: 1700px) {
   .studenthome-container {
