@@ -23,6 +23,7 @@ import Tprofile from "./Components/teacherpages/Tprofile";
 import TFeedback from "./Components/teacherpages/TFeedback";
 import StudentFeedback from "./Components/studentpages/StudentFeedback";
 import Tclasses from "./Components/teacherpages/Tclasses";
+import Tclassview from "./Components/teacherpages/Tclassview.js";
 import TNewClass from "./Components/teacherinner/TNewClass";
 import StudentQuizComplete from "./Components/studentinner/StudentQuizComplete";
 import TNewQuiz from "./Components/teacherinner/TNewQuiz";
@@ -80,6 +81,7 @@ function App() {
         <Route path="/studentquizcomplete" element={<StudentQuizComplete />} />
         <Route path="/tnewquiz" element={<TNewQuiz />} />
         <Route path="/tprofile" element={<Tprofile />} />
+        <Route path="/tclassview" element={<Tclassview />} />
         <Route path="/tfeedback" element={<TFeedback />} />
         <Route path="/tclassfeedback" element={<TClassFeedback />} />
         <Route path="/faq" element={<HelpFAQ />} />
