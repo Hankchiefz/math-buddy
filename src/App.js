@@ -32,6 +32,7 @@ import HelpFAQ from "./Components/homepages/HelpFAQ.js";
 import GuideTeacher from "./Components/homepages/GuideTeacher.js";
 import Help from "./Components/homepages/Help.js";
 import GuideStudent from "./Components/homepages/GuideStudent.js";
+import ParentHome from "./Components/parentpages/ParentHome.js";
 
 function App() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function App() {
     "/tprofile",
     "/tfeedback",
     "tclassfeedback",
+    "parenthome",
   ];
 
   return (
@@ -88,6 +90,7 @@ function App() {
         <Route path="/teacherguide" element={<GuideTeacher />} />
         <Route path="/help" element={<Help />} />
         <Route path="/studentguide" element={<GuideStudent />} />
+        <Route Path="/parenthome" element = {<ParentHome/>} />
       </Routes>
     </>
   );

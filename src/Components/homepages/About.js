@@ -16,6 +16,7 @@ const About = () => {
                         our app provides a personalized and engaging learning
                         experience for students of all ages and skill levels.
                     </p>
+                    <div className = "OurMission">
                     <h2>Our Mission</h2>
                     <p>
                         Our mission is to make math accessible, enjoyable, and
@@ -24,6 +25,8 @@ const About = () => {
                         math. MathBuddy is here to support and inspire learners
                         to achieve their full potential in mathematics.
                     </p>
+                    </div>
+                    
                 </div>
                 <div className="image-section">
                     <img
