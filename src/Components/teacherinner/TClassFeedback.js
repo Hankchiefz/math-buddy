@@ -1,20 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
 import "../teacherstyle/TClassFeedback.css";
 
 const TClassFeedback = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // State to hold feedback data and loading status
-  const [feedbackData, setFeedbackData] = useState({});
+  // Extract class_name, quiz_id, and quiz_title from location state
+  const { class_name, quiz_id, quiz_title } = location.state || {};
+
+  // State to hold quiz completion data and loading status
+  const [completionData, setCompletionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [className, setClassName] = useState(class_name || "Class Name Here");
+  const [quizName, setQuizName] = useState(quiz_title || "Quiz Name Here");
 
-  // Fetch feedback data on component mount
+  // State to handle modal visibility and feedback being edited
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFeedback, setSelectedFeedback] = useState("");
+  const [selectedStudentId, setSelectedStudentId] = useState(null);
+
+  // Log location state for debugging
   useEffect(() => {
-    const fetchFeedbackData = async () => {
+    console.log("Location state:", location.state);
+  }, [location.state]);
+
+  // Fetch quiz completion data on component mount
+  useEffect(() => {
+    const fetchCompletionData = async () => {
       try {
         const token = localStorage.getItem("access_token");
 
@@ -22,79 +38,132 @@ const TClassFeedback = () => {
           throw new Error("No access token found");
         }
 
-        const response = await fetch(
-          "https://mathbuddyapi.com/teacherFeedback",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ token }),
+        if (class_name && quiz_id) {
+          const response = await fetch(
+            "https://mathbuddyapi.com/quiz_completion_details",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ class_name, quiz_id }),
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
           }
-        );
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+          const data = await response.json();
+          setCompletionData(data);
+        } else {
+          throw new Error("Class name or quiz ID is missing");
         }
-
-        const data = await response.json();
-        setFeedbackData(data);
       } catch (error) {
-        console.error("Error fetching feedback data:", error);
+        console.error("Error fetching completion data:", error);
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchFeedbackData();
-  }, []);
+    fetchCompletionData();
+  }, [class_name, quiz_id]);
 
-  const handleDetailsClick = () => {
-    navigate("/teacher/TClassFeedback");
+  // Handle opening the modal with feedback prefilled
+  const handleEditClick = (feedback, studentId) => {
+    setSelectedFeedback(feedback || ""); // Prefill the input with the current feedback
+    setSelectedStudentId(studentId);
+    setIsModalOpen(true);
   };
 
-  // Format average score as a percentage
-  const formatPercentage = (score) => (score !== null ? Math.round(score) : 0);
+  // Handle saving the edited feedback
+  const handleSaveClick = async (e) => {
+    e.preventDefault();
 
-  // Format due date to show only the date
-  const formatDueDate = (dueDate) => {
-    if (!dueDate) return "";
-    const date = new Date(dueDate);
-    return date.toLocaleDateString(); // Default to user's locale date format
+    try {
+      // Update local data
+      const updatedCompletionData = completionData.map((entry) =>
+        entry.student_id === selectedStudentId
+          ? { ...entry, feedback: selectedFeedback }
+          : entry
+      );
+      setCompletionData(updatedCompletionData);
+
+      // Make API call to add additional feedback
+      const response = await fetch(
+        "https://mathbuddyapi.com/add_additional_feedback",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            student_id: selectedStudentId,
+            quiz_id: quiz_id,
+            additional_feedback_teacher: selectedFeedback,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update feedback");
+      }
+
+      // Close the modal after saving
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error updating feedback:", error);
+      setError(error.message);
+    }
   };
 
-  // Render feedback tables for each class
-  const renderFeedbackTable = (feedbacks, title) => (
-    <div className="feedback-table-container">
-      <h2>Feedback for {title}</h2> {/* Updated heading */}
+  // Close the modal without saving
+  const handleCancelClick = () => {
+    setIsModalOpen(false);
+    setSelectedFeedback("");
+  };
+
+  // Format the date as needed
+  const formatDate = (date) => {
+    if (!date) return "Not completed";
+    const formattedDate = new Date(date);
+    return formattedDate.toLocaleDateString();
+  };
+
+  // Render the completion data table
+  const renderCompletionTable = (data) => (
+    <div className="completion-table-container">
+      <h2>{quizName ? `Quiz: ${quizName}` : "Quiz Name"}</h2>
       <hr />
-      {feedbacks.length === 0 ? (
-        <p>No feedback available.</p>
+      {data.length === 0 ? (
+        <p>No completion data available.</p>
       ) : (
-        <table className="feedback-table">
+        <table className="completion-table">
           <thead>
             <tr>
-              <th>Quiz Name</th>
-              <th>Average Grade (%)</th>
-              <th>Close Date</th>{" "}
-              {/* Changed from "Close Date/Time" to "Close Date" */}
+              <th>Name</th>
+              <th>Score</th>
+              <th>Completed At</th>
               <th>Feedback</th>
+              <th>Edit Feedback</th>
             </tr>
           </thead>
           <tbody>
-            {feedbacks.map((quiz) => (
-              <tr key={quiz.quiz_id} className="feedback-table-row">
-                <td>{quiz.title}</td>
-                <td>{formatPercentage(quiz.average_score)}%</td>
-                <td>{formatDueDate(quiz.due_date)}</td>{" "}
-                {/* Use formatted date */}
+            {data.map((entry) => (
+              <tr key={entry.student_id}>
+                <td>{entry.student_name}</td>
+                <td>{entry.score !== null ? entry.score : "N/A"}</td>
+                <td>{formatDate(entry.completed_at)}</td>
+                <td>{entry.feedback || "No feedback"}</td>
                 <td>
                   <button
-                    className="feedback-details-button"
-                    onClick={handleDetailsClick}
+                    className="edit-feedback-button"
+                    onClick={() =>
+                      handleEditClick(entry.feedback, entry.student_id)
+                    }
                   >
-                    Details
+                    Edit Feedback
                   </button>
                 </td>
               </tr>
@@ -123,21 +192,34 @@ const TClassFeedback = () => {
       <div className="teacher-feedback-content">
         <TeacherSNav />
         <div className="teacher-feedback-main-content">
-          {Object.keys(feedbackData).length > 0 ? (
-            Object.entries(feedbackData).map(
-              ([className, quizzes]) => renderFeedbackTable(quizzes, className) // Pass className as the title
-            )
-          ) : (
-            <p>No feedback available.</p>
-          )}
-          <button
-            className="feedback-create-button"
-            onClick={handleDetailsClick}
-          >
-            Create Feedback
-          </button>
+          {completionData.length > 0
+            ? renderCompletionTable(completionData)
+            : "No completion data available."}
         </div>
       </div>
+
+      {/* Modal for editing feedback */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Edit Feedback</h3>
+            <form onSubmit={handleSaveClick}>
+              <textarea
+                value={selectedFeedback}
+                onChange={(e) => setSelectedFeedback(e.target.value)}
+                className="feedback-input"
+                rows="5"
+              />
+              <div className="modal-buttons">
+                <button type="submit">Save</button>
+                <button type="button" onClick={handleCancelClick}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
