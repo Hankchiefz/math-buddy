@@ -41,7 +41,21 @@ const StudentProfile = () => {
             console.error('No access token found');
             setLoading(false); // Stop loading if no token
         }
-    }, []);
+
+        // Update recently accessed
+        const newItem = { page: '/studentprofile', label: 'Profile' };
+        try {
+            const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
+            const updatedItems = [newItem, ...storedRecentlyAccessed.filter(item =>
+                item.page !== newItem.page || item.label !== newItem.label
+            )].slice(0, 5);
+            localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+            console.log('Saved recently accessed items:', updatedItems);
+        } catch (error) {
+            console.error('Error saving recently accessed items:', error);
+        }
+
+    }, []); // Empty dependency array to run only once on component mount
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -72,7 +86,7 @@ const StudentProfile = () => {
             }
             return response.json();
         })
-        .then(data => {
+        .then(() => {
             setProfileData(updatedProfileData); // Update the profile data with the new data
             setEditMode(false); // Exit edit mode and return to view mode
         })

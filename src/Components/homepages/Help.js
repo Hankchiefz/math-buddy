@@ -7,8 +7,7 @@ const Help = () => {
   return (
     <div className="help-page">
       <div className="help-header">
-        <h1 className="help-title">Hi, How can we HELP?</h1>
-        <hr className="help-line" />
+        <h1 className="help-title">Hello, How can we Help?</h1>
         <div className="help-content">
           <div className="help-button-container">
             {/* Add the new CSS class to the Link */}

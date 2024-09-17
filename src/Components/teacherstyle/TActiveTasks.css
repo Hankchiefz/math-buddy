@@ -1,22 +1,119 @@
 /* src/components/pagestyle/TActiveTasks.css */
 
+/* General Container */
+.teacherquiz-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrolling when the overlay is shown */
+}
+
+/* Content Wrapper */
+.TQcontent-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Main Content Area */
+.TQmain-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 1rem; /* Space for sidebar */
+  margin-top: 1.5rem; /* Space for header */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Table Container */
+.TQtable-container {
+  margin-bottom: 20px;
+}
+
+/* Table Header and Rows */
+.TQtasks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.TQtasks-table th,
+.TQtasks-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.TQtasks-table th {
+  background-color: #f4f4f4;
+}
+
+.TQtable-row:hover {
+  background-color: #f1f1f1;
+}
+
+/* Button Styles */
+.TQcreate-quiz-button {
+  background-color: #71A2FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.TQcreate-quiz-button:hover {
+  background-color: #5b8efb;
+}
+
+.approve-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.approve-button:hover {
+  background-color: #45a049;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it covers the entire screen */
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #71A2FF;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Header and Navigation Styles */
 .studentclasses-container {
   display: flex;
   flex-direction: column;
   background-color: white;
   height: 100vh;
-}
-
-.TQcontent-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
-.TQmain-content {
-  flex: 1;
-  padding: 20px;
-  margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-  margin-top: 1.5rem; /* Adjust this value to provide space for the header */
 }
 
 .TQhome-message {
@@ -37,5 +134,3 @@
   background-color: #E8F1FF; /* Line color */
   margin-top: 10px; /* Add space between the text and the line */
 }
-
-

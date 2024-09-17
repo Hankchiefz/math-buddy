@@ -23,6 +23,7 @@ import Tprofile from "./Components/teacherpages/Tprofile";
 import TFeedback from "./Components/teacherpages/TFeedback";
 import StudentFeedback from "./Components/studentpages/StudentFeedback";
 import Tclasses from "./Components/teacherpages/Tclasses";
+import Tclassview from "./Components/teacherpages/Tclassview.js";
 import TNewClass from "./Components/teacherinner/TNewClass";
 import StudentQuizComplete from "./Components/studentinner/StudentQuizComplete";
 import TNewQuiz from "./Components/teacherinner/TNewQuiz";
@@ -31,8 +32,7 @@ import HelpFAQ from "./Components/homepages/HelpFAQ.js";
 import GuideTeacher from "./Components/homepages/GuideTeacher.js";
 import Help from "./Components/homepages/Help.js";
 import GuideStudent from "./Components/homepages/GuideStudent.js";
-
-
+import ParentHome from "./Components/parentpages/ParentHome.js";
 
 function App() {
   const location = useLocation();
@@ -54,8 +54,8 @@ function App() {
     "/studentprofile",
     "/tprofile",
     "/tfeedback",
-    "/tclassfeedback",
-    "/studentlessons"
+    "/TClassFeedback",
+    "parenthome",
   ];
 
   return (
@@ -83,12 +83,14 @@ function App() {
         <Route path="/studentquizcomplete" element={<StudentQuizComplete />} />
         <Route path="/tnewquiz" element={<TNewQuiz />} />
         <Route path="/tprofile" element={<Tprofile />} />
+        <Route path="/tclassview" element={<Tclassview />} />
         <Route path="/tfeedback" element={<TFeedback />} />
-        <Route path="/tclassfeedback" element={<TClassFeedback />} />
+        <Route path="/TClassFeedback" element={<TClassFeedback />} />
         <Route path="/faq" element={<HelpFAQ />} />
         <Route path="/teacherguide" element={<GuideTeacher />} />
         <Route path="/help" element={<Help />} />
         <Route path="/studentguide" element={<GuideStudent />} />
+        <Route Path="/parenthome" element={<ParentHome />} />
       </Routes>
     </>
   );

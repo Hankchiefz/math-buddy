@@ -1,50 +1,51 @@
-// src/Components/objects/StudentSNav.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ParentSNav.css';
 
-const StudentSNav = () => {
+const ParentSNav = () => {
   return (
-    <div className="sidebar">
-      <Link to="/teacherhomepage" className="menu-link">
-        <div className="menu-icon">&#9776;</div> {/* Menu icon */}
-      </Link>
-      <Link to="/teacherhomepage" className="nav-link">
-        <div className="nav-item">
-          <span className="nav-text">Dashboard</span>
-        </div>
-      </Link>
-      <Link to="/teacherhomepage" className="nav-link"></Link>
-
-      <Link to="/Tclasses" className="nav-link">
-        <div className="nav-item classes">
-          <span className="nav-icon">&#128203;</span> {/* Classes icon */}
-          <span className="nav-text">Classes</span>
+    <div className="parent-sidebar">
+      <Link to="/parenthome" className="parent-menu-link">
+        <div className="parent-menu-icon">
         </div>
       </Link>
       
-      <Link to="/TActiveTasks" className="nav-link">
-        <div className="nav-item">
-          <span className="nav-icon">&#128467;</span> {/* Quizzes icon */}
-          <span className="nav-text">Quizzes</span>
+      <Link to="/parenthome" className="parent-nav-link">
+        <div className="parent-nav-item">
+          <img src="/images/home/dashboard-icon.png" alt="Dashboard Icon" className="parent-nav-icon" />
+          <span className="parent-nav-text">Dashboard</span>
         </div>
       </Link>
-      <Link to="/studentlessons" className="nav-link">
-      <div className="nav-item">
-        <span className="nav-icon">&#128214;</span> {/* Lessons icon */}
-        <span className="nav-text">Lessons</span>
-      </div>
+      
+      <Link to="/parentLessons" className="parent-nav-link">
+        <div className="parent-nav-item parent-classes">
+          <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="parent-nav-icon" />
+          <span className="parent-nav-text">Pending Tasks</span>
+        </div>
       </Link>
-      <div className="nav-item">
-        <span className="nav-icon">&#128172;</span> {/* Feedback icon */}
-        <span className="nav-text">Feedback</span>
-      </div>
-      <div className="nav-item">
-        <span className="nav-icon">&#128100;</span> {/* Profile icon */}
-        <span className="nav-text">Profile</span>
-      </div>
+      
+      <Link to="/parentquiz" className="parent-nav-link">
+        <div className="parent-nav-item">
+          <img src="/images/home/quizzes-icon.png" alt="Quizzes Icon" className="parent-nav-icon" />
+          <span className="parent-nav-text">Progress Report</span>
+        </div>
+      </Link>
+      
+      <Link to="/parentfeedback" className="parent-nav-link">
+        <div className="parent-nav-item">
+          <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="parent-nav-icon" />
+          <span className="parent-nav-text">Feedback</span>
+        </div>
+      </Link>
+      
+      <Link to="/parentprofile" className="parent-nav-link">
+        <div className="parent-nav-item">
+          <img src="/images/home/profile-icon.png" alt="Profile Icon" className="parent-nav-icon" />
+          <span className="parent-nav-text">Profile</span>
+        </div>
+      </Link>
     </div>
   );
 };
 
-export default StudentSNav;
+export default ParentSNav;

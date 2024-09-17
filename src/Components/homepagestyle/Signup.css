@@ -48,3 +48,24 @@
     background-color: #0056b3;
   }
   
+.password-strength {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.password-strength.very-weak {
+  color: red;
+}
+.password-strength.weak {
+  color: orange;
+}
+.password-strength.medium {
+  color: yellow;
+}
+.password-strength.strong {
+  color: lightgreen;
+}
+.password-strength.very-strong {
+  color: green;
+}

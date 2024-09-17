@@ -1,4 +1,3 @@
-// src/Components/studentpages/StudentFeedback.js
 import React, { useEffect, useState } from 'react';
 import StudentHeader from '../objects/StudentHeader';
 import StudentSNav from '../objects/StudentSNav';
@@ -33,6 +32,20 @@ const StudentFeedback = () => {
     };
 
     fetchCompletedQuizzes(); // Call the function to fetch completed quizzes
+
+    // Update recently accessed
+    const newItem = { page: '/studentfeedback', label: 'Feedback' };
+    try {
+      const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
+      const updatedItems = [newItem, ...storedRecentlyAccessed.filter(item =>
+        item.page !== newItem.page || item.label !== newItem.label
+      )].slice(0, 5);
+      localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+      console.log('Saved recently accessed items:', updatedItems);
+    } catch (error) {
+      console.error('Error saving recently accessed items:', error);
+    }
+
   }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   return (
@@ -57,7 +70,7 @@ const StudentFeedback = () => {
                   </div>
                 ))
               ) : (
-                <p>No completed quizzes available.</p>
+                <p>No completed feedback available.</p>
               )}
             </div>
           </div>

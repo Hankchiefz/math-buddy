@@ -3,7 +3,7 @@
   import "../homepagestyle/GuideTeacher.css";
 
   const GuideTeacher = () => {
-      return (
+      return ( /*test*/
         <div className="teacher-guide">
         <div className="teacher-guide-header">
           <h1 className="teacher-guide-title">Welcome Teachers to the world of MathBuddy</h1>
