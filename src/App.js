@@ -55,7 +55,7 @@ function App() {
     "/tprofile",
     "/tfeedback",
     "/TClassFeedback",
-    "parenthome",
+    "/parenthome",
   ];
 
   return (
@@ -90,7 +90,7 @@ function App() {
         <Route path="/teacherguide" element={<GuideTeacher />} />
         <Route path="/help" element={<Help />} />
         <Route path="/studentguide" element={<GuideStudent />} />
-        <Route Path="/parenthome" element={<ParentHome />} />
+        <Route path="/parenthome" element={<ParentHome />} />
       </Routes>
     </>
   );

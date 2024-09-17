@@ -60,7 +60,7 @@ const Login = () => {
                     } else if (data.personObj.role === "teacher") {
                         navigate("/teacherhomepage");
                     } else if (data.personObj.role === "parent") {
-                        navigate("/parenthomepage"); // Assuming there's a parent home page
+                        navigate("/parenthome"); // Assuming there's a parent home page
                     } else {
                         setError("Unknown role"); // Handle unknown roles
                     }
