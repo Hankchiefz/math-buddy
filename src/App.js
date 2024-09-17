@@ -54,7 +54,7 @@ function App() {
     "/studentprofile",
     "/tprofile",
     "/tfeedback",
-    "tclassfeedback",
+    "/TClassFeedback",
     "parenthome",
   ];
 
@@ -85,12 +85,12 @@ function App() {
         <Route path="/tprofile" element={<Tprofile />} />
         <Route path="/tclassview" element={<Tclassview />} />
         <Route path="/tfeedback" element={<TFeedback />} />
-        <Route path="/tclassfeedback" element={<TClassFeedback />} />
+        <Route path="/TClassFeedback" element={<TClassFeedback />} />
         <Route path="/faq" element={<HelpFAQ />} />
         <Route path="/teacherguide" element={<GuideTeacher />} />
         <Route path="/help" element={<Help />} />
         <Route path="/studentguide" element={<GuideStudent />} />
-        <Route Path="/parenthome" element = {<ParentHome/>} />
+        <Route Path="/parenthome" element={<ParentHome />} />
       </Routes>
     </>
   );
