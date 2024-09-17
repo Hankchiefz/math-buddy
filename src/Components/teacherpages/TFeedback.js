@@ -49,8 +49,15 @@ const TFeedback = () => {
     fetchFeedbackData();
   }, []);
 
-  const handleDetailsClick = () => {
-    navigate("/TClassFeedback");
+  // Navigate to TClassFeedback with class_name and quiz_id
+  const handleDetailsClick = (class_name, quiz_id, quiz_title) => {
+    if (class_name && quiz_id && quiz_title) {
+      navigate("/TClassFeedback", {
+        state: { class_name, quiz_id, quiz_title },
+      });
+    } else {
+      console.error("Class name, quiz ID, or quiz title is missing");
+    }
   };
 
   // Format average score as a percentage
@@ -64,9 +71,9 @@ const TFeedback = () => {
   };
 
   // Render feedback tables for each class
-  const renderFeedbackTable = (feedbacks, title) => (
-    <div className="feedback-table-container">
-      <h2>Feedback for {title}</h2> {/* Updated heading */}
+  const renderFeedbackTable = (feedbacks, class_name) => (
+    <div className="feedback-table-container" key={class_name}>
+      <h2>Feedback for {class_name}</h2> {/* Updated heading */}
       <hr />
       {feedbacks.length === 0 ? (
         <p>No feedback available.</p>
@@ -91,7 +98,10 @@ const TFeedback = () => {
                 <td>
                   <button
                     className="feedback-details-button"
-                    onClick={handleDetailsClick}
+                    onClick={
+                      () =>
+                        handleDetailsClick(class_name, quiz.quiz_id, quiz.title) // Pass class_name, quiz_id, and quiz_title
+                    }
                   >
                     Details
                   </button>
@@ -129,12 +139,6 @@ const TFeedback = () => {
           ) : (
             <p>No feedback available.</p>
           )}
-          <button
-            className="feedback-create-button"
-            onClick={handleDetailsClick}
-          >
-            Create Feedback
-          </button>
         </div>
       </div>
     </div>
