@@ -1,60 +1,60 @@
-// src/Components/objects/StudentSNav.js
+// src/Components/objects/TeacherSNav.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './TeacherSNav.css';
 
-const StudentSNav = () => {
+const TeacherSNav = () => {
   return (
-    <div className="sidebar">
-      <Link to="/teacherhomepage" className="menu-link">
-        <div className="menu-icon">
-        
-        </div> {/* Menu icon */}
-      </Link>
-      
-      <Link to="/teacherhomepage" className="nav-link">
-        <div className="nav-item">
-          <img src="/images/home/dashboard-icon.png" alt="Dashboard Icon" className="nav-icon" />
-          <span className="nav-text">Dashboard</span>
+    <div className="teacher-sidebar">
+      <Link to="/teacherhomepage" className="teacher-menu-link">
+        <div className="teacher-menu-icon">
+          {/* Optionally, you can add an icon here */}
         </div>
       </Link>
-      
-      <Link to="/Tclasses" className="nav-link">
-        <div className="nav-item classes">
-          <img src="/images/home/classes-icon.png" alt="Classes Icon" className="nav-icon" />
-          <span className="nav-text">Classes</span>
+
+      <Link to="/teacherhomepage" className="teacher-nav-link">
+        <div className="teacher-nav-item">
+          <img src="/images/home/dashboard-icon.png" alt="Dashboard Icon" className="teacher-nav-icon" />
+          <span className="teacher-nav-dash-text">Dashboard</span>
         </div>
       </Link>
-      
-      <Link to="/TActiveTasks" className="nav-link">
-        <div className="nav-item">
-          <img src="/images/home/quizzes-icon.png" alt="Quizzes Icon" className="nav-icon" />
-          <span className="nav-text">Quizzes</span>
+
+      <Link to="/Tclasses" className="teacher-nav-link">
+        <div className="teacher-nav-item">
+          <img src="/images/home/classes-icon.png" alt="Classes Icon" className="teacher-nav-icon" />
+          <span className="teacher-nav-classes-text">Classes</span>
         </div>
       </Link>
-      
-      <Link to="/teacherlessons" className="nav-link">
-        <div className="nav-item">
-          <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="nav-icon" />
-          <span className="nav-text">Lessons</span>
+
+      <Link to="/TActiveTasks" className="teacher-nav-link">
+        <div className="teacher-nav-item">
+          <img src="/images/home/quizzes-icon.png" alt="Quizzes Icon" className="teacher-nav-icon" />
+          <span className="teacher-nav-quizzes-text">Quizzes</span>
         </div>
       </Link>
-      
-      <Link to="/tfeedback" className="nav-link">
-        <div className="nav-item">
-          <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="nav-icon" />
-          <span className="nav-text">Feedback</span>
+
+      <Link to="/teacherlessons" className="teacher-nav-link">
+        <div className="teacher-nav-item">
+          <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="teacher-nav-icon" />
+          <span className="teacher-nav-lessons-text">Lessons</span>
         </div>
       </Link>
-      
-      <Link to="/tprofile" className="nav-link">
-        <div className="nav-item">
-          <img src="/images/home/profile-icon.png" alt="Profile Icon" className="nav-icon" />
-          <span className="nav-text">Profile</span>
+
+      <Link to="/tfeedback" className="teacher-nav-link">
+        <div className="teacher-nav-item">
+          <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="teacher-nav-icon" />
+          <span className="teacher-nav-feedback-text">Feedback</span>
+        </div>
+      </Link>
+
+      <Link to="/tprofile" className="teacher-nav-link">
+        <div className="teacher-nav-item">
+          <img src="/images/home/profile-icon.png" alt="Profile Icon" className="teacher-nav-icon" />
+          <span className="teacher-nav-dash-text">Profile</span>
         </div>
       </Link>
     </div>
   );
 };
 
-export default StudentSNav;
+export default TeacherSNav;
