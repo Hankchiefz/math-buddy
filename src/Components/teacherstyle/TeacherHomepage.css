@@ -1,64 +1,235 @@
-/* src/Components/studentstyle/StudentClasses.css */
 .teacherhome-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+}
+
+.THcontent-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.THmain-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
+  margin-top: 1.5rem; /* Adjust this value to provide space for the header */
+}
+
+.THhome-message {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: -4vh;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+  padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+}
+
+.THhome-message::after {
+  content: "";
+  position: absolute; /* Use absolute positioning */
+  top: 100%; /* Position the line just below the text */
+  left: 0; /* Align the line with the left edge of the parent */
+  width: 100%; /* Make the line span the full width of the parent */
+  height: 2px;
+  background-color: #E8F1FF; /* Line color */
+  margin-top: 10px; /* Add space between the text and the line */
+}
+
+.THhome-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.THactive-message {
+  padding-right: 3rem;
+}
+
+.THMain-Container {
+  width: 79%;
+  height: 80vh;
+  margin: 0 auto;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column; /* Layout the items vertically */
+  border: 2px; /* Add borders for debugging */
+  margin-left: 0.5rem;
+}
+
+.THbutton-container {
+  height: 20vh;
+  width: 100%;
+  border: 2px;
+  margin-top: -1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+}
+
+.THbutton-container::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 96%;
+  height: 2px;
+  background-color: #E8F1FF;
+  margin-top: 10px;
+}
+
+.THbutton-container::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 100%;
+  width: 2px;
+  height: 400%;
+  background-color: #E8F1FF;
+}
+
+.THB {
+  font-weight: 700;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.THClassesButton {
+  width: 19rem;
+  height: 6rem;
+  padding: 10px 20px;
+  background-color: #fcdaab;
+  border: 2px solid #fac782;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.THLessonsButton {
+  width: 19rem;
+  height: 6rem;
+  padding: 10px 20px;
+  background-color: #da9fff;
+  border: 2px solid #bf64fc;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.THFeedbackButton {
+  width: 19rem;
+  height: 6rem;
+  padding: 10px 20px;
+  background-color: #b8f8ba;
+  border: 2px solid #79fc79;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.THrecently-accessed-container {
+  height: 60vh;
+  width: 100%;
+  border: 2px; /* For debugging */
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.THrecently-accessed-box {
+  margin-top: -20rem;
+}
+
+.THmessage-recently {
+  margin-top: 42rem;
+  margin-left: 1rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.RAB {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.THTaskbox-Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-left: 2rem;
+  gap: 1rem;
+  margin-top: -44rem; /* Adjust this value as needed */
+  margin-left: -3rem;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 1700px) {
+  .teacherhome-container {
     display: flex;
     flex-direction: column;
     background-color: white;
     height: 100vh;
   }
-  
+
   .THcontent-wrapper {
     display: flex;
     flex-direction: row;
   }
-  
+
   .THmain-content {
     flex: 1;
     padding: 20px;
-    margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-    margin-top: 1.5rem; /* Adjust this value to provide space for the header */
+    margin-left: 1rem;
+    margin-top: 1.5rem;
   }
-  
+
   .THhome-message {
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
     margin-top: -4vh;
-    position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-    padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+    position: relative;
+    padding-bottom: 1px;
   }
-  
-  .home-message::after {
+
+  .THhome-message::after {
     content: "";
-    position: absolute; /* Use absolute positioning */
-    top: 100%; /* Position the line just below the text */
-    left: 0; /* Align the line with the left edge of the parent */
-    width: 100%; /* Make the line span the full width of the parent */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     height: 2px;
-    background-color: #E8F1FF; /* Line color */
-    margin-top: 10px; /* Add space between the text and the line */
+    background-color: #E8F1FF;
+    margin-top: 10px;
   }
-  
-  .home-message {
+
+  .THhome-message {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .THactive-message {
     padding-right: 3rem;
   }
-  
+
   .THMain-Container {
     width: 79%;
     height: 80vh;
     margin: 0 auto;
     margin-top: 5vh;
-    display: flex; /* If you want to layout the items horizontally, otherwise remove */
+    display: flex;
     flex-direction: column;
-    border: 2px; /* to see borders */
+    border: 2px;
     margin-left: 0.5rem;
   }
-  
+
   .THbutton-container {
     height: 20vh;
     width: 100%;
@@ -67,260 +238,119 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+    position: relative;
   }
-  
+
   .THbutton-container::after {
     content: "";
-    position: absolute; /* Use absolute positioning */
-    top: 100%; /* Position the line just below the container */
-    left: 0; /* Align the line with the left edge of the container */
-    width: 96%; /* Make the line span the full width of the container */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 93%;
     height: 2px;
-    background-color: #E8F1FF; /* Line color */
-    margin-top: 10px; /* Add space between the container and the line */
+    background-color: #E8F1FF;
+    margin-top: 10px;
   }
-  
+
   .THbutton-container::before {
     content: "";
     position: absolute;
-    top: 10%; /* Start from the top of the container */
-    left: 100%; /* Center the vertical line */
+    top: 10%;
+    left: 96%;
     width: 2px;
     height: 400%;
-    background-color: #E8F1FF; /* Line color */
+    background-color: #E8F1FF;
   }
-  
-  
+
   .THB {
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
-  
-  .THClassesButton {
-    width: 19rem;
+
+  .THClassesButton, .THLessonsButton, .THFeedbackButton {
+    width: 13rem;
     height: 6rem;
     padding: 10px 20px;
-    background-color: #fdb2b2;
-    border: 2px solid #f77b7b; /* to see borders */
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
+  .THClassesButton {
+    background-color: #fcdaab;
+    border: 2px solid #fac782;
+  }
+
   .THLessonsButton {
-    width: 19rem;
-    height: 6rem;
-    padding: 10px 20px;
     background-color: #da9fff;
     border: 2px solid #bf64fc;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   .THFeedbackButton {
-    width: 19rem;
-    height: 6rem;
-    padding: 10px 20px;
     background-color: #b8f8ba;
     border: 2px solid #79fc79;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  .THrecently-accessed-container {
+
+  .recently-accessed-container {
     height: 60vh;
     width: 100%;
-    border: 2px ; /* to see borders */
+    border: 2px;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
   }
-  
-  .THmessage-recently {
-    margin-top: 1rem;
+
+  .message-recently {
+    margin-top: 2rem;
     margin-left: 1rem;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-  
-  .THRAB {
+
+  .RAB {
     margin-top: 2rem;
     margin-left: 2rem;
   }
-  
-  /* Media queries for smaller screens */
-  @media (max-width: 1700px) {
-    .teacherhome-container {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      height: 100vh;
-    }
-    
-    .THcontent-wrapper {
-      display: flex;
-      flex-direction: row;
-    }
-    
-    .THmain-content {
-      flex: 1;
-      padding: 20px;
-      margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-      margin-top: 1.5rem; /* Adjust this value to provide space for the header */
-    }
-    
-    .THhome-message {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      margin-top: -4vh;
-      position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-      padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
-    }
-    
-    .THhome-message::after {
-      content: "";
-      position: absolute; /* Use absolute positioning */
-      top: 100%; /* Position the line just below the text */
-      left: 0; /* Align the line with the left edge of the parent */
-      width: 100%; /* Make the line span the full width of the parent */
-      height: 2px;
-      background-color: #E8F1FF; /* Line color */
-      margin-top: 10px; /* Add space between the text and the line */
-    }
-    
-    .THhome-message {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    
-    .THactive-message {
-      padding-right: 4.5rem;
-    }
-    
-    .THMain-Container {
-      width: 79%;
-      height: 80vh;
-      margin: 0 auto;
-      margin-top: 5vh;
-      display: flex; /* If you want to layout the items horizontally, otherwise remove */
-      flex-direction: column;
-      border: 2px ; /* to see borders */
-      margin-left: 0.5rem;
-    }
-    
-    .THbutton-container {
-      height: 20vh;
-      width: 100%;
-      border: 2px ;
-      margin-top: -1rem;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-    }
-    
-    .THbutton-container::after {
-      content: "";
-      position: absolute; /* Use absolute positioning */
-      top: 100%; /* Position the line just below the container */
-      left: 0; /* Align the line with the left edge of the container */
-      width:93%; /* Make the line span the full width of the container */
-      height: 2px;
-      background-color: #E8F1FF; /* Line color */
-      margin-top: 10px; /* Add space between the container and the line */
-    }
-  
-    .THbutton-container::before {
-      content: "";
-      position: absolute;
-      top: 10%; /* Start from the top of the container */
-      left: 96%; /* Center the vertical line */
-      width: 2px;
-      height: 400%;
-      background-color: #E8F1FF; /* Line color */
-    }
-    
-    
-    .THB {
-      font-weight: 700;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-   
-    }
-    
-    .THClassesButton {
-      width: 13rem;
-      height: 6rem;
-      padding: 10px 20px;
-      background-color: #F5C6AC;
-      border: 1px solid black; /* to see borders */
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .THLessonsButton {
-      width: 13rem;
-      height: 6rem;
-      padding: 10px 20px;
-      background-color: #FAFFC5;
-      border: 1px solid black;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .THFeedbackButton {
-      width: 13rem;
-      height: 6rem;
-      padding: 10px 20px;
-      background-color: #D7FFC5;
-      border: 1px solid black;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .THrecently-accessed-container {
-      height: 60vh;
-      width: 100%;
-      border: 2px ; /* to see borders */
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .THmessage-recently {
-      margin-top: 1rem;
-      margin-left: 1rem;
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-    
-    .THRAB {
-      margin-top: 2rem;
-      margin-left: 2rem;
-    }
-  
-    .THTaskbox-Container{
-      width: 100%;
-      display: flex;
-      border: 2px ;
-      justify-content: flex-end;
-      margin-top: -36rem;
-      padding-right: 2rem;
-      
-    }
+
+  .THTaskbox-Container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-left: 2rem;
+    gap: 1rem;
+    margin-top: -40rem;
+    margin-left: -1rem;
   }
-  
-  
-  
+
+  /* Loading spinner overlay */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+  }
+
+  .loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}

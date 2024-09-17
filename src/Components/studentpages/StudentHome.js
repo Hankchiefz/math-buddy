@@ -134,8 +134,8 @@ const StudentHome = () => {
                             </button>
                         </div>
 
-                        <div className="recently-accessed-container">
-                            <div className="message-recently">Recently Accessed</div>
+                        <div className="SHrecently-accessed-container">
+                            <div className="SHmessage-recently">Recently Accessed</div>
                             {recentlyAccessed.length > 0 ? (
                                 recentlyAccessed.map((item, index) => (
                                     <RecentlyAccessedBox
