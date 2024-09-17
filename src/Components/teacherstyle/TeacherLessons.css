@@ -1,53 +1,59 @@
-
-.studentclasses-container { 
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  height: 100vh;
+/* src/components/TeacherLessons.css */
+.teacher-lessons-container{
+display: flex;
+flex-direction: column;
+background-color: white;
+height: 100vh;
+font-family: 'Itim', sans-serif;
 }
 
-.TCcontent-wrapper { /* TC means StudentClass should change to whatever doc ur using. If its the teacher class section it should be TCmain-content so the css doesnt affect other css documents */
+.TLcontent-wrapper{
   display: flex;
   flex-direction: row;
 }
 
-.TCmain-content {
-  flex: 1;
-  padding: 20px;
-  margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-  margin-top: 1.5rem; /* Adjust this value to provide space for the header */
+.TLmain-content{
+flex: 1;
+padding: 20px;
+margin-left: 1rem;
+margin-top: 1.5rem;
 }
 
-.classes-message {
-  font-size: 24px;
-  margin-bottom: 20px;
-  margin-top: -4vh;
-  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-  padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+.teacher-lessons-title{
+
 }
 
-.classes-message::after {
-  content: "";
-  position: absolute; /* Use absolute positioning */
-  top: 100%; /* Position the line just below the text */
-  left: 0; /* Align the line with the left edge of the parent */
-  width: 100%; /* Make the line span the full width of the parent */
-  height: 2px;
-  background-color: #E8F1FF; /* Line color */
-  margin-top: 10px; /* Add space between the text and the line */
-}
-
-.TCMain-Container {
-  width: 100%;
-  height: 80vh;
-  margin: 0 auto;
-  margin-top: 5vh;
-  display: flex; /* If you want to layout the items horizontally, otherwise remove */
-  border: 2px ;
-  margin-right: 10vh;
+/* Container for the buttons to align them in 3 rows of 2 */
+.teacher-lessons-button-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap; /* Allows the buttons to wrap into multiple rows */
+  justify-content: center; /* Centers the buttons horizontally in each row */
+  gap: 20px; /* Space between the buttons */
+  margin: 20px auto; /* Center the container and add margin around it */
+  
 }
 
+/* Button styling to match the MathBuddy theme */
+.teacher-lessons-button {
+  flex: 0 0 45%; /* Each button takes approximately 45% of the container width */
+  padding: 50px;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Itim', sans-serif;
+  color: #71A2FF; /* Text color */
+  background-color: white; /* Button background color */
+  border: 2px solid #71A2FF; /* Border color matching MathBuddy theme */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* Center text inside the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Hover effect for the button */
+.teacher-lessons-button:hover {
+  background-color: #71A2FF; /* Change background color on hover */
+  color: white; /* Invert text color on hover */
+}
 
 

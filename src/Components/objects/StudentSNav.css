@@ -43,9 +43,29 @@
   margin-bottom: 10px;
 }
 
-.student-nav-text {
+.student-nav-dash-text {
   font-size: 16px;
   color: #71A2FF;
+  text-align: center;
+  text-decoration: none;
+}
+
+.student-nav-lessons-text{
+  font-size: 16px;
+  color: #bf64fc;
+  text-align: center;
+  text-decoration: none;
+}
+.student-nav-quizzes-text{
+  font-size: 16px;
+color: #fac782;
+text-align: center;
+text-decoration: none;
+}
+
+.student-nav-feedback-text{
+  font-size: 16px;
+  color: #79fc79;
   text-align: center;
   text-decoration: none;
 }

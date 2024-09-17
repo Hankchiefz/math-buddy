@@ -7,36 +7,22 @@ import '../teacherstyle/TeacherLessons.css';
 
 const TeacherLessons = () => {
   return (
-    <div className="teacherclasses-container">
-      <StudentHeader /> {/* Top navbar */}
-      <div className="TCcontent-wrapper">
-        <TeacherSNav /> {/* Side navbar */}
-        <div className="TCmain-content">
-          <h1 className="classes-message">Lessons</h1>
-          <div className="TCMain-Container">
-            {/* Add ClassesBox components here */}
-            <ClassesBox
-              icon="%"
-              title="Fractions and Decimals"
-              time=""
-              topics={10}
-              tasks={5}
-            />
-            {/* You can add more ClassesBox components as needed */}
-            <ClassesBox
-              icon="∑"
-              title="Algebra Basics"
-              time=""
-              topics={8}
-              tasks={4}
-            />
-            <ClassesBox
-              icon="△"
-              title="Geometry Fundamentals"
-              time=""
-              topics={12}
-              tasks={6}
-            />
+    <div className='teacher-lessons-container'>
+      <StudentHeader/>
+      <div className='TLcontent-wrapper'>
+        <TeacherSNav/>
+        <div className='TLmain-content'>
+          <h1 className='teacher-lessons-title'>Lessons</h1>
+          <p className='teacher-lessons-description'>Each year has their very own pre generated lessons created for their age group!</p>
+          <p className='teacher-lessons-description'>Click on your chosen year group below to be taken to their pre generated lessons.</p>
+        
+        <div className="teacher-lessons-button-container">
+          <button className="teacher-lessons-button">Year 1</button>
+          <button className="teacher-lessons-button">Year 2</button>
+          <button className="teacher-lessons-button">Year 3</button>
+          <button className="teacher-lessons-button">Year 4</button>
+          <button className="teacher-lessons-button">Year 5</button>
+          <button className="teacher-lessons-button">Year 6</button>
           </div>
         </div>
       </div>

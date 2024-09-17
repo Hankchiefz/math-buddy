@@ -32,6 +32,8 @@ import GuideTeacher from "./Components/homepages/GuideTeacher.js";
 import Help from "./Components/homepages/Help.js";
 import GuideStudent from "./Components/homepages/GuideStudent.js";
 
+
+
 function App() {
   const location = useLocation();
 
@@ -52,7 +54,8 @@ function App() {
     "/studentprofile",
     "/tprofile",
     "/tfeedback",
-    "tclassfeedback",
+    "/tclassfeedback",
+    "/studentlessons"
   ];
 
   return (

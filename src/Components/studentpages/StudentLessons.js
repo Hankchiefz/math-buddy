@@ -1,47 +1,70 @@
-// src/Components/studentpages/StudentClasses.js
-import React from 'react';
-import StudentHeader from '../objects/StudentHeader';
-import StudentSNav from '../objects/StudentSNav';
-import ClassesBox from '../objects/ClassBox'; // Import the ClassesBox component
-import '../studentstyle/StudentLessons.css';
+// src/components/pages/Lessons.js
+import React from "react";
+import "../studentstyle/StudentLessons.css";
+import LessonCollapsibleBox from "../objects/LessonCollapsibleBox";
+import TaskBox from "../objects/TaskBox";
+import StudentHeader from "../objects/StudentHeader";
+import StudentSNav from "../objects/StudentSNav";
 
 const StudentLessons = () => {
-  return (
-    <div className="studentclasses-container">
-      <StudentHeader /> {/* Top navbar */}
-      <div className="SCcontent-wrapper">
-        <StudentSNav /> {/* Side navbar */}
-        <div className="SCmain-content">
-          <h1 className="classes-message">Lessons</h1>
-          <div className="SCMain-Container">
-            {/* Add ClassesBox components here */}
-            <ClassesBox
-              icon="%"
-              title="Fractions and Decimals"
-              time=""
-              topics={10}
-              tasks={5}
-            />
-            {/* You can add more ClassesBox components as needed */}
-            <ClassesBox
-              icon="∑"
-              title="Algebra Basics"
-              time=""
-              topics={8}
-              tasks={4}
-            />
-            <ClassesBox
-              icon="△"
-              title="Geometry Fundamentals"
-              time=""
-              topics={12}
-              tasks={6}
-            />
-          </div>
+    return (
+        <div className="student-lessons-container">
+            <StudentHeader/>
+            <div className="SLcontent-wrapper">
+                <StudentSNav/>
+                <div className="SLmain-content">
+                <h1 className="lessons-title">Lessons</h1>
+                <h2 className="lessons-sub-title">Monthly pre generated lessons for you to use however you want!</h2>
+                
+                
+                <LessonCollapsibleBox 
+        title="Understanding Fractions"
+        introduction="Fractions represent parts of a whole. Learn the basics of fractions, how to use them in real life, and why they are important."
+        article="Fractions are a fundamental concept in mathematics. They are used in many different contexts, such as sharing equally, dividing amounts, and measuring distances."
+        quizData={{
+          quizId: 1,
+          status: 'incomplete',
+          title: 'Fractions Quiz',
+          dueDate: '2024-12-01',
+          timeLimit: '30 mins',
+          marks: '100',
+          onOpenQuiz: (id) => alert(`Opening quiz with ID: ${id}`)
+        }}
+        video={<iframe width="560" height="315" src="https://www.youtube.com/embed/videoid" title="Understanding Fractions" frameBorder="0" allowFullScreen></iframe>}
+        gameLink="https://mathbuddy.com/games/fractions"
+      />
+
+                <LessonCollapsibleBox 
+                title="Subtraction"
+                introduction="Fractions represent parts of a whole. Learn the basics of fractions, how to use them in real life, and why they are important."
+                article="Fractions are a fundamental concept in mathematics. They are used in many different contexts, such as sharing equally, dividing amounts, and measuring distances."
+                buttonText="Start Learning"
+                video={<iframe width="560" height="315" src="https://www.youtube.com/embed/videoid" title="Understanding Fractions" frameBorder="0" allowFullScreen></iframe>}
+                gameLink="https://mathbuddy.com/games/fractions"
+                />
+
+                <LessonCollapsibleBox 
+                title="Multiplication"
+                introduction="Fractions represent parts of a whole. Learn the basics of fractions, how to use them in real life, and why they are important."
+                article="Fractions are a fundamental concept in mathematics. They are used in many different contexts, such as sharing equally, dividing amounts, and measuring distances."
+                buttonText="Start Learning"
+                video={<iframe width="560" height="315" src="https://www.youtube.com/embed/videoid" title="Understanding Fractions" frameBorder="0" allowFullScreen></iframe>}
+                gameLink="https://mathbuddy.com/games/fractions"
+                />
+
+                <LessonCollapsibleBox 
+                title="Fractions"
+                introduction="Fractions represent parts of a whole. Learn the basics of fractions, how to use them in real life, and why they are important."
+                article="Fractions are a fundamental concept in mathematics. They are used in many different contexts, such as sharing equally, dividing amounts, and measuring distances."
+                buttonText="Start Learning"
+                video={<iframe width="560" height="315" src="https://www.youtube.com/embed/videoid" title="Understanding Fractions" frameBorder="0" allowFullScreen></iframe>}
+                gameLink="https://mathbuddy.com/games/fractions"
+                />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
+
 
 export default StudentLessons;

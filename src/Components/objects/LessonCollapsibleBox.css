@@ -1,0 +1,104 @@
+/* src/components/LessonCollapsibleBox.css */
+.lesson-collapsible-box {
+    border: 3px solid #bf64fc; /* Blue border */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px auto; /* Center the box horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #d89fff;
+  }
+  
+  .lesson-collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .lesson-collapsible-title {
+    font-size: 1.25rem; /* Similar font size as used in MathBuddy */
+    font-weight: bold;
+    color: white; /* Title text color for readability */
+    margin: 0;
+    text-align: center; /* Center the title text */
+  }
+  
+  .lesson-collapsible-arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    color: white; /* Arrow color consistent with title */
+  }
+  
+  .lesson-collapsible-arrow.open {
+    transform: rotate(180deg);
+  }
+  
+  .lesson-collapsible-content {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-top: 2px solid #4a86e8;
+    border-radius: 5px;
+  }
+  
+  .lesson-section {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid #71A2FF;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .lesson-introduction,
+  .lesson-article,
+  .lesson-video,
+  .lesson-game-link {
+    color: #555; /* Standardized text color for readability */
+  }
+  
+  .lesson-video {
+    display: flex; /* Flexbox to center content */
+    justify-content: center; /* Center the video horizontally */
+    padding: 10px;
+    border: 2px solid #71A2FF;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .lesson-video iframe {
+    max-width: 100%; /* Ensures the video scales responsively */
+    width: 560px; /* Set a default width for the video */
+    height: 315px; /* Set a default height for the video */
+  }
+  
+  .lesson-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lesson-action-button {
+    width: 100%;
+    padding: 10px;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+    border: 3px solid #71A2FF;
+    background-color: white;
+    color: #71A2FF; /* Button text color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .lesson-action-button:hover {
+    background-color: #71A2FF;
+    color: white; /* Invert colors on hover for a clearer effect */
+  }
+  
+  .lesson-game-link a {
+    text-decoration: none;
+    color: #71A2FF;
+    font-weight: bold;
+  }
+  
