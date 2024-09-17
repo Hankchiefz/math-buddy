@@ -7,7 +7,7 @@ const About = () => {
         <div className="about-page">
             <div className="content">
                 <div className="text-section">
-                    <h2>About</h2>
+                    <h2>About</h2> 
                     <p>
                         MathBuddy is an innovative educational platform designed
                         to revolutionize the way students learn and master

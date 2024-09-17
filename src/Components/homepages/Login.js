@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../homepagestyle/Login.css";
 
@@ -7,6 +7,15 @@ const Login = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPopup, setShowPopup] = useState(false); // State to show the popup
+
+    useEffect(() => {
+        // Check if the popup should be shown
+        if (localStorage.getItem("showRegisterPopup") === "true") {
+            setShowPopup(true);
+            localStorage.removeItem("showRegisterPopup"); // Clear the flag after showing the popup
+        }
+    }, []);
 
     const handleChange = (e) => {
         setFormData({
@@ -116,6 +125,21 @@ const Login = () => {
                     {loading ? "Logging in..." : "Sign In"}
                 </button>
             </form>
+
+            {/* Popup for "Thank you for registering" */}
+            {showPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <p>Thank you for registering! :)</p>
+                        <button
+                            onClick={() => setShowPopup(false)}
+                            className="popup-close-button"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
