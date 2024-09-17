@@ -164,8 +164,8 @@
   align-items: flex-end; /* Align items to the right */
   padding-left: 2rem; /* Add padding on the left side if needed */
   gap: 1rem; /* Add some space between the task boxes */
-  margin-top: -40rem; /* Adjust the margin-top as needed */
-  margin-left: -1rem; /* Ensure the right margin is adequate */
+  margin-top: -44rem; /* Adjust the margin-top as needed */
+  margin-left: -3rem; /* Ensure the right margin is adequate */
 }
 
 /* Media queries for smaller screens */
