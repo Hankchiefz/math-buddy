@@ -162,7 +162,7 @@ const StudentHome = () => {
                                 />
                             ))
                         ) : (
-                            <p>No pending quizzes at the moment.</p>
+                            <p>No pending quizzes now</p>
                         )}
                     </div>
                 </div>
