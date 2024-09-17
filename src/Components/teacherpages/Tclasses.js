@@ -1,4 +1,3 @@
-// src/components/pages/TActiveTasks.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StudentHeader from "../objects/StudentHeader";
@@ -63,56 +62,53 @@ const Tclasses = () => {
       <StudentHeader /> {/* Top navbar */}
       <div className="TCcontent-wrapper">
         <TeacherSNav /> {/* Side navbar */}
-        <div className="TCtable-container">
+        <div className="TCmain-content">
           <div className="TChome-message">
             <h1>Active Classes</h1>
           </div>
-          <table className="line"></table>
-          <hr />
-          <table className="TCtasks-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Class Name</th>
-                <th>#Students</th>
-                <th>Teacher Name</th>
-                <th>Active Tasks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {classes.length > 0 ? (
-                classes.map((classItem) => (
-                  <tr
-                    className="TCtable-row"
-                    key={classItem.class_id}
-                    onClick={() => handleRowClick(classItem.class_id)}
-                  >
-                    <td>
-                      <div className="color"></div>
-                    </td>
-                    <td>{classItem.class_name}</td>
-                    <td>{classItem.student_count}</td>
-                    <td>{classItem.teacher_name}</td>
-                    <td>1</td>{" "}
-                    {/* Placeholder, replace with actual active tasks count if available */}
-                  </tr>
-                ))
-              ) : (
+          <div className="TCMain-Container">
+            <table className="TCtasks-table">
+              <thead>
                 <tr>
-                  <td colSpan="5">No active classes available</td>
+                  <th></th>
+                  <th>Class Name</th>
+                  <th>#Students</th>
+                  <th>Teacher Name</th>
+                  <th>Active Tasks</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
-          <h5>no other quizzes</h5>
-          <button
-            className="TCcreate-quiz-button"
-            onClick={handleCreateClassClick}
-          >
-            Create Class
-          </button>
-          {error && <p className="error-message">{error}</p>}{" "}
-          {/* Display error if any */}
+              </thead>
+              <tbody>
+                {classes.length > 0 ? (
+                  classes.map((classItem) => (
+                    <tr
+                      className="TCtable-row"
+                      key={classItem.class_id}
+                      onClick={() => handleRowClick(classItem.class_id)}
+                    >
+                      <td>
+                        <div className="color"></div>
+                      </td>
+                      <td>{classItem.class_name}</td>
+                      <td>{classItem.student_count}</td>
+                      <td>{classItem.teacher_name}</td>
+                      <td>1</td> {/* Placeholder, replace with actual active tasks count if available */}
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="5">No active classes available</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+            <button
+              className="TCcreate-quiz-button"
+              onClick={handleCreateClassClick}
+            >
+              Create Class
+            </button>
+            {error && <p className="error-message">{error}</p>} {/* Display error if any */}
+          </div>
         </div>
       </div>
     </div>
