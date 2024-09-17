@@ -10,6 +10,7 @@
   width: 100%; /* Use 100% width for responsiveness */
   max-width: 70rem; /* Maximum width for larger screens */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  cursor: pointer; /* Makes the box clickable */
 }
 
 .icon {
@@ -39,9 +40,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
     background-color: #fff; /* Background color */
     height: 4rem;
-    width: 80%; /* Use 100% width for responsiveness */
+    width: 80%; /* Use 80% width for responsiveness */
     max-width: 70rem; /* Maximum width for larger screens */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    cursor: pointer; /* Makes the box clickable */
   }
   
   .icon {

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import StudentHeader from "../objects/StudentHeader";
 import StudentSNav from "../objects/StudentSNav";
-import { useNavigate } from "react-router-dom";
 import RecentlyAccessedBox from "../objects/RecentlyAccessedBox";
 import TaskBox from "../objects/TaskBox";
+import { useNavigate } from "react-router-dom";
 import "../studentstyle/StudentHome.css";
 
 const StudentHome = () => {
     const [fullName, setFullName] = useState("");
     const [quizzes, setQuizzes] = useState([]);
     const [recentlyAccessed, setRecentlyAccessed] = useState([]);
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,44 +21,67 @@ const StudentHome = () => {
 
         // Fetch pending quizzes
         const token = localStorage.getItem("access_token");
-        fetch("https://mathbuddyapi.com/getStudentPendingQuizzes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ token }),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
+        if (token) {
+            fetch("https://mathbuddyapi.com/getStudentPendingQuizzes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ token }),
             })
-            .then((data) => {
-                setQuizzes(data); // fetch quizzes data
-            })
-            .catch((error) => {
-                console.error("Error fetching quizzes:", error);
-            });
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setQuizzes(data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching quizzes:", error);
+                });
+        } else {
+            console.warn("No token found in localStorage");
+        }
 
-        // Fetch the recently accessed pages from localStorage
-        const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
-        setRecentlyAccessed(storedRecentlyAccessed);
+        // Load recently accessed items from localStorage
+        const loadRecentlyAccessed = () => {
+            try {
+                const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
+                console.log("Loaded recently accessed items:", storedRecentlyAccessed);
+                setRecentlyAccessed(storedRecentlyAccessed.slice(0, 3)); // Limit display to the last 3 pages
+            } catch (error) {
+                console.error("Error loading recently accessed items:", error);
+            }
+        };
+
+        loadRecentlyAccessed();
     }, []);
 
     const handleNavigation = (page, label) => {
-        // Navigate to a specific page and add it to recently accessed
-        navigate(page);
-
-        // Add the page to the recently accessed list and update localStorage
+        console.log(`Navigating to: ${page}, ${label}`);
+        
+        // Update recently accessed items
         const newItem = { page, label };
         setRecentlyAccessed(prevItems => {
             const updatedItems = [newItem, ...prevItems.filter(item => 
                 item.page !== newItem.page || item.label !== newItem.label
-            )].slice(0, 5);
-            localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+            )].slice(0, 3); // Limit stored items to the latest 3
+
+            // Save to localStorage
+            try {
+                localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+                console.log("Saved recently accessed items:", updatedItems);
+            } catch (error) {
+                console.error("Error saving recently accessed items:", error);
+            }
+
             return updatedItems;
         });
+
+        // Navigate to the desired page
+        navigate(page);
     };
 
     return (
@@ -69,9 +91,7 @@ const StudentHome = () => {
                 <StudentSNav />
                 <div className="SHmain-content">
                     <div className="home-message">
-                        <div className="SHwelcome-message">
-                            Welcome {fullName}
-                        </div>
+                        <div className="SHwelcome-message">Welcome {fullName}</div>
                         <div className="SHactive-message">Active Quizzes</div>
                     </div>
                     <div className="SHMain-Container">
@@ -113,17 +133,16 @@ const StudentHome = () => {
                                 Feedback
                             </button>
                         </div>
+
                         <div className="recently-accessed-container">
-                            <div className="message-recently">
-                                Recently Accessed
-                            </div>
+                            <div className="message-recently">Recently Accessed</div>
                             {recentlyAccessed.length > 0 ? (
                                 recentlyAccessed.map((item, index) => (
                                     <RecentlyAccessedBox
                                         key={index}
                                         iconColor="#FFA07A"
                                         text={item.label}
-                                        onClick={() => handleNavigation(item.page, item.label)}
+                                        onClick={() => handleNavigation(item.page, item.label)} // Use handleNavigation on click
                                     />
                                 ))
                             ) : (
@@ -131,6 +150,7 @@ const StudentHome = () => {
                             )}
                         </div>
                     </div>
+
                     <div className="SHTaskbox-Container">
                         {quizzes.length > 0 ? (
                             quizzes.map((quiz) => (

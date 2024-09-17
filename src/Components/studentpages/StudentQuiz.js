@@ -34,7 +34,22 @@ const StudentQuiz = () => {
       }
     };
 
-    fetchPendingQuizzes(); // Call the function to fetch quizzes
+    // Call the function to fetch quizzes
+    fetchPendingQuizzes();
+
+    // Update recently accessed
+    const newItem = { page: '/studentquiz', label: 'Quiz' };
+    try {
+      const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
+      const updatedItems = [newItem, ...storedRecentlyAccessed.filter(item =>
+        item.page !== newItem.page || item.label !== newItem.label
+      )].slice(0, 5);
+      localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+      console.log('Saved recently accessed items:', updatedItems);
+    } catch (error) {
+      console.error('Error saving recently accessed items:', error);
+    }
+
   }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   const handleOpenQuiz = async (quizId) => {

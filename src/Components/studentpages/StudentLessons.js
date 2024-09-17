@@ -1,11 +1,26 @@
-// src/Components/studentpages/StudentClasses.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import StudentHeader from '../objects/StudentHeader';
 import StudentSNav from '../objects/StudentSNav';
 import ClassesBox from '../objects/ClassBox'; // Import the ClassesBox component
 import '../studentstyle/StudentLessons.css';
 
 const StudentLessons = () => {
+  
+  useEffect(() => {
+    // Update recently accessed
+    const newItem = { page: '/studentLessons', label: 'Lessons' };
+    try {
+      const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
+      const updatedItems = [newItem, ...storedRecentlyAccessed.filter(item =>
+        item.page !== newItem.page || item.label !== newItem.label
+      )].slice(0, 5);
+      localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
+      console.log('Saved recently accessed items:', updatedItems);
+    } catch (error) {
+      console.error('Error saving recently accessed items:', error);
+    }
+  }, []); // Empty dependency array to run only once when the component mounts
+
   return (
     <div className="studentclasses-container">
       <StudentHeader /> {/* Top navbar */}

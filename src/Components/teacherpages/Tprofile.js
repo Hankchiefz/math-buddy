@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import StudentHeader from '../objects/StudentHeader';
-import StudentSNav from '../objects/StudentSNav';
-import '../studentstyle/StudentProfile.css';
+import TeacherSNav from "../objects/TeacherSNav";
+import '../teacherstyle/Tprofile.css';
 
-const StudentProfile = () => {
+const TeacherProfile = () => {
     const [profileData, setProfileData] = useState(null); // State to hold profile data
     const [loading, setLoading] = useState(true); // State to handle loading
     const [editMode, setEditMode] = useState(false); // State to manage edit mode
@@ -86,7 +86,7 @@ const StudentProfile = () => {
             <div className="student-profile-page">
                 <StudentHeader />
                 <div className="Side-navbar">
-                    <StudentSNav />
+                    <TeacherSNav />
                     <div className="main-content">
                         <p>Loading profile...</p>
                     </div>
@@ -100,7 +100,7 @@ const StudentProfile = () => {
             <div className="student-profile-page">
                 <StudentHeader />
                 <div className="Side-navbar">
-                    <StudentSNav />
+                    <TeacherSNav />
                     <div className="main-content">
                         <p>Error loading profile data.</p>
                     </div>
@@ -113,7 +113,7 @@ const StudentProfile = () => {
         <div className="student-profile-page">
             <StudentHeader /> {/* Top navbar */}
             <div className="Side-navbar">
-                <StudentSNav /> {/* Side navbar */}
+                <TeacherSNav /> {/* Side navbar */}
                 <div className="main-content">
                     <div className="s-profile">
                         <table className="spp-header-bar">
@@ -230,4 +230,4 @@ const StudentProfile = () => {
     );
 };
 
-export default StudentProfile;
+export default TeacherProfile;
