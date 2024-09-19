@@ -8,9 +8,9 @@ const ParentHome = () => {
       <StudentHeader />
       <div className="PHcontent-wrapper">
         <ParentSNav />
-        <div className="PHmain-content">
-            <div className="PHome-message">
-                <div className="PHwelcome-message">Welcome</div>
+        <div className = "PHmain-content">
+            <div className = "PHwelcome-message">
+                
             </div>
             <div className="childName">Child name</div>
             <div className="School">Wollongong School of Math - Class</div>
