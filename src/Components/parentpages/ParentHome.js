@@ -58,7 +58,20 @@ const ParentHome = () => {
         </div>
             <div className="childName">Child name {childName}</div>
             <div className="School">Wollongong School of Math - Class</div>
+            {/* Image and buttons container */}
+          <div className="image-buttons-container">
+            <img
+              src="/images/home/face.png"
+              alt="Child Profile"
+              className="child-profile-image"
+            />
 
+            <div className="button-group">
+              <button className="profile-button first-button">View Quiz Results</button>
+              <button className="profile-button second-button">View Assignment Results</button>
+              <button className="profile-button third-button">View Session Timetable</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
