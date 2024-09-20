@@ -196,12 +196,23 @@
 
   .first-button {
     background-color: #f5c6ac;
+    border: 1px solid black;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
 
 .second-button{
   background-color: #d7ffc5;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 1.5rem;
+
 }
 
 .third-button{
   background-color: #faffc5;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 1.5rem;
+
 }

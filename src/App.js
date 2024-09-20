@@ -33,6 +33,10 @@ import GuideTeacher from "./Components/homepages/GuideTeacher.js";
 import Help from "./Components/homepages/Help.js";
 import GuideStudent from "./Components/homepages/GuideStudent.js";
 import ParentHome from "./Components/parentpages/ParentHome.js";
+import ParentFeedback from "./Components/parentpages/ParentFeedback.js";
+import ParentInfo from "./Components/parentpages/ParentInfo.js";
+import ParentPending from "./Components/parentpages/ParentPendingTasks.js";
+import ParentProgress from "./Components/parentpages/ParentProgressReport.js";
 
 function App() {
   const location = useLocation();
@@ -56,6 +60,7 @@ function App() {
     "/tfeedback",
     "/TClassFeedback",
     "/parenthome",
+    "/parentprofile"
   ];
 
   return (
@@ -91,6 +96,15 @@ function App() {
         <Route path="/help" element={<Help />} />
         <Route path="/studentguide" element={<GuideStudent />} />
         <Route path="/parenthome" element={<ParentHome />} />
+        <Route path="/parentLessons" element={<ParentPending />} />
+        <Route path="/parenthome" element={<ParentHome />} />
+        <Route path="/parenquiz" element={<ParentProgress />} />
+        <Route path="/parentfeedback" element={<ParentFeedback />} />
+        <Route path="/parentprofile" element={<ParentInfo />} />
+
+
+
+
       </Routes>
     </>
   );
