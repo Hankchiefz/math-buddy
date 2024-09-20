@@ -126,26 +126,27 @@
     border: none; /* Remove borders between th elements */
 }
 
-/* Guardian details table styling */
-.ppp-guardian-details {
+
+/* Styling for h2 elements */
+.ppp-txt {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Address details table styling */
+.ppp-address-details {
     border-collapse: collapse;
     width: 100%;
     border: 1px solid #71A2FF;
     border-radius: 10px;
 }
 
-.ppp-guardian-details th, .ppp-guardian-details td {
+.ppp-address-details th, .ppp-address-details td {
     border: 1px solid #71A2FF;
     padding: 10px;
 }
 
-.ppp-guardian-details th {
+.ppp-address-details th {
     background-color: #E8F1FF;
     border: none; /* Remove borders between th elements */
-}
-
-/* Styling for h2 elements */
-.ppp-txt {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
 }

@@ -32,6 +32,7 @@ const ParentProfile = () => {
                 setProfileData(data);
                 setUpdatedProfileData(data);
                 setLoading(false);
+                console.log(data);
             })
             .catch(error => {
                 console.error('Error fetching profile data:', error);
@@ -175,9 +176,9 @@ const ParentProfile = () => {
                                         <tr>
                                             <td>Phone number:</td>
                                             <td>{editMode ? (
-                                                <input type="tel" name="phone_number" value={updatedProfileData.phone_number || ''} onChange={handleInputChange} />
+                                                <input type="tel" name="phone_number" value={updatedProfileData.mobile_phone || ''} onChange={handleInputChange} />
                                             ) : (
-                                                profileData.phone_number
+                                                profileData.mobile_phone
                                             )}</td>
                                         </tr>
                                     </tbody>
