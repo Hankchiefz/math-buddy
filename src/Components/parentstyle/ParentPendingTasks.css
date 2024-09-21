@@ -1,0 +1,120 @@
+/* Container for the entire page layout */
+.parent-pending-tasks-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Ensure the header stays at the top */
+.StudentHeader {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox container for side navigation and main content */
+.content-area {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;  /* Take up full width */
+    padding: 20px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Style for the side navigation, placed on the left */
+.ParentSNav {
+    width: 200px;
+    margin-right: 20px;  /* Space between the nav and the main content */
+}
+
+/* Main content (where tasks are displayed) */
+.main-content {
+    flex-grow: 1;
+    max-width: 800px;
+    margin-left: 20px; /* Space between the side nav and main content */
+}
+
+/* Style the heading for Pending Tasks */
+.tasks-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: left;  /* Align the heading to the left */
+    color: #333;
+    border-bottom: 2px solid #ddd;  /* Optional underline for heading */
+    padding-bottom: 10px;
+}
+
+/* Task list container */
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual task card styling */
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Task content styling */
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+/* Task icon placeholder */
+.task-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0ad4e;
+    border-radius: 50%;
+}
+
+/* Task details styling */
+.task-details h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.task-details p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Task due date styling */
+.task-due-date {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: right;
+}
+
+/* Responsive layout for smaller screens */
+@media screen and (max-width: 768px) {
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-content {
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-due-date {
+        text-align: left;
+        margin-top: 10px;
+    }
+}

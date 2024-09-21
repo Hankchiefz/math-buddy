@@ -60,7 +60,8 @@ function App() {
     "/tfeedback",
     "/TClassFeedback",
     "/parenthome",
-    "/parentprofile"
+    "/parentprofile",
+    "/parentLessons"
   ];
 
   return (
@@ -101,6 +102,8 @@ function App() {
         <Route path="/parenquiz" element={<ParentProgress />} />
         <Route path="/parentfeedback" element={<ParentFeedback />} />
         <Route path="/parentprofile" element={<ParentInfo />} />
+        <Route path="/parentLessons" element={<ParentInfo />} />
+
 
 
 
