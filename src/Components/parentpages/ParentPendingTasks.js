@@ -60,31 +60,31 @@ const ParentPendingTasks = () => {
             <StudentHeader /> {/* Header at the top */}
             <div className="content-area">
                 <ParentSNav /> {/* Sidebar on the left */}
-                <div className="main-content"> {/* Main content on the right */}
-                    <h1 className="tasks-heading">Pending Tasks</h1> {/* Place heading on top */}
-                    <div className="tasks-list">
-                        {tasks.map(task => (
-                            <div className="task-card" key={task.quiz_id}>
-                                <div className="task-content">
-                                    <div className="task-icon"></div>
-                                    <div className="task-details">
-                                        <h2>{task.quiz_title}</h2>
-                                        <p>{task.quiz_description}</p>
-                                    </div>
-                                    <div className="task-due-date">
-                                        <p>Due by {new Date(task.quiz_due_date).toLocaleDateString('en-US', {
-                                            year: 'numeric',
-                                            month: 'long',
-                                            day: 'numeric',
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                        })}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                <div className="main-content"> 
+    <h1 className="tasks-heading">Pending Tasks</h1> {/* The heading is at the top */}
+    <div className="tasks-list">
+        {tasks.map(task => (
+            <div className="task-card" key={task.quiz_id}>
+                <div className="task-content">
+                    <div className="task-icon"></div>
+                    <div className="task-details">
+                        <h2>{task.quiz_title}</h2>
+                        <p>{task.quiz_description}</p>
+                    </div>
+                    <div className="task-due-date">
+                        <p>Due by {new Date(task.quiz_due_date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                        })}</p>
                     </div>
                 </div>
+            </div>
+        ))}
+    </div>
+</div>
             </div>
         </div>
 

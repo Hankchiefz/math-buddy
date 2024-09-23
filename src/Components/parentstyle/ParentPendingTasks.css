@@ -11,6 +11,9 @@
     background-color: #fff;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Keeps it fixed at the top even on scroll */
+    top: 0;
+    z-index: 10; /* Ensures the header is always above other elements */
 }
 
 /* Flexbox container for side navigation and main content */
@@ -30,39 +33,47 @@
 
 /* Main content (where tasks are displayed) */
 .main-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
     flex-grow: 1;
     max-width: 800px;
-    margin-left: 20px; /* Space between the side nav and main content */
+    margin-left: 20px;
+    width: 100%;
+    padding: 0; /* Reset any padding */
+    margin: 0; /* Reset any margins */
 }
-
 /* Style the heading for Pending Tasks */
 .tasks-heading {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 20px; /* Space below the heading */
-    text-align: left;  /* Align the heading to the left */
+    margin: 0; /* Remove all margins */
+    padding: 10px 0 5px; /* Adjust padding as needed */
+    text-align: center;
     color: #333;
-    border-bottom: 2px solid #ddd;  /* Optional underline for heading */
-    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
 }
-
 /* Task list container */
 .tasks-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px; /* Small gap between task cards */
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Ensure no padding is added to the container */
 }
+
 
 /* Individual task card styling */
 .task-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0; /* Ensure no margin at the top */
 }
 
 /* Task content styling */
