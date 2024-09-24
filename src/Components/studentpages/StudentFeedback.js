@@ -7,6 +7,7 @@ import FeedbackBox from "../objects/Feedbackbox";
 
 const StudentFeedback = () => {
   const [completedQuizzes, setCompletedQuizzes] = useState([]); // State to hold completed quizzes
+  const [loading, setLoading] = useState(true); // State for loading
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
@@ -33,6 +34,8 @@ const StudentFeedback = () => {
         setCompletedQuizzes(data); // Store completed quizzes data
       } catch (error) {
         console.error("Error fetching quizzes:", error);
+      } finally {
+        setLoading(false); // Hide loading spinner after fetching
       }
     };
 
@@ -96,6 +99,12 @@ const StudentFeedback = () => {
           </div>
         </div>
       </div>
+      {/* Loading Spinner Overlay */}
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
     </div>
   );
 };
