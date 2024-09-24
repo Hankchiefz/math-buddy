@@ -167,27 +167,27 @@ const TClassFeedback = () => {
     </div>
   );
 
-  if (loading) {
-    return (
-      <div className="loading-overlay">
-        <div className="loading-spinner"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
+  // Render the component
   return (
     <div className="teacher-feedback-container">
       <StudentHeader />
       <div className="teacher-feedback-content">
         <TeacherSNav />
         <div className="teacher-feedback-main-content">
-          {completionData.length > 0
-            ? renderCompletionTable(completionData)
-            : "No completion data available."}
+          {loading ? (
+            // Show loading spinner while data is being fetched
+            <div className="loading-overlay">
+              <div className="loading-spinner"></div>
+            </div>
+          ) : error ? (
+            // Show error message if there is an error
+            <p>Error: {error}</p>
+          ) : // Render completion table if data is successfully fetched
+          completionData.length > 0 ? (
+            renderCompletionTable(completionData)
+          ) : (
+            "No completion data available."
+          )}
         </div>
       </div>
 
