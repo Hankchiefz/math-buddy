@@ -6,18 +6,18 @@
 }
 
 /* Ensure the header stays at the top */
-.StudentHeader {
+.ParentHeader {
     width: 100%;
     background-color: #fff;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky; /* Keeps it fixed at the top even on scroll */
+    position: sticky;
     top: 0;
     z-index: 10; /* Ensures the header is always above other elements */
 }
 
 /* Flexbox container for side navigation and main content */
-.content-area {
+.parent-content-area {
     display: flex;
     flex-grow: 1;
     width: 100%;  /* Take up full width */
@@ -26,44 +26,44 @@
 }
 
 /* Style for the side navigation, placed on the left */
-.ParentSNav {
+.parent-nav {
     width: 200px;
     margin-right: 20px;  /* Space between the nav and the main content */
 }
 
 /* Main content (where tasks are displayed) */
-.main-content {
+.parent-main-content {
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     flex-grow: 1;
     max-width: 800px;
-    margin-left: 20px;
     width: 100%;
-    padding: 0; /* Reset any padding */
-    margin: 0; /* Reset any margins */
+    margin: 0;
+    border: 2px solid black;
 }
+
 /* Style the heading for Pending Tasks */
-.tasks-heading {
+.parent-tasks-heading {
     font-size: 2rem;
     font-weight: bold;
-    padding: 10px 0 5px; /* Adjust padding as needed */
+    padding: 10px 0;
     text-align: center;
     color: #333;
     border-bottom: 2px solid #ddd;
-    width: 100%;
+    margin-bottom: 20px;
 }
+
 /* Task list container */
-.tasks-list {
+.parent-tasks-list {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Small gap between task cards */
-    padding: 0; /* Ensure no padding is added to the container */
-    margin-top: -500rem;
+    gap: 10px; /* Space between task cards */
+    padding: 0;
+    margin-top: 20px;
 }
 
-
 /* Individual task card styling */
-.task-card {
+.parent-task-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,11 +72,10 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0; /* Ensure no margin at the top */
 }
 
 /* Task content styling */
-.task-content {
+.parent-task-content {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -84,7 +83,7 @@
 }
 
 /* Task icon placeholder */
-.task-icon {
+.parent-task-icon {
     width: 40px;
     height: 40px;
     background-color: #f0ad4e;
@@ -92,19 +91,19 @@
 }
 
 /* Task details styling */
-.task-details h2 {
+.parent-task-details h2 {
     font-size: 1.25rem;
     margin: 0;
 }
 
-.task-details p {
+.parent-task-details p {
     margin: 5px 0 0 0;
     font-size: 1rem;
     color: #666;
 }
 
 /* Task due date styling */
-.task-due-date {
+.parent-task-due-date {
     font-size: 0.9rem;
     color: #999;
     text-align: right;
@@ -112,18 +111,18 @@
 
 /* Responsive layout for smaller screens */
 @media screen and (max-width: 768px) {
-    .task-card {
+    .parent-task-card {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .task-content {
+    .parent-task-content {
         gap: 10px;
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .task-due-date {
+    .parent-task-due-date {
         text-align: left;
         margin-top: 10px;
     }

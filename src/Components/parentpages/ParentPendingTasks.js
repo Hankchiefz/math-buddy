@@ -58,39 +58,37 @@ const ParentPendingTasks = () => {
     return (
         <div className="parent-pending-tasks-container">
             <StudentHeader /> {/* Header at the top */}
-            <div className="content-area">
+            <div className="parent-content-area">
                 <ParentSNav /> {/* Sidebar on the left */}
-                <div className="main-content"> 
-    <h1 className="tasks-heading">Pending Tasks</h1> {/* The heading is at the top */}
-    <div className="tasks-list">
-        {tasks.map(task => (
-            <div className="task-card" key={task.quiz_id}>
-                <div className="task-content">
-                    <div className="task-icon"></div>
-                    <div className="task-details">
-                        <h2>{task.quiz_title}</h2>
-                        <p>{task.quiz_description}</p>
-                    </div>
-                    <div className="task-due-date">
-                        <p>Due by {new Date(task.quiz_due_date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                        })}</p>
+                <div className="parent-main-content"> 
+                    <h1 className="parent-tasks-heading">Pending Tasks</h1> {/* The heading */}
+                    <div className="parent-tasks-list">
+                        {tasks.map(task => (
+                            <div className="parent-task-card" key={task.quiz_id}>
+                                <div className="parent-task-content">
+                                    <div className="parent-task-icon"></div>
+                                    <div className="parent-task-details">
+                                        <h2>{task.quiz_title}</h2>
+                                        <p>{task.quiz_description}</p>
+                                    </div>
+                                    <div className="parent-task-due-date">
+                                        <p>Due by {new Date(task.quiz_due_date).toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                        })}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
-        ))}
-    </div>
-</div>
-            </div>
         </div>
-
     );
 };
 
+// Ensure the component is properly exported as default
 export default ParentPendingTasks;
-
-
