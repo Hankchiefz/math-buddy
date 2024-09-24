@@ -63,6 +63,7 @@ function App() {
     "/parenthome",
     "/parentprofile",
     "/parentLessons",
+    "/parentfeedback",
     "/tclassview"
   ];
 

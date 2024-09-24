@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
 import { useNavigate, useLocation } from "react-router-dom";
+import LoadingOverlay from "../LoadingOverlay"; // Import the LoadingOverlay
 import "../teacherstyle/Tclassview.css";
 
 const Tclassview = () => {
@@ -39,10 +40,10 @@ const Tclassview = () => {
 
       const data = await response.json();
       setClassData(data);
-      setIsLoading(false);
     } catch (err) {
       setError(err.message);
-      setIsLoading(false);
+    } finally {
+      setIsLoading(false); // Ensure loading state is updated
     }
   };
 
@@ -102,83 +103,102 @@ const Tclassview = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
+  // Render the header and side nav immediately
   return (
     <div className="tclassview-container">
       <StudentHeader />
       <div className="tclassview-content-wrapper">
         <TeacherSNav />
         <div className="tclassview-main-content">
-          <div className="tclassview-collapsible-box">
-            <div className="tclassview-collapsible-header" onClick={() => setIsOpen(!isOpen)}>
-              <h2>{classData?.class?.class_name || "Class Name"}</h2>
-              <span className="tclassview-collapsible-icon">{isOpen ? "-" : "+"}</span>
-            </div>
-            {isOpen && (
-              <div className="tclassview-collapsible-content">
-                <table className="tclassview-student-table">
-                  <thead>
-                    <tr>
-                      <th>Student Name</th>
-                      <th>Student Email</th>
-                      <th>Average Mark</th>
-                      <th>Student Overview</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {classData?.students.map((student) => (
-                      <tr key={student.student_id}>
-                        <td>{student.student_name}</td>
-                        <td>{student.email}</td>
-                        <td>{student.average_mark}</td>
-                        <td>
-                          <button
-                            onClick={() => handleStudentOverview(student.student_id)}
-                            className="tclassview-overview-button"
-                          >
-                            Click here!
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-
-          <div className="tclassview-button-container">
-            <button onClick={handleAddStudent} className="tclassview-action-button">
-              Add Student
-            </button>
-            <button onClick={handleAddQuiz} className="tclassview-action-button">
-              Add Quiz
-            </button>
-          </div>
-
-          {isModalOpen && (
-            <div className="tclassview-modal-overlay">
-              <div className="tclassview-modal">
-                <h3>Add New Student</h3>
-                <form onSubmit={handleSubmitStudent}>
-                  <input
-                    type="email"
-                    placeholder="Student Email"
-                    value={studentEmail}
-                    onChange={(e) => setStudentEmail(e.target.value)}
-                    required
-                  />
-                  <div className="tclassview-modal-buttons">
-                    <button type="submit">Add</button>
-                    <button type="button" onClick={handleCloseModal}>
-                      Cancel
-                    </button>
+          {isLoading ? (
+            <LoadingOverlay /> // Show loading overlay for the main content
+          ) : (
+            <>
+              {error && <div>Error: {error}</div>}
+              {classData && (
+                <div className="tclassview-collapsible-box">
+                  <div
+                    className="tclassview-collapsible-header"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <h2>{classData?.class?.class_name || "Class Name"}</h2>
+                    <span className="tclassview-collapsible-icon">
+                      {isOpen ? "-" : "+"}
+                    </span>
                   </div>
-                </form>
+                  {isOpen && (
+                    <div className="tclassview-collapsible-content">
+                      <table className="tclassview-student-table">
+                        <thead>
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Student Email</th>
+                            <th>Average Mark</th>
+                            <th>Student Overview</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {classData?.students.map((student) => (
+                            <tr key={student.student_id}>
+                              <td>{student.student_name}</td>
+                              <td>{student.email}</td>
+                              <td>{student.average_mark}</td>
+                              <td>
+                                <button
+                                  onClick={() =>
+                                    handleStudentOverview(student.student_id)
+                                  }
+                                  className="tclassview-overview-button"
+                                >
+                                  Click here!
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              )}
+              <div className="tclassview-button-container">
+                <button
+                  onClick={handleAddStudent}
+                  className="tclassview-action-button"
+                >
+                  Add Student
+                </button>
+                <button
+                  onClick={handleAddQuiz}
+                  className="tclassview-action-button"
+                >
+                  Add Quiz
+                </button>
               </div>
-            </div>
+
+              {isModalOpen && (
+                <div className="tclassview-modal-overlay">
+                  <div className="tclassview-modal">
+                    <h3>Add New Student</h3>
+                    <form onSubmit={handleSubmitStudent}>
+                      <input
+                        type="email"
+                        placeholder="Student Email"
+                        value={studentEmail}
+                        onChange={(e) => setStudentEmail(e.target.value)}
+                        required
+                      />
+                      <div className="tclassview-modal-buttons">
+                        <button type="submit">Add</button>
+                        <button type="button" onClick={handleCloseModal}>
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
