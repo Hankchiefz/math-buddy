@@ -2,6 +2,8 @@ import StudentHeader from "../objects/StudentHeader";
 import ParentSNav from "../objects/ParentSNav";
 import '../parentstyle/ParentHome.css';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const ParentHome = () => {
@@ -9,6 +11,7 @@ const ParentHome = () => {
   const [childName, setChildName] = useState('');
   const [schoolClass, setSchoolClass] = useState('');
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch the full name from localStorage
@@ -67,9 +70,9 @@ const ParentHome = () => {
             />
 
             <div className="button-group">
-              <button className="profile-button first-button">View Quiz Results</button>
-              <button className="profile-button second-button">View Assignment Results</button>
-              <button className="profile-button third-button">View Session Timetable</button>
+              <button className="profile-button first-button" onClick={() => navigate('/parentLessons')}>View Pending Tasks</button>
+              <button className="profile-button second-button" onClick={() => navigate('/parentquiz')}>View Progress Report</button>
+              <button className="profile-button third-button" onClick={() => navigate('/parentfeedback')}>View Feedback</button>
             </div>
           </div>
         </div>
