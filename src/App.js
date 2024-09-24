@@ -37,6 +37,8 @@ import ParentFeedback from "./Components/parentpages/ParentFeedback.js";
 import ParentInfo from "./Components/parentpages/ParentInfo.js";
 import ParentPending from "./Components/parentpages/ParentPendingTasks.js";
 import ParentProgress from "./Components/parentpages/ParentProgressReport.js";
+import ParentQuizComplete from "./Components/parentpages/parentinner/ParentQuizComplete.js";
+
 
 
 function App() {
@@ -107,6 +109,8 @@ function App() {
         <Route path="/parentprofile" element={<ParentInfo />} />
         <Route path="/parentLessons" element={<ParentInfo />} />
         <Route path= "/tclassview" element={<Tclassview/>} />
+        <Route path= "/parentquizcomplete" element={<ParentQuizComplete/>} />
+
 
 
 
