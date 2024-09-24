@@ -66,7 +66,8 @@ function App() {
     "/parentprofile",
     "/parentLessons",
     "/parentfeedback",
-    "/tclassview"
+    "/tclassview",
+    "/parentquiz"
   ];
 
   return (
