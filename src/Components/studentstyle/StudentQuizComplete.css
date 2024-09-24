@@ -62,3 +62,14 @@
 .sqc-h3 {
   font-size: small;
 }
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+iframe {
+  max-width: 100%;
+  height: auto;
+}
