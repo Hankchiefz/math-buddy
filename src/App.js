@@ -54,7 +54,7 @@ function App() {
     "/teacherhomepage",
     "/Tclasses",
     "/tnewclass",
-    "/studentquizcomplete",
+    "/StudentQuizComplete",
     "/tnewquiz",
     "/studentprofile",
     "/tprofile",

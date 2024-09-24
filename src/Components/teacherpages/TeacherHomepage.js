@@ -9,7 +9,7 @@ import '../teacherstyle/TeacherHomepage.css';
 const TeacherHome = () => {
   const [fullName, setFullName] = useState('');
   const [quizzes, setQuizzes] = useState([]); // State to hold the quiz data
-  const [recentlyAccessed, setRecentlyAccessed] = useState([]); // State to hold recently accessed items
+  const [recentlyAccessed, setRecentlyAccessed] = useState([]); // State to hold recently accessed items array
 
   const navigate = useNavigate();
 
@@ -61,26 +61,37 @@ const TeacherHome = () => {
   const handleNavigation = (page, label) => {
     console.log(`Navigating to: ${page}, ${label}`);
 
-    // Update recently accessed items
+    // Update recently accessed items in an array format
     const newItem = { page, label };
-    setRecentlyAccessed(prevItems => {
-      const updatedItems = [newItem, ...prevItems.filter(item =>
-        item.page !== newItem.page || item.label !== newItem.label
-      )].slice(0, 3); // Limit stored items to the latest 3
+    const updatedItems = [newItem, ...recentlyAccessed.filter(item =>
+      item.page !== newItem.page || item.label !== newItem.label
+    )]; // Add the new item and filter out duplicates
 
-      // Save to localStorage
-      try {
-        localStorage.setItem('recentlyAccessed', JSON.stringify(updatedItems));
-        console.log("Saved recently accessed items:", updatedItems);
-      } catch (error) {
-        console.error("Error saving recently accessed items:", error);
-      }
+    const limitedItems = updatedItems.slice(0, 3); // Limit stored items to the latest 3
 
-      return updatedItems;
-    });
+    // Save the updated array to state and localStorage
+    setRecentlyAccessed(limitedItems);
 
-    // Navigate to the desired page
-    navigate(page);
+    try {
+      localStorage.setItem('recentlyAccessed', JSON.stringify(limitedItems));
+      console.log("Saved recently accessed items:", limitedItems);
+    } catch (error) {
+      console.error("Error saving recently accessed items:", error);
+    }
+
+    // Ensure the page corresponds to teacher routes
+    switch (page) {
+      case '/teacherclasses': // Teacher classes page
+      case '/teacherlessons': // Teacher lessons page
+      case '/tfeedback': // Teacher feedback page
+      case '/tprofile': // Teacher profile page
+      case '/TActiveTasks': // Active tasks for teacher
+        navigate(page); // Navigate to the correct teacher page
+        break;
+      default:
+        console.error('Invalid navigation path:', page);
+        break;
+    }
   };
 
   const handleClassesButton = () => {

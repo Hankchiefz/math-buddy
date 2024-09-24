@@ -10,6 +10,27 @@ const TeacherProfile = () => {
     const [updatedProfileData, setUpdatedProfileData] = useState({}); // State for editable inputs
 
     useEffect(() => {
+        // Save the "Profile" page to recently accessed
+        const newItem = { page: "/teacherprofile", label: "Profile" };
+
+        try {
+            const storedRecentlyAccessed = JSON.parse(
+                localStorage.getItem("recentlyAccessed") || "[]"
+            );
+
+            const updatedItems = [
+                newItem,
+                ...storedRecentlyAccessed.filter(
+                    (item) => item.page !== newItem.page || item.label !== newItem.label
+                ),
+            ].slice(0, 5); // Limit stored items to the latest 5
+
+            localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
+            console.log("Saved recently accessed items:", updatedItems);
+        } catch (error) {
+            console.error("Error saving recently accessed items:", error);
+        }
+
         // Fetch student profile data from the API
         const token = localStorage.getItem('access_token');
         
@@ -41,7 +62,7 @@ const TeacherProfile = () => {
             console.error('No access token found');
             setLoading(false); // Stop loading if no token
         }
-    }, []);
+    }, []); // Empty dependency array to run only once when the component mounts
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
