@@ -10,7 +10,6 @@ const StudentProfile = () => {
   const [updatedProfileData, setUpdatedProfileData] = useState({}); // State for editable inputs
 
   useEffect(() => {
-    // Fetch student profile data from the API
     const token = localStorage.getItem("access_token");
 
     if (token) {
@@ -59,7 +58,7 @@ const StudentProfile = () => {
     } catch (error) {
       console.error("Error saving recently accessed items:", error);
     }
-  }, []); // Empty dependency array to run only once on component mount
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -74,16 +73,14 @@ const StudentProfile = () => {
   };
 
   const handleSave = () => {
-    // Send the updated profile data to the API to save changes
     const token = localStorage.getItem("access_token");
     fetch("https://mathbuddyapi.com/update_student_profile", {
-      // Ensure this endpoint exists in your API
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ ...updatedProfileData, token }), // Include the token in the body if needed by the API
+      body: JSON.stringify({ ...updatedProfileData, token }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -92,22 +89,21 @@ const StudentProfile = () => {
         return response.json();
       })
       .then(() => {
-        setProfileData(updatedProfileData); // Update the profile data with the new data
-        setEditMode(false); // Exit edit mode and return to view mode
+        setProfileData(updatedProfileData);
+        setEditMode(false);
       })
       .catch((error) => {
         console.error("Error saving profile data:", error);
       });
   };
 
-  // Loading state
   if (loading) {
     return (
       <div className="student-profile-page">
         <StudentHeader />
         <div className="Side-navbar">
           <StudentSNav />
-          <div className="main-content">
+          <div className="main-contentSP">
             <div className="loading-overlay">
               <div className="loading-spinner"></div>
             </div>
@@ -123,7 +119,7 @@ const StudentProfile = () => {
         <StudentHeader />
         <div className="Side-navbar">
           <StudentSNav />
-          <div className="main-content">
+          <div className="main-contentSP">
             <p>Error loading profile data.</p>
           </div>
         </div>
@@ -133,49 +129,38 @@ const StudentProfile = () => {
 
   return (
     <div className="student-profile-page">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader />
       <div className="Side-navbar">
-        <StudentSNav /> {/* Side navbar */}
-        <div className="main-content">
+        <StudentSNav />
+        <div className="main-contentSP">
           <div className="s-profile">
-            <table className="spp-header-bar">
-              <thead>
-                <tr>
-                  <th>Your profile</th>
-                  <th style={{ textAlign: "right" }}>
-                    {editMode ? (
-                      <>
-                        <button
-                          className="spp-save-button"
-                          onClick={handleSave}
-                        >
-                          Save
-                        </button>
-                        <button
-                          className="spp-cancel-button"
-                          onClick={toggleEditMode}
-                        >
-                          Cancel
-                        </button>
-                      </>
-                    ) : (
-                      <button
-                        className="spp-edit-button"
-                        onClick={toggleEditMode}
-                      >
-                        Edit
-                      </button>
-                    )}
-                  </th>
-                </tr>
-              </thead>
-            </table>
+         <table className="spp-header-bar">
+  <thead>
+    <tr>
+      <th className="profile-title">Your profile</th>
+      <th className="profile-actions">
+        {editMode ? (
+          <>
+            <button className="spp-save-button" onClick={handleSave}>Save</button>
+            <button className="spp-cancel-button" onClick={toggleEditMode}>Cancel</button>
+          </>
+        ) : (
+          <button className="spp-edit-button" onClick={toggleEditMode}>Edit</button>
+        )}
+      </th>
+    </tr>
+  </thead>
+</table>
+
+
+            {/* Profile information tables */}
             <div className="spp-tables-container">
               <div className="spp-table-con">
+                {/* Personal information */}
                 <table className="spp-Personal-info">
                   <thead>
                     <tr>
-                      <th>Personal information</th>
+                      <th>Personal Information</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -230,7 +215,7 @@ const StudentProfile = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td>Full name:</td>
+                      <td>Full Name:</td>
                       <td>
                         {editMode ? (
                           <input
@@ -302,7 +287,7 @@ const StudentProfile = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td>Phone number:</td>
+                      <td>Phone Number:</td>
                       <td>
                         {editMode ? (
                           <input
@@ -320,11 +305,13 @@ const StudentProfile = () => {
                 </table>
               </div>
             </div>
+
             <div className="spp-table-con-full">
+        {/*
               <table className="spp-guardian-details">
                 <thead>
                   <tr>
-                    <th>Parent/Guardian details</th>
+                    <th>Parent/Guardian Details</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -376,6 +363,7 @@ const StudentProfile = () => {
                   </tr>
                 </tbody>
               </table>
+        */}
             </div>
           </div>
         </div>
