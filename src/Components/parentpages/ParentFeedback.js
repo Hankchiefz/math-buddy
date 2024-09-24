@@ -63,7 +63,7 @@ const ParentFeedback = () => {
       // Function to handle clicking on feedback box
       const handleFeedbackClick = (quiz_id) => {
         // Navigate to the feedback details page and pass the quiz_id via state
-        navigate(`/StudentQuizComplete`, { state: { quiz_id } });
+        navigate(`/parentquizcomplete`, { state: { quiz_id } });
       };
 
     return(

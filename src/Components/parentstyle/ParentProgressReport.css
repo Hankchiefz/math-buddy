@@ -1,0 +1,6 @@
+.chart-container {
+    width: 50%; /* or any percentage, px, rem */
+    height: 10px; /* Set the height to control vertical size */
+    margin-top: -40rem;
+    margin-left: 20rem;
+  }
