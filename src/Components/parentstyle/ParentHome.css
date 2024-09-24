@@ -1,228 +1,228 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  .app-container {
-    display: flex;
-  }
-  
-  .sidebar {
-    width: 200px;
-    background-color: #f1f5f9;
-    padding: 20px;
-  }
-  
-  .sidebar .logo {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #e6effe;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .sidebar ul li:hover {
-    background-color: #d0e4ff;
-  }
-  
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 24px;
-  }
-  
-  .profile-section {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .profile-pic {
-    width: 300px;
-    height: 200px;
-    border-radius: 50%;
-  }
-  
-  .buttons {
-    margin-left: 20px;
-  }
-  
-  button {
-    display: block;
-    margin: 10px 0;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button.quiz-results {
-    background-color: #f8d7da;
-  }
-  
-  button.assignment-results {
-    background-color: #d4edda;
-  }
-  
-  button.session-timetable {
-    background-color: #fff3cd;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  .parenthome-container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    height: 100vh;
-  }
-  
-  .PHcontent-wrapper {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .PHmain-content {
-    flex: 1;
-    padding: 20px;
-    margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-    margin-top: 1.5rem; /* Adjust this value to provide space for the header */
-  }
-  
-  .PHhome-message {
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    margin-top: -4vh;
-    position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-    padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
-  }
-  
-  .PHwelcome-message::after {
-    content: "";
-    position: absolute; /* Use absolute positioning */
-    top: 100%; /* Position the line just below the text */
-    left: 0; /* Align the line with the left edge of the parent */
-    width: 100%; /* Make the line span the full width of the parent */
-    height: 2px;
-    background-color: #E8F1FF; /* Line color */
-    margin-top: 10px; /* Add space between the text and the line */
-  }
-  
-  .PHhome-message {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+{
+  box-sizing: border-box;
+}
 
-  .PHwelcome-message {
-    font-weight: 500;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    margin-top: -4vh;
-    position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-    padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
-  }
-  
+.app-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f1f5f9;
+  padding: 20px;
+}
+
+.sidebar .logo {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e6effe;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: #d0e4ff;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.buttons {
+  margin-left: 20px;
+}
+
+button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.quiz-results {
+  background-color: #f8d7da;
+}
+
+button.assignment-results {
+  background-color: #d4edda;
+}
+
+button.session-timetable {
+  background-color: #fff3cd;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.parenthome-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+}
+
+.PHcontent-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.PHmain-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
+  margin-top: 1.5rem; /* Adjust this value to provide space for the header */
+}
+
+.PHhome-message {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: -4vh;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+  padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+}
+
+.PHwelcome-message::after {
+  content: "";
+  position: absolute; /* Use absolute positioning */
+  top: 100%; /* Position the line just below the text */
+  left: 0; /* Align the line with the left edge of the parent */
+  width: 100%; /* Make the line span the full width of the parent */
+  height: 2px;
+  background-color: #E8F1FF; /* Line color */
+  margin-top: 10px; /* Add space between the text and the line */
+}
+
+.PHhome-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.PHwelcome-message {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: -4vh;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+  padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+}
 
 
-  .childName {
-    font-weight: 500;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    margin-top: -4vh;
-    padding-top: 50px;
-    position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-    padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
-  }
-  
-  .School {
-    font-weight: 500;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    margin-top: -4vh;
-    padding-top: 10px;
-    position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
-    padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
-  }
 
-  .image-buttons-container {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .child-profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    margin-right: 20rem;; /* Add space between the image and the buttons */
-  }
-  
+.childName {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: -4vh;
+  padding-top: 50px;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+  padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+}
 
-  .button-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .profile-button {
-    padding: 10px 200px;
-    margin-bottom: 10px; /* Adds space between buttons */
-    background-color: #4caf50;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .profile-button:hover {
-    opacity: 0.8;
-  }
+.School {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: -4vh;
+  padding-top: 10px;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the parent */
+  padding-bottom: 1px; /* Add some padding below the text to separate it from the line */
+}
 
-  .first-button {
-    position: absolute;
-    margin-top: -7rem;
-    margin-left: -2rem;
-    margin-bottom: 5rem;
-    background-color: #f5c6ac;
-    border: 1px solid black;
-    font-weight: 500;
-    font-size: 1.5rem;
-  }
+.image-buttons-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
 
-.second-button{
+.child-profile-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin-right: 20rem;; /* Add space between the image and the buttons */
+}
+
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-button {
+  padding: 10px 200px;
+  margin-bottom: 10px; /* Adds space between buttons */
+  background-color: #4caf50;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  opacity: 0.8;
+}
+
+.first-button {
   position: absolute;
-  margin-top: 3rem;
-  margin-left: -15rem;
-  background-color: #d7ffc5;
+  margin-top: -7rem;
+  margin-left: -2rem;
+  margin-bottom: 5rem;
+  background-color: #f5c6ac;
   border: 1px solid black;
   font-weight: 500;
   font-size: 1.5rem;
+}
+
+.second-button{
+position: absolute;
+margin-top: 3rem;
+margin-left: -15rem;
+background-color: #d7ffc5;
+border: 1px solid black;
+font-weight: 500;
+font-size: 1.5rem;
 
 }
 
 .third-button{
-  position: absolute;
-  margin-top: 13rem;
-  margin-left: -35rem;
-  background-color: #faffc5;
-  border: 1px solid black;
-  font-weight: 500;
-  font-size: 1.5rem;
+position: absolute;
+margin-top: 13rem;
+margin-left: -35rem;
+background-color: #faffc5;
+border: 1px solid black;
+font-weight: 500;
+font-size: 1.5rem;
 
 }
