@@ -20,7 +20,6 @@
     flex: 1;
     margin-left: 1rem;
     padding: 2rem; /* Adjust as needed */
-    border: 2px solid black;
 }
 
 /* Styling for the outer container */
@@ -39,40 +38,51 @@
 /* Styling for the profile section */
 .t-profile {
     width: 100%;
-    margin-top: -100px;
+    margin-top: 1rem;
 }
 
+
+/* Header bar styling */
 /* Header bar styling */
 .tpp-header-bar {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Space below the header bar */
-}
-
-.tpp-header-bar th {
-    text-align: left;
-    border: 1px solid #71A2FF;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Align items to left and right */
+    align-items: center; /* Vertically center items */
     padding: 10px;
     background-color: #E8F1FF;
+    border: 1px solid #71A2FF;
 }
 
-.tpp-header-bar td {
-    padding: 10px;
+.profile-title {
+    text-align: left;
+    flex: 1; /* Make title take available space */
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .tpp-edit-button {
     padding: 10px 20px;
+
     background-color: #71A2FF;
     border: none;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin-left: 10px;
     transition: background-color 0.3s ease;
 }
 
 .tpp-edit-button:hover {
     background-color: #5a8dda;
 }
+
+
 
 /* Table container styling */
 .tpp-table-con {

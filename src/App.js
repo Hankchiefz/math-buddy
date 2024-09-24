@@ -37,6 +37,8 @@ import ParentFeedback from "./Components/parentpages/ParentFeedback.js";
 import ParentInfo from "./Components/parentpages/ParentInfo.js";
 import ParentPending from "./Components/parentpages/ParentPendingTasks.js";
 import ParentProgress from "./Components/parentpages/ParentProgressReport.js";
+import ParentQuizComplete from "./Components/parentpages/parentinner/ParentQuizComplete.js";
+
 import TQuizView from "./Components/teacherinner/TQuizView.js";
 import TQuizEdit from "./Components/teacherinner/TQuizEdit.js";
 
@@ -105,13 +107,12 @@ function App() {
         <Route path="/parenthome" element={<ParentHome />} />
         <Route path="/parentLessons" element={<ParentPending />} />
         <Route path="/parenthome" element={<ParentHome />} />
-        <Route path="/parenquiz" element={<ParentProgress />} />
+        <Route path="/parentquiz" element={<ParentProgress />} />
         <Route path="/parentfeedback" element={<ParentFeedback />} />
         <Route path="/parentprofile" element={<ParentInfo />} />
         <Route path="/parentLessons" element={<ParentInfo />} />
         <Route path="/tclassview" element={<Tclassview />} />
-        <Route path="/TQuizView" element={<TQuizView />} />
-        <Route path="/TQuizEdit" element={<TQuizEdit />} />
+        <Route path="/parentquizcomplete" element={<ParentQuizComplete />} />
       </Routes>
     </>
   );
