@@ -21,41 +21,37 @@
   overflow-y: auto;
 }
 
-/* Collapsible box styles */
-.collapsible-box {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.collapsible-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #E8F1FF;
-}
-
-.collapsible-header h2 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.collapsible-icon {
-  font-size: 1.2rem;
-}
-
-.collapsible-content {
-  padding: 15px;
-  display: none; /* Hide content initially */
-}
-
 /* Table styles for displaying student data */
 .completion-table-container {
   margin-bottom: 20px;
 }
 
+.completion-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.completion-table th,
+.completion-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.completion-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.completion-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.completion-table tr:hover {
+  background-color: #f1f1f1; /* Hover effect */
+}
+
+/* Button styles for editing feedback */
 .edit-feedback-button {
   background-color: #4CAF50;
   border: none;

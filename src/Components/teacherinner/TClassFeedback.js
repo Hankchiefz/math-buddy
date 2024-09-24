@@ -15,18 +15,11 @@ const TClassFeedback = () => {
   const [completionData, setCompletionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [className, setClassName] = useState(class_name || "Class Name Here");
-  const [quizName, setQuizName] = useState(quiz_title || "Quiz Name Here");
 
   // State to handle modal visibility and feedback being edited
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState("");
   const [selectedStudentId, setSelectedStudentId] = useState(null);
-
-  // Log location state for debugging
-  useEffect(() => {
-    console.log("Location state:", location.state);
-  }, [location.state]);
 
   // Fetch quiz completion data on component mount
   useEffect(() => {
@@ -134,7 +127,7 @@ const TClassFeedback = () => {
   // Render the completion data table
   const renderCompletionTable = (data) => (
     <div className="completion-table-container">
-      <h2>{quizName ? `Quiz: ${quizName}` : "Quiz Name"}</h2>
+      <h2>{quiz_title ? ` ${quiz_title}` : "Quiz Name"}</h2>
       <hr />
       {data.length === 0 ? (
         <p>No completion data available.</p>

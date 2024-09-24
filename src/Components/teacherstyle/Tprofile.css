@@ -16,10 +16,11 @@
 }
 
 /* Main content styling */
-.main-content {
+.main-contentTP {
     flex: 1;
     margin-left: 1rem;
     padding: 2rem; /* Adjust as needed */
+    border: 2px solid black;
 }
 
 /* Styling for the outer container */

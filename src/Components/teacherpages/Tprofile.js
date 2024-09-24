@@ -87,7 +87,7 @@ const TeacherProfile = () => {
                 <StudentHeader />
                 <div className="Side-navbar">
                     <TeacherSNav />
-                    <div className="main-content">
+                    <div className="main-contentTP">
                         <p>Loading profile...</p>
                     </div>
                 </div>
