@@ -51,6 +51,29 @@ const TActiveTasks = () => {
     fetchQuizzes();
   }, []); // Empty dependency array means it runs once when the component mounts
 
+  // Save recently accessed "Active Tasks" to localStorage
+  useEffect(() => {
+    const newItem = { page: "/tactivetasks", label: "Quizzes" };
+
+    try {
+      const storedRecentlyAccessed = JSON.parse(
+        localStorage.getItem("recentlyAccessed") || "[]"
+      );
+
+      const updatedItems = [
+        newItem,
+        ...storedRecentlyAccessed.filter(
+          (item) => item.page !== newItem.page || item.label !== newItem.label
+        ),
+      ].slice(0, 5); // Limit stored items to the latest 5
+
+      localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
+      console.log("Saved recently accessed items:", updatedItems);
+    } catch (error) {
+      console.error("Error saving recently accessed items:", error);
+    }
+  }, []); // Run once when component mounts
+
   const handleCreateClassClick = () => {
     navigate("/tnewquiz"); // Navigate to the TNewClass component
   };

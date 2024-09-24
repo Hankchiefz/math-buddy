@@ -54,6 +54,29 @@ const Tclasses = () => {
     fetchTeacherClasses();
   }, []); // Empty dependency array ensures this runs only once on mount
 
+  // Save the "Classes" page to recently accessed
+  useEffect(() => {
+    const newItem = { page: "/tclasses", label: "Classes" };
+
+    try {
+      const storedRecentlyAccessed = JSON.parse(
+        localStorage.getItem("recentlyAccessed") || "[]"
+      );
+
+      const updatedItems = [
+        newItem,
+        ...storedRecentlyAccessed.filter(
+          (item) => item.page !== newItem.page || item.label !== newItem.label
+        ),
+      ].slice(0, 5); // Limit stored items to the latest 5
+
+      localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
+      console.log("Saved recently accessed items:", updatedItems);
+    } catch (error) {
+      console.error("Error saving recently accessed items:", error);
+    }
+  }, []); // Run once when component mounts
+
   const handleCreateClassClick = () => {
     navigate("/tnewclass"); // Navigate to the TNewClass component
   };

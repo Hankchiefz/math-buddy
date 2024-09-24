@@ -12,6 +12,29 @@ const TFeedback = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Save the "Feedback" page to recently accessed
+  useEffect(() => {
+    const newItem = { page: "/tfeedback", label: "Feedback" };
+
+    try {
+      const storedRecentlyAccessed = JSON.parse(
+        localStorage.getItem("recentlyAccessed") || "[]"
+      );
+
+      const updatedItems = [
+        newItem,
+        ...storedRecentlyAccessed.filter(
+          (item) => item.page !== newItem.page || item.label !== newItem.label
+        ),
+      ].slice(0, 5); // Limit stored items to the latest 5
+
+      localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
+      console.log("Saved recently accessed items:", updatedItems);
+    } catch (error) {
+      console.error("Error saving recently accessed items:", error);
+    }
+  }, []); // Run once when the component mounts
+
   // Fetch feedback data on component mount
   useEffect(() => {
     const fetchFeedbackData = async () => {
