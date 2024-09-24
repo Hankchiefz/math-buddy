@@ -50,8 +50,8 @@
   }
   
   .profile-pic {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
     border-radius: 50%;
   }
   
@@ -167,11 +167,11 @@
   }
   
   .child-profile-image {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     border: 2px solid #ccc;
-    margin-right: 20px; /* Add space between the image and the buttons */
+    margin-right: 20rem;; /* Add space between the image and the buttons */
   }
   
 
@@ -195,6 +195,10 @@
   }
 
   .first-button {
+    position: absolute;
+    margin-top: -7rem;
+    margin-left: -2rem;
+    margin-bottom: 5rem;
     background-color: #f5c6ac;
     border: 1px solid black;
     font-weight: 500;
@@ -202,6 +206,9 @@
   }
 
 .second-button{
+  position: absolute;
+  margin-top: 3rem;
+  margin-left: -15rem;
   background-color: #d7ffc5;
   border: 1px solid black;
   font-weight: 500;
@@ -210,6 +217,9 @@
 }
 
 .third-button{
+  position: absolute;
+  margin-top: 13rem;
+  margin-left: -35rem;
   background-color: #faffc5;
   border: 1px solid black;
   font-weight: 500;
