@@ -104,7 +104,7 @@ function App() {
         <Route path="/parenthome" element={<ParentHome />} />
         <Route path="/parentLessons" element={<ParentPending />} />
         <Route path="/parenthome" element={<ParentHome />} />
-        <Route path="/parenquiz" element={<ParentProgress />} />
+        <Route path="/parentquiz" element={<ParentProgress />} />
         <Route path="/parentfeedback" element={<ParentFeedback />} />
         <Route path="/parentprofile" element={<ParentInfo />} />
         <Route path="/parentLessons" element={<ParentInfo />} />
