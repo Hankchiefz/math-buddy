@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
+import LoadingOverlay from "../LoadingOverlay"; // Import the LoadingOverlay
 import "../teacherstyle/TNewQuiz.css";
 
 const TNewQuiz = () => {
@@ -11,6 +13,7 @@ const TNewQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -99,6 +102,9 @@ const TNewQuiz = () => {
       const data = await response.json();
       setSuccess("Quiz created successfully!");
       console.log("Quiz created:", data);
+
+      // Navigate to TActiveTasks after successful quiz creation
+      navigate("/TActiveTasks");
     } catch (error) {
       setError("Failed to create quiz: " + error.message);
     } finally {
@@ -112,6 +118,8 @@ const TNewQuiz = () => {
       <div className="TCQcontent-wrapper">
         <TeacherSNav /> {/* Side navbar */}
         <div className="TCQmain-content">
+          {loading && <LoadingOverlay />}{" "}
+          {/* Show loading overlay when loading */}
           <div className="TCQform-container">
             <div className="createclass">
               <h1>Create Quiz</h1>
