@@ -2,13 +2,17 @@ import StudentHeader from "../objects/StudentHeader";
 import ParentSNav from "../objects/ParentSNav";
 import '../parentstyle/ParentHome.css';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const ParentHome = () => {
   const [fullName, setFullName] = useState('');
   const [childName, setChildName] = useState('');
   const [schoolClass, setSchoolClass] = useState('');
+  const [schoolName, setSchoolName] = useState(''); 
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch the full name from localStorage
@@ -19,26 +23,29 @@ const ParentHome = () => {
     //Other stuff here
     // Fetch child info from the backend
     const fetchChildInfo = async () => {
-        try {
-          const token = localStorage.getItem('access_token');
-          const response = await fetch('https://mathbuddyapi.com/childinfo', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ token }),
-          });
-  
-          if (!response.ok) {
-            throw new Error('Failed to fetch child info');
-          }
-  
-          const data = await response.json();
-          setChildName(data.childName); // Assuming childName is returned
-          setSchoolClass(data.schoolClass); // Assuming schoolClass is returned
-        } catch (error) {
-          console.error('Error fetching child info:', error);
+      try {
+        const token = localStorage.getItem('access_token');
+        const response = await fetch('https://mathbuddyapi.com/child_info', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({ token }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch child info');
         }
+
+        const data = await response.json();
+        console.log(data);
+        setChildName(data.student_name); // Set the student's name
+        setSchoolClass(data.class_name); // Set the class name
+        setSchoolName(data.school_name || "Unknown School"); // Handle null school_name
+      } catch (error) {
+        console.error('Error fetching child info:', error);
+      }
       };
   
       fetchChildInfo();
@@ -56,8 +63,8 @@ const ParentHome = () => {
         <div className="PHome-message">
             <div className="PHwelcome-message">Welcome {fullName}</div>
         </div>
-            <div className="childName">Child name {childName}</div>
-            <div className="School">Wollongong School of Math - Class</div>
+            <div className="childName">Child name - {childName}</div>
+            <div className="School">Wollongong School of Math - Class {schoolClass}</div>
             {/* Image and buttons container */}
           <div className="image-buttons-container">
             <img
@@ -67,9 +74,9 @@ const ParentHome = () => {
             />
 
             <div className="button-group">
-              <button className="profile-button first-button">View Quiz Results</button>
-              <button className="profile-button second-button">View Assignment Results</button>
-              <button className="profile-button third-button">View Session Timetable</button>
+              <button className="profile-button first-button" onClick={() => navigate('/parentLessons')}>View Pending Tasks</button>
+              <button className="profile-button second-button" onClick={() => navigate('/parentquiz')}>View Progress Report</button>
+              <button className="profile-button third-button" onClick={() => navigate('/parentfeedback')}>View Feedback</button>
             </div>
           </div>
         </div>
