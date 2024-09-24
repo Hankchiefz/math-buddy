@@ -38,6 +38,7 @@ import ParentInfo from "./Components/parentpages/ParentInfo.js";
 import ParentPending from "./Components/parentpages/ParentPendingTasks.js";
 import ParentProgress from "./Components/parentpages/ParentProgressReport.js";
 
+
 function App() {
   const location = useLocation();
 
@@ -62,7 +63,8 @@ function App() {
     "/parenthome",
     "/parentprofile",
     "/parentLessons",
-    "/parentfeedback"
+    "/parentfeedback",
+    "/tclassview"
   ];
 
   return (
@@ -104,6 +106,7 @@ function App() {
         <Route path="/parentfeedback" element={<ParentFeedback />} />
         <Route path="/parentprofile" element={<ParentInfo />} />
         <Route path="/parentLessons" element={<ParentInfo />} />
+        <Route path= "/tclassview" element={<Tclassview/>} />
 
 
 

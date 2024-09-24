@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
+import LoadingOverlay from "../LoadingOverlay"; // Import the LoadingOverlay
 import "../teacherstyle/Tclasses.css";
 
 const Tclasses = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null); // State to store error messages
   const [classes, setClasses] = useState([]); // State to store class data
+  const [loading, setLoading] = useState(true); // State to manage loading
 
   // Fetch the teacher classes upon component mount
   useEffect(() => {
@@ -16,6 +18,7 @@ const Tclasses = () => {
 
       if (!token) {
         setError("No access token found");
+        setLoading(false); // Stop loading if no token
         return;
       }
 
@@ -43,6 +46,8 @@ const Tclasses = () => {
       } catch (error) {
         console.error("Error fetching teacher classes:", error);
         setError("Error fetching teacher classes");
+      } finally {
+        setLoading(false); // Stop loading regardless of success or error
       }
     };
 
@@ -60,6 +65,7 @@ const Tclasses = () => {
   return (
     <div className="teacherclasses-container">
       <StudentHeader /> {/* Top navbar */}
+      {loading && <LoadingOverlay />} {/* Show loading overlay when loading */}
       <div className="TCcontent-wrapper">
         <TeacherSNav /> {/* Side navbar */}
         <div className="TCmain-content">
@@ -91,7 +97,8 @@ const Tclasses = () => {
                       <td>{classItem.class_name}</td>
                       <td>{classItem.student_count}</td>
                       <td>{classItem.teacher_name}</td>
-                      <td>1</td> {/* Placeholder, replace with actual active tasks count if available */}
+                      <td>1</td>{" "}
+                      {/* Placeholder for actual active tasks count */}
                     </tr>
                   ))
                 ) : (
@@ -107,7 +114,8 @@ const Tclasses = () => {
             >
               Create Class
             </button>
-            {error && <p className="error-message">{error}</p>} {/* Display error if any */}
+            {error && <p className="error-message">{error}</p>}{" "}
+            {/* Display error if any */}
           </div>
         </div>
       </div>
