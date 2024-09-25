@@ -7,13 +7,11 @@ import "../teacherstyle/TActiveTasks.css";
 const TActiveTasks = () => {
   const navigate = useNavigate();
 
-  // State to hold quiz data
   const [quizzesByClass, setQuizzesByClass] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false); // State for loading overlay
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fetch quizzes when the component loads
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
@@ -27,7 +25,7 @@ const TActiveTasks = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ token }), // Sending the token in the body
+          body: JSON.stringify({ token }),
         });
 
         if (!response.ok) {
@@ -35,23 +33,79 @@ const TActiveTasks = () => {
         }
 
         const data = await response.json();
-        setQuizzesByClass(data); // Update state with fetched data
+        setQuizzesByClass(data);
       } catch (error) {
         setError(error.message);
       } finally {
-        setLoading(false); // Hide loading spinner when data is fetched
+        setLoading(false);
       }
     };
 
     fetchQuizzes();
-  }, []); // Empty dependency array means it runs once when the component mounts
+  }, []);
 
-  // Handle quiz click for not active quizzes
-  const handleQuizClick = (quizId) => {
-    navigate("/TQuizEdit", { state: { quizId } }); // Navigate to TQuizEdit with quizId
+  const handleCreateClassClick = () => {
+    navigate("/tnewquiz");
   };
 
-  // Render a table for each quiz type
+  const handleApprove = async (className, quizId) => {
+    setIsSubmitting(true);
+    try {
+      const token = localStorage.getItem("access_token");
+      if (!token) {
+        throw new Error("Access token is missing");
+      }
+
+      const response = await fetch("https://mathbuddyapi.com/assign_quiz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token, class_name: className, quiz_id: quizId }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const updatedData = await response.json();
+      setQuizzesByClass(updatedData);
+    } catch (error) {
+      console.error("Assignment error:", error);
+    } finally {
+      setIsSubmitting(false);
+      window.location.reload();
+    }
+  };
+
+  const filterQuizzesByStatus = (status) => {
+    const filteredQuizzes = {};
+    Object.keys(quizzesByClass).forEach((className) => {
+      const quizzes = quizzesByClass[className];
+      if (Array.isArray(quizzes)) {
+        const filtered = quizzes.filter((quiz) => quiz.active === status);
+        if (filtered.length > 0) {
+          filteredQuizzes[className] = filtered;
+        }
+      } else {
+        console.warn(`Expected quizzes to be an array but got ${typeof quizzes}`);
+      }
+    });
+    return filteredQuizzes;
+  };
+
+  const activeQuizzes = filterQuizzesByStatus("Active");
+  const notActiveQuizzes = filterQuizzesByStatus("Not Active");
+  const completeQuizzes = filterQuizzesByStatus("Complete");
+
+  const handleQuizClick = (quiz) => {
+    if (quiz.active === "Active" || quiz.active === "Complete") {
+      navigate("/TQuizView", { state: { quizId: quiz.quiz_id } }); // Send quiz_id in state
+    } else {
+      navigate("/TQuizEdit", { state: { quizId: quiz.quiz_id } }); // Send quiz_id in state
+    }
+  };
+
   const renderQuizTable = (quizzes, title) => (
     <div className="TQtable-container">
       <h2>{title}</h2>
@@ -76,10 +130,7 @@ const TActiveTasks = () => {
                 <tr
                   key={`${classIndex}-${quizIndex}`}
                   className="TQtable-row"
-                  onClick={() =>
-                    title === "Not Active Quizzes" &&
-                    handleQuizClick(quiz.quiz_id)
-                  }
+                  onClick={() => handleQuizClick(quiz)} // Handle row click
                 >
                   <td>
                     <div className="color"></div>
@@ -100,8 +151,8 @@ const TActiveTasks = () => {
                     <td>
                       <button
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent row click event from firing
-                          handleApprove(className, quiz.quiz_id); // Handle approval if needed
+                          e.stopPropagation(); // Prevent row click
+                          handleApprove(className, quiz.quiz_id);
                         }}
                         className="approve-button"
                       >
@@ -133,15 +184,9 @@ const TActiveTasks = () => {
             <p>Error: {error}</p>
           ) : (
             <>
-              {renderQuizTable(quizzesByClass.activeQuizzes, "Active Quizzes")}
-              {renderQuizTable(
-                quizzesByClass.notActiveQuizzes,
-                "Not Active Quizzes"
-              )}
-              {renderQuizTable(
-                quizzesByClass.completeQuizzes,
-                "Completed Quizzes"
-              )}
+              {renderQuizTable(activeQuizzes, "Active Quizzes")}
+              {renderQuizTable(notActiveQuizzes, "Not Active Quizzes")}
+              {renderQuizTable(completeQuizzes, "Completed Quizzes")}
             </>
           )}
           <button
