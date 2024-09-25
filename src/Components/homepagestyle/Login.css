@@ -1,5 +1,6 @@
 /* Existing Login Page Styles */
 .login-page {
+  
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -10,17 +11,20 @@
 }
 
 .login-page h1 {
+  font-family: 'itim', cursive;
   font-size: 3em;
   margin-bottom: 5px; /* Reduced margin-bottom */
 }
 
 .login-page h2 {
+  font-family: 'itim', cursive;
   font-size: 2em;
   margin-bottom: 20px;
   margin-top: 5px; /* Added margin-top to bring it closer to h1 */
 }
 
 .login-form {
+  font-family: 'itim', cursive;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -30,11 +34,13 @@
 }
 
 .input-container {
+  
   position: relative;
   width: 100%;
 }
 
 .input-container input {
+  font-family: 'itim', cursive;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -50,6 +56,7 @@
 }
 
 .login-button {
+  font-family: 'itim', cursive;
   background-color: #71A2FF;
   color: white;
   border: none;
