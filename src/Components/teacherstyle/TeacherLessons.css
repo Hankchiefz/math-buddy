@@ -12,19 +12,16 @@ font-family: 'Itim', sans-serif;
   flex-direction: row;
 }
 
-.TLmain-content{
+.TLmain-content{ 
 flex: 1;
 padding: 20px;
 margin-left: 1rem;
 margin-top: 1.5rem;
 }
 
-.teacher-lessons-title{
-
-}
-
 /* Container for the buttons to align them in 3 rows of 2 */
 .teacher-lessons-button-container {
+  font-family: 'itim', cursive;
   display: flex;
   flex-wrap: wrap; /* Allows the buttons to wrap into multiple rows */
   justify-content: center; /* Centers the buttons horizontally in each row */

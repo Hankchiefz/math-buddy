@@ -1,7 +1,8 @@
 .teacher-sidebar {
   background-color: #E8F1FF;
+  font-family: 'itim', cursive;
   width: 11rem;
-  height: 47  rem;
+  height: 47rem;
   display: flex;
   flex-direction: column;
   align-items: center;
