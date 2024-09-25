@@ -11,6 +11,7 @@
 }
 
 .THmain-content {
+  font-family: 'itim', cursive;
   flex: 1;
   padding: 20px;
   margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
@@ -91,6 +92,7 @@
 }
 
 .THB {
+  font-family: 'itim', cursive;
   font-weight: 700;
   font-size: 2rem;
   display: flex;
