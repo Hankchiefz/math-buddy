@@ -1,15 +1,5 @@
-/* src/App.css */
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.content-wrap {
-  flex: 1;
-  padding-bottom: 100px; /* Add a buffer equal to the height of the footer */
-  overflow: auto;
+.App {
+  text-align: center;
 }
 
 .App-logo {
@@ -37,6 +27,8 @@
 .App-link {
   color: #61dafb;
 }
+
+
 
 @keyframes App-logo-spin {
   from {
