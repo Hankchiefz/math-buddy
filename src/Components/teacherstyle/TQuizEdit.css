@@ -1,0 +1,54 @@
+.teacherquiz-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .TQcontent-wrapper {
+    display: flex;
+  }
+  
+  .TQmain-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .TQtable-container, .TQquestions-container {
+    margin-bottom: 20px;
+  }
+  
+  .TQtasks-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .TQtasks-table th, .TQtasks-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .TQtable-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
