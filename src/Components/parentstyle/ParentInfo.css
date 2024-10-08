@@ -1,0 +1,152 @@
+/* src/components/parentPages/ParentProfile.css */
+
+/* Container styling */
+.parent-profile-page {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vh;
+}
+
+/* Styling for the sidebar and main content */
+.Side-navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Main content styling */
+.main-content {
+    flex: 1;
+    margin-left: 1rem;
+    padding: 2rem; /* Adjust as needed */
+}
+
+/* Styling for the outer container */
+.ppp-outer {
+    display: flex;
+    flex-direction: column; /* Stack h2 elements vertically */
+    align-items: flex-start; /* Align items to the left */
+    background-color: #71A2FF; /* Background color */
+    color: white; /* Text color */
+    padding: 10px; /* Adjust padding as needed */
+    border: 1px solid #71A2FF; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Adjust width to content */
+}
+
+/* Styling for the profile section */
+.p-profile {
+    width: 100%;
+    padding-top: 5rem;
+}
+
+/* Header bar styling */
+.ppp-header-bar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Space below the header bar */
+}
+
+.ppp-header-bar th {
+    text-align: left;
+    border: none; /* Remove borders between th elements */
+    padding: 10px;
+    background-color: #E8F1FF;
+}
+
+.ppp-header-bar td {
+    padding: 10px;
+}
+
+.ppp-edit-button {
+    padding: 10px 20px;
+    background-color: #71A2FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ppp-edit-button:hover {
+    background-color: #5a8dda;
+}
+
+/* Table container styling */
+.ppp-tables-container {
+    display: flex; /* Use flexbox to align tables horizontally */
+    width: 100%; /* Set width to 100% of parent */
+    gap: 20px; /* Space between tables */
+}
+
+.ppp-table-con {
+    flex: 1;
+}
+
+/* Full-width table container for guardian details */
+.ppp-table-con-full {
+    width: 100%;
+    margin-top: 20px; /* Add space between the top tables and the bottom table */
+}
+
+/* Personal info table styling */
+.ppp-Personal-info {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #71A2FF;
+    border-radius: 10px;
+}
+
+.ppp-Personal-info th, .ppp-Personal-info td {
+    border: 1px solid #71A2FF;
+    padding: 10px;
+}
+
+.ppp-Personal-info th {
+    background-color: #E8F1FF;
+    border: none; /* Remove borders between th elements */
+}
+
+/* Contact details table styling */
+.ppp-contact-details {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #71A2FF;
+    border-radius: 10px;
+}
+
+.ppp-contact-details th, .ppp-contact-details td {
+    border: 1px solid #71A2FF;
+    padding: 10px;
+}
+
+.ppp-contact-details th {
+    background-color: #E8F1FF;
+    border: none; /* Remove borders between th elements */
+}
+
+
+/* Styling for h2 elements */
+.ppp-txt {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Address details table styling */
+.ppp-address-details {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #71A2FF;
+    border-radius: 10px;
+}
+
+.ppp-address-details th, .ppp-address-details td {
+    border: 1px solid #71A2FF;
+    padding: 10px;
+}
+
+.ppp-address-details th {
+    background-color: #E8F1FF;
+    border: none; /* Remove borders between th elements */
+}

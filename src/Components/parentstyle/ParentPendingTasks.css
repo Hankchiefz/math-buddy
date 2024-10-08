@@ -1,0 +1,129 @@
+/* Container for the entire page layout */
+.parent-pending-tasks-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Ensure the header stays at the top */
+.ParentHeader {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ensures the header is always above other elements */
+}
+
+/* Flexbox container for side navigation and main content */
+.parent-content-area {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;  /* Take up full width */
+    padding: 20px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Style for the side navigation, placed on the left */
+.parent-nav {
+    width: 200px;
+    margin-right: 20px;  /* Space between the nav and the main content */
+}
+
+/* Main content (where tasks are displayed) */
+.parent-main-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    flex-grow: 1;
+    max-width: 800px;
+    width: 100%;
+    margin: 0;
+    border: 2px solid black;
+}
+
+/* Style the heading for Pending Tasks */
+.parent-tasks-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Task list container */
+.parent-tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between task cards */
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Individual task card styling */
+.parent-task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Task content styling */
+.parent-task-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+/* Task icon placeholder */
+.parent-task-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0ad4e;
+    border-radius: 50%;
+}
+
+/* Task details styling */
+.parent-task-details h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.parent-task-details p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Task due date styling */
+.parent-task-due-date {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: right;
+}
+
+/* Responsive layout for smaller screens */
+@media screen and (max-width: 768px) {
+    .parent-task-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .parent-task-content {
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .parent-task-due-date {
+        text-align: left;
+        margin-top: 10px;
+    }
+}

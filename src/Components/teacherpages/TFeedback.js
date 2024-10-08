@@ -12,6 +12,29 @@ const TFeedback = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Save the "Feedback" page to recently accessed
+  useEffect(() => {
+    const newItem = { page: "/tfeedback", label: "Feedback" };
+
+    try {
+      const storedRecentlyAccessed = JSON.parse(
+        localStorage.getItem("recentlyAccessed") || "[]"
+      );
+
+      const updatedItems = [
+        newItem,
+        ...storedRecentlyAccessed.filter(
+          (item) => item.page !== newItem.page || item.label !== newItem.label
+        ),
+      ].slice(0, 5); // Limit stored items to the latest 5
+
+      localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
+      console.log("Saved recently accessed items:", updatedItems);
+    } catch (error) {
+      console.error("Error saving recently accessed items:", error);
+    }
+  }, []); // Run once when the component mounts
+
   // Fetch feedback data on component mount
   useEffect(() => {
     const fetchFeedbackData = async () => {
@@ -49,8 +72,15 @@ const TFeedback = () => {
     fetchFeedbackData();
   }, []);
 
-  const handleDetailsClick = () => {
-    navigate("/TClassFeedback");
+  // Navigate to TClassFeedback with class_name and quiz_id
+  const handleDetailsClick = (class_name, quiz_id, quiz_title) => {
+    if (class_name && quiz_id && quiz_title) {
+      navigate("/TClassFeedback", {
+        state: { class_name, quiz_id, quiz_title },
+      });
+    } else {
+      console.error("Class name, quiz ID, or quiz title is missing");
+    }
   };
 
   // Format average score as a percentage
@@ -64,9 +94,9 @@ const TFeedback = () => {
   };
 
   // Render feedback tables for each class
-  const renderFeedbackTable = (feedbacks, title) => (
-    <div className="feedback-table-container">
-      <h2>Feedback for {title}</h2> {/* Updated heading */}
+  const renderFeedbackTable = (feedbacks, class_name) => (
+    <div className="feedback-table-container" key={class_name}>
+      <h2>Feedback for {class_name}</h2>
       <hr />
       {feedbacks.length === 0 ? (
         <p>No feedback available.</p>
@@ -76,8 +106,7 @@ const TFeedback = () => {
             <tr>
               <th>Quiz Name</th>
               <th>Average Grade (%)</th>
-              <th>Close Date</th>{" "}
-              {/* Changed from "Close Date/Time" to "Close Date" */}
+              <th>Close Date</th>
               <th>Feedback</th>
             </tr>
           </thead>
@@ -86,12 +115,13 @@ const TFeedback = () => {
               <tr key={quiz.quiz_id} className="feedback-table-row">
                 <td>{quiz.title}</td>
                 <td>{formatPercentage(quiz.average_score)}%</td>
-                <td>{formatDueDate(quiz.due_date)}</td>{" "}
-                {/* Use formatted date */}
+                <td>{formatDueDate(quiz.due_date)}</td>
                 <td>
                   <button
                     className="feedback-details-button"
-                    onClick={handleDetailsClick}
+                    onClick={() =>
+                      handleDetailsClick(class_name, quiz.quiz_id, quiz.title)
+                    }
                   >
                     Details
                   </button>
@@ -104,37 +134,29 @@ const TFeedback = () => {
     </div>
   );
 
-  if (loading) {
-    return (
-      <div className="loading-overlay">
-        <div className="loading-spinner"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
+  // Render the component
   return (
     <div className="teacher-feedback-container">
       <StudentHeader />
       <div className="teacher-feedback-content">
         <TeacherSNav />
         <div className="teacher-feedback-main-content">
-          {Object.keys(feedbackData).length > 0 ? (
+          {loading ? (
+            // Show loading spinner while data is being fetched
+            <div className="loading-overlay">
+              <div className="loading-spinner"></div>
+            </div>
+          ) : error ? (
+            // Show error message if there is an error
+            <p>Error: {error}</p>
+          ) : // Render feedback tables if data is successfully fetched
+          Object.keys(feedbackData).length > 0 ? (
             Object.entries(feedbackData).map(
               ([className, quizzes]) => renderFeedbackTable(quizzes, className) // Pass className as the title
             )
           ) : (
             <p>No feedback available.</p>
           )}
-          <button
-            className="feedback-create-button"
-            onClick={handleDetailsClick}
-          >
-            Create Feedback
-          </button>
         </div>
       </div>
     </div>

@@ -1,16 +1,15 @@
-/* src/components/pagestyle/TActiveTasks.css */
-
 /* General Container */
 .teacherquiz-container {
   display: flex;
   flex-direction: column;
   background-color: white;
-  height: 100vh;
-  overflow: hidden; /* Prevent scrolling when the overlay is shown */
+  min-height: 100vh; /* Allow flexibility */
+  overflow: auto; /* Allow scrolling when content overflows */
 }
 
 /* Content Wrapper */
 .TQcontent-wrapper {
+  
   display: flex;
   flex-direction: row;
   height: 100%;

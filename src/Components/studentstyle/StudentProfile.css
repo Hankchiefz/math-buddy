@@ -1,5 +1,3 @@
-/* src/components/studentPages/StudentProfile.css */
-
 /* Container styling */
 .student-profile-page {
     display: flex;
@@ -8,7 +6,7 @@
     height: 100vh;
 }
 
-/* Styling for the sidebar and main content */
+/* Sidebar and main content layout */
 .Side-navbar {
     display: flex;
     flex-direction: row;
@@ -16,27 +14,13 @@
 }
 
 /* Main content styling */
-.main-content {
+.main-contentSP {
     flex: 1;
     margin-left: 1rem;
-    margin-top: -3rem;
-    padding: 2rem; /* Adjust as needed */
+    padding: 2rem;
 }
 
-/* Styling for the outer container */
-.spp-outer {
-    display: flex;
-    flex-direction: column; /* Stack h2 elements vertically */
-    align-items: flex-start; /* Align items to the left */
-    background-color: #71A2FF; /* Background color */
-    color: white; /* Text color */
-    padding: 10px; /* Adjust padding as needed */
-    border: 1px solid #71A2FF; /* Border color */
-    border-radius: 8px; /* Rounded corners */
-    width: 100%; /* Adjust width to content */
-}
-
-/* Styling for the profile section */
+/* Profile section */
 .s-profile {
     width: 100%;
     padding-top: 5rem;
@@ -46,18 +30,22 @@
 .spp-header-bar {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Space below the header bar */
-}
-
-.spp-header-bar th {
-    text-align: left;
-    border: none; /* Remove borders between th elements */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Space between title and buttons */
+    align-items: center; /* Vertically center the content */
     padding: 10px;
     background-color: #E8F1FF;
 }
 
-.spp-header-bar td {
-    padding: 10px;
+.profile-title {
+    text-align: left;
+    flex: 1; /* Make title take available space */
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .spp-edit-button {
@@ -68,9 +56,29 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 80rem;
 }
 
 .spp-edit-button:hover {
+    background-color: #5a8dda;
+}
+
+
+.spp-save-button,
+.spp-cancel-button {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background-color: #71A2FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.spp-save-button:hover,
+.spp-cancel-button:hover {
     background-color: #5a8dda;
 }
 
@@ -92,42 +100,8 @@
 }
 
 /* Personal info table styling */
-.spp-Personal-info {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #71A2FF;
-    border-radius: 10px;
-}
-
-.spp-Personal-info th, .spp-Personal-info td {
-    border: 1px solid #71A2FF;
-    padding: 10px;
-}
-
-.spp-Personal-info th {
-    background-color: #E8F1FF;
-    border: none; /* Remove borders between th elements */
-}
-
-/* Contact details table styling */
-.spp-contact-details {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #71A2FF;
-    border-radius: 10px;
-}
-
-.spp-contact-details th, .spp-contact-details td {
-    border: 1px solid #71A2FF;
-    padding: 10px;
-}
-
-.spp-contact-details th {
-    background-color: #E8F1FF;
-    border: none; /* Remove borders between th elements */
-}
-
-/* Guardian details table styling */
+.spp-Personal-info,
+.spp-contact-details,
 .spp-guardian-details {
     border-collapse: collapse;
     width: 100%;
@@ -135,18 +109,17 @@
     border-radius: 10px;
 }
 
-.spp-guardian-details th, .spp-guardian-details td {
-    border: 1px solid #71A2FF;
-    padding: 10px;
-}
-
+.spp-Personal-info th,
+.spp-contact-details th,
 .spp-guardian-details th {
     background-color: #E8F1FF;
-    border: none; /* Remove borders between th elements */
+    padding: 10px;
+    border: none; /* Remove border */
 }
 
-/* Styling for h2 elements */
-.spp-txt {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+.spp-Personal-info td,
+.spp-contact-details td,
+.spp-guardian-details td {
+    padding: 10px;
+    border: 1px solid #71A2FF;
 }

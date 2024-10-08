@@ -1,0 +1,18 @@
+.chart-container {
+    width: 50%; /* or any percentage, px, rem */
+    height: 10px; /* Set the height to control vertical size */
+    margin-top: -40rem;
+    margin-left: 20rem;
+  }
+
+  .chart-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust spacing between the charts */
+  }
+  
+  .chart {
+    width: 50%; /* Each chart will take 50% of the container's width */
+    height: 400px; /* Set the height for the charts */
+  }
+  

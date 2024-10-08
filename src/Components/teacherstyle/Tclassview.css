@@ -1,98 +1,122 @@
-/* src/Components/teacherstyle/Tclassview.css */
-
 /* General Container */
 .tclassview-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-color: white;
 }
 
 /* Content Wrapper */
-.content-wrapper {
+.tclassview-content-wrapper {
+  font-family: 'itim', cursive;
   display: flex;
-  flex-direction: column; /* Adjusted to match TActiveTasks if needed */
+  flex-direction: row;
   flex: 1;
 }
 
 /* Main Content Area */
-.main-content {
-  flex: 1;
+.tclassview-main-content {
+  width: 90%; /* Use percentage for responsive width */
+  height: 85vh;
+  margin: 0 auto;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-  margin-left: 1rem; /* Space for sidebar if applicable */
-  margin-top: 1.5rem; /* Space for header if applicable */
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-y: auto; /* Allow scrolling */
 }
 
-/* Table Container */
-.table-container {
+/* Collapsible Box Styles */
+.tclassview-collapsible-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
   margin-bottom: 20px;
+  width: 100%; /* Adjust the width as needed */
+  max-width: 100%; /* Ensures the box doesn't exceed the container */
+  height: auto; /* Let the height adjust based on content */
 }
 
-/* Table Header and Rows */
-.student-table {
+.tclassview-collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  background-color: #E8F1FF;
+}
+
+.tclassview-collapsible-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.tclassview-collapsible-icon {
+  font-size: 1.5rem;
+}
+
+.tclassview-collapsible-content {
+  padding: 15px;
+}
+
+/* Table Styles */
+.tclassview-student-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.student-table th,
-.student-table td {
+.tclassview-student-table th,
+.tclassview-student-table td {
   border: 1px solid #ddd;
-  padding: 12px; /* Increased padding for consistency */
+  padding: 12px;
   text-align: left;
 }
 
-.student-table th {
+.tclassview-student-table th {
   background-color: #f2f2f2;
   font-weight: bold;
 }
 
-.student-table tr:nth-child(even) {
+.tclassview-student-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-.student-table tr:hover {
-  background-color: #f1f1f1; /* Added hover effect for consistency */
+.tclassview-student-table tr:hover {
+  background-color: #f1f1f1;
 }
 
-/* Button Styles */
-.overview-button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
+/* Button Container (Sticky to Bottom Right) */
+.tclassview-button-container {
+  
+  position: sticky;
+  align-self: flex-end;
+  bottom: 20px; /* Makes it stick to the bottom */
+  display: flex;
+  margin-top: auto;
 }
 
-.overview-button:hover {
-  background-color: #45a049;
-}
-
-.action-button {
+/* Action Buttons */
+.tclassview-action-button {
+  font-family: 'itim', cursive;
   background-color: #008CBA;
   border: none;
   color: white;
   padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
   margin-left: 10px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
 }
 
-.action-button:hover {
+.tclassview-action-button:first-child {
+  margin-left: 0;
+}
+
+.tclassview-action-button:hover {
   background-color: #007B9A;
 }
 
 /* Modal and Overlay */
-.modal-overlay {
+.tclassview-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -104,18 +128,14 @@
   align-items: center;
 }
 
-.modal {
+.tclassview-modal {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
   width: 300px;
 }
 
-.modal h3 {
-  margin-top: 0;
-}
-
-.modal input {
+.tclassview-modal input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -123,12 +143,12 @@
   border-radius: 4px;
 }
 
-.modal-buttons {
+.tclassview-modal-buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-.modal-buttons button {
+.tclassview-modal-buttons button {
   margin-left: 10px;
   padding: 8px 16px;
   border: none;
@@ -136,12 +156,12 @@
   cursor: pointer;
 }
 
-.modal-buttons button[type="submit"] {
+.tclassview-modal-buttons button[type="submit"] {
   background-color: #4CAF50;
   color: white;
 }
 
-.modal-buttons button[type="button"] {
+.tclassview-modal-buttons button[type="button"] {
   background-color: #f44336;
   color: white;
 }

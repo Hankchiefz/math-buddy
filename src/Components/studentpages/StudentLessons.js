@@ -2,7 +2,6 @@
 import React from "react";
 import "../studentstyle/StudentLessons.css";
 import LessonCollapsibleBox from "../objects/LessonCollapsibleBox";
-import TaskBox from "../objects/TaskBox";
 import StudentHeader from "../objects/StudentHeader";
 import StudentSNav from "../objects/StudentSNav";
 
