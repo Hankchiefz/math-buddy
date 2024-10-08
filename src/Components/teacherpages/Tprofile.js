@@ -114,14 +114,7 @@ const TeacherProfile = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Class:</td>
-                                                <td>{editMode ? (
-                                                    <input type="text" name="class" value={updatedProfileData.class || ''} onChange={handleInputChange} />
-                                                ) : (
-                                                    profileData.class
-                                                )}</td>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td>DOB:</td>
                                                 <td>{editMode ? (
