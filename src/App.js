@@ -75,8 +75,8 @@ function App() {
     "/parentfeedback",
     "/tclassview",
     "/TQuizView",
-    "/TQuizEdit",,
-    "/parentquiz"
+    "/TQuizEdit",
+    "/parentquiz",
     "/year1lessons",
     "/year2lessons",
     "/year3lessons",
@@ -129,11 +129,11 @@ function App() {
         <Route path="/TQuizView" element={<TQuizView />} />
         <Route path="/TQuizEdit" element={<TQuizEdit />} />
         <Route path="/year1lessons" element={<Year1Lessons />} />
-          <Route path="/year2lessons" element={<Year2Lessons />} />
-          <Route path="/year3lessons" element={<Year3Lessons />} />
-          <Route path="/year4lessons" element={<Year4Lessons />} />
-          <Route path="/year5lessons" element={<Year5Lessons />} />
-          <Route path="/year6lessons" element={<Year6Lessons />} />
+        <Route path="/year2lessons" element={<Year2Lessons />} />
+        <Route path="/year3lessons" element={<Year3Lessons />} />
+        <Route path="/year4lessons" element={<Year4Lessons />} />
+        <Route path="/year5lessons" element={<Year5Lessons />} />
+        <Route path="/year6lessons" element={<Year6Lessons />} />
       </Routes>
     </>
   );
