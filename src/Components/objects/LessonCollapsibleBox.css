@@ -40,6 +40,7 @@
     background-color: white;
     border-top: 2px solid #4a86e8;
     border-radius: 5px;
+    overflow: auto;
   }
   
   .lesson-section {
@@ -79,22 +80,26 @@
   }
   
   .lesson-action-button {
-    width: 100%;
-    padding: 10px;
-    font-size: medium;
+    display: block; /* Ensure the entire button area is clickable */
+    padding: 10px 20px;
+    font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
-    border: 3px solid #71A2FF;
+    color: #71A2FF;
     background-color: white;
-    color: #71A2FF; /* Button text color */
+    border: 2px solid #71A2FF;
     border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    width: 100%; /* Ensure it takes up the full width of its container */
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .lesson-action-button:hover {
     background-color: #71A2FF;
-    color: white; /* Invert colors on hover for a clearer effect */
+    color: white;
   }
+  
   
   .lesson-game-link a {
     text-decoration: none;

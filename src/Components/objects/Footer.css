@@ -1,0 +1,39 @@
+/* src/Footer.css */
+
+.footer {
+  background-color: #f0f4ff;
+  padding: 2px 20px; /* Reduce padding to make the footer thinner */
+  text-align: center;
+  border-top: 2px solid #71A2FF;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between; /* Space between text and logos */
+  align-items: center; /* Vertically center the content */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-text {
+  font-size: 0.4rem;
+  color: #333;
+  line-height: 1.2; /* Reduce line-height to make text more compact */
+}
+
+.footer-logos {
+  display: flex;
+  gap: 10px; /* Add some space between the logos */
+}
+
+.footer-logo {
+  max-height: 15px; /* Adjust the logo height to be smaller */
+  height: auto; /* Maintain the aspect ratio */
+  width: auto;  /* Ensure logos are not stretched horizontally */
+}
