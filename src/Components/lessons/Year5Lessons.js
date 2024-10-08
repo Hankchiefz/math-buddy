@@ -19,7 +19,7 @@ const Year5Lessons = () => {
                 title="Addition"
                 introduction="In Year 5, addition becomes even more important as we tackle larger numbers, including those with decimals! You’ll learn how to add numbers with up to two decimal places, which is super useful for dealing with money, measurements, and fractions. We’ll also practice adding in columns and refining our mental math strategies to work quickly and accurately. Understanding addition will help us solve multi-step problems and prepare for even more advanced math concepts."
                 quizData={{
-                    quizId: 1,
+                    quizId: 1031,
                     status: 'incomplete',
                     title: 'Addition Quiz',
                     dueDate: '2024-12-01',
@@ -35,7 +35,7 @@ const Year5Lessons = () => {
                 title="Subtraction"
                 introduction="In Year 5, subtraction challenges us with larger numbers and decimals! You’ll learn to subtract numbers with up to two decimal places, which is great for dealing with money and measurements. We will also solve multi-step problems that combine subtraction with other operations. You’ll develop efficient strategies for both written and mental subtraction, helping you to think quickly and accurately. Subtraction is an essential tool for solving complex math problems and understanding how numbers relate to each other."
                 quizData={{
-                    quizId: 1,
+                    quizId: 1033,
                     status: 'incomplete',
                     title: 'Subtraction Quiz',
                     dueDate: '2024-12-01',
@@ -51,7 +51,7 @@ const Year5Lessons = () => {
                 title="Multiplication"
                 introduction="In Year 5, multiplication takes us even further! You’ll learn to multiply numbers with up to four digits, including those with decimals, and understand how to use these skills in real-world situations, like finding the area of rectangles or working out large totals. We’ll also explore more efficient methods, such as the grid method or long multiplication, to handle bigger calculations. Multiplication will help you solve multi-step problems and build a solid foundation for more advanced math."
                 quizData={{
-                    quizId: 1,
+                    quizId: 1035,
                     status: 'incomplete',
                     title: 'Multiplication Quiz',
                     dueDate: '2024-12-01',
@@ -67,7 +67,7 @@ const Year5Lessons = () => {
                 title="Division"
                 introduction="In Year 5, division becomes more complex as we learn to divide numbers with up to four digits and include decimals. You’ll practice long division, where we divide numbers step-by-step, and handle larger numbers or those that don’t divide evenly. We’ll also explore division in real-life contexts, such as dividing distances, money, or quantities. Understanding division helps us solve multi-step problems and prepare for more advanced math."
                 quizData={{
-                    quizId: 1,
+                    quizId: 1036,
                     status: 'incomplete',
                     title: 'Fractions Quiz',
                     dueDate: '2024-12-01',

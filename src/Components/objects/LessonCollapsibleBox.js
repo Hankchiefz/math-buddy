@@ -1,10 +1,17 @@
 // src/components/LessonCollapsibleBox.js
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './LessonCollapsibleBox.css'; // Import the corresponding CSS file
 import Quizbox from './QuizBox'; // Import the Quizbox component
 
 const LessonCollapsibleBox = ({ title, introduction, quizData, video, gameLink }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+    const handleOpenQuiz = () => {
+        navigate('/studentquizi', { state: { quizId: quizData.quizId } });
+    };
 
   const toggleBox = () => {
     setIsOpen(!isOpen);
@@ -29,7 +36,7 @@ const LessonCollapsibleBox = ({ title, introduction, quizData, video, gameLink }
               dueDate={quizData.dueDate}
               timeLimit={quizData.timeLimit}
               marks={quizData.marks}
-              onOpenQuiz={quizData.onOpenQuiz}
+              onOpenQuiz={handleOpenQuiz}
             />
           </div>
           <div className="lesson-section lesson-video">
