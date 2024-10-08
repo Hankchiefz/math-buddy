@@ -9,9 +9,7 @@ import StudentSNav from "../objects/StudentSNav";
 const Year3Lessons = () => {
     return (
         <div className="student-lessons-container">
-            <StudentHeader/>
             <div className="SLcontent-wrapper">
-                <StudentSNav/>
                 <div className="SLmain-content">
                 <h1 className="lessons-title">Lessons</h1>
                 <h2 className="lessons-sub-title">Monthly pre generated lessons for you to use however you want!</h2>
