@@ -229,21 +229,6 @@ const StudentProfile = () => {
                         )}
                       </td>
                     </tr>
-                    <tr>
-                      <td>Pronouns:</td>
-                      <td>
-                        {editMode ? (
-                          <input
-                            type="text"
-                            name="pronouns"
-                            value={updatedProfileData.pronouns || ""}
-                            onChange={handleInputChange}
-                          />
-                        ) : (
-                          profileData.pronouns
-                        )}
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
