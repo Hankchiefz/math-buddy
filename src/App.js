@@ -135,7 +135,7 @@ function App() {
         <Route path="/year5lessons" element={<Year5Lessons />} />
         <Route path="/year6lessons" element={<Year6Lessons />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
