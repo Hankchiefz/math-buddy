@@ -28,21 +28,21 @@ const TeacherSNav = () => {
 
       <Link to="/TActiveTasks" className="teacher-nav-link">
         <div className="teacher-nav-item">
-          <img src="/images/home/quizzes-icon.png" alt="Quizzes Icon" className="teacher-nav-icon" />
+          <img src="/images/home/quizzes-orange.png" alt="Quizzes Icon" className="teacher-nav-icon" />
           <span className="teacher-nav-quizzes-text">Quizzes</span>
         </div>
       </Link>
 
       <Link to="/teacherlessons" className="teacher-nav-link">
         <div className="teacher-nav-item">
-          <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="teacher-nav-icon" />
+          <img src="/images/home/lessons-purple.png" alt="Lessons Icon" className="teacher-nav-icon" />
           <span className="teacher-nav-lessons-text">Lessons</span>
         </div>
       </Link>
 
       <Link to="/tfeedback" className="teacher-nav-link">
         <div className="teacher-nav-item">
-          <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="teacher-nav-icon" />
+          <img src="/images/home/feedback-green.png" alt="Feedback Icon" className="teacher-nav-icon" />
           <span className="teacher-nav-feedback-text">Feedback</span>
         </div>
       </Link>
