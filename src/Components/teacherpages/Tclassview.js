@@ -134,7 +134,6 @@ const Tclassview = () => {
                             <th>Student Name</th>
                             <th>Student Email</th>
                             <th>Average Mark</th>
-                            <th>Student Overview</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -143,16 +142,6 @@ const Tclassview = () => {
                               <td>{student.student_name}</td>
                               <td>{student.email}</td>
                               <td>{student.average_mark}</td>
-                              <td>
-                                <button
-                                  onClick={() =>
-                                    handleStudentOverview(student.student_id)
-                                  }
-                                  className="tclassview-overview-button"
-                                >
-                                  Click here!
-                                </button>
-                              </td>
                             </tr>
                           ))}
                         </tbody>
