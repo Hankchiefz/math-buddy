@@ -1,0 +1,67 @@
+.student-help-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+/* Main content styling */
+.student-help-content {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    margin: 0 auto; /* Centers content horizontally */
+}
+
+/* Header styling */
+.student-help-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.student-help-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Text and body content styling */
+.student-help-text {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.student-help-subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.student-help-section {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #71A2FF;
+}
+
+.student-help-list {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.student-help-conclusion {
+    font-size: 1rem;
+    margin-top: 30px;
+    text-align: center;
+    color: #333;
+}

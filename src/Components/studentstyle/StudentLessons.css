@@ -1,32 +1,43 @@
-.student-lessons-container{
+.student-lessons-container {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: inherit; /* Remove the specific white background */
   height: 100vh;
   font-family: 'Itim', sans-serif; /* Apply the Itim font globally */
 }
 
-
-.SLcontent-wrapper{
+.SLcontent-wrapper {
   display: flex;
   flex-direction: row;
 }
 
-.SLmain-content{
+.SLmain-content {
   flex: 1;
   padding: 20px;
   margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
   margin-top: 1.5rem; /* Adjust this value to provide space for the header */
 }
 
-.lessons-title{
- 
+.lessons-title-container {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 0; /* Remove any padding */
+}
+
+.lessons-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: relative;
   font-family: 'itim', cursive;
-  
 }
 
-.lessons-sub-title{
-
-  font-family: 'itim';
+.lessons-title::after {
+  content: "";
+  position: absolute; /* Use absolute positioning */
+  top: 100%; /* Position the line just below the text */
+  left: 0; /* Align the line with the left edge of the parent */
+  width: 100%; /* Make the line span the full width of the parent */
+  height: 2px;
+  background-color: #E8F1FF; /* Line color */
+  margin-top: 10px; /* Add space between the text and the line */
 }
-

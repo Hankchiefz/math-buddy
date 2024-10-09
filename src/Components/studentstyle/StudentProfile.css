@@ -18,6 +18,7 @@
     flex: 1;
     margin-left: 1rem;
     padding: 2rem;
+    margin-top: -5rem;
 }
 
 /* Profile section */
@@ -46,28 +47,13 @@
 .profile-actions {
     display: flex;
     justify-content: flex-end;
+    margin-left: 75rem;
+    gap: 10px; /* Add spacing between buttons */
 }
 
-.spp-edit-button {
-    padding: 10px 20px;
-    background-color: #71A2FF;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 80rem;
-}
-
-.spp-edit-button:hover {
-    background-color: #5a8dda;
-}
-
-
+.spp-edit-button,
 .spp-save-button,
 .spp-cancel-button {
-    display: flex;
-    flex-direction: column;
     padding: 10px 20px;
     background-color: #71A2FF;
     border: none;
@@ -77,29 +63,30 @@
     transition: background-color 0.3s ease;
 }
 
+.spp-edit-button:hover,
 .spp-save-button:hover,
 .spp-cancel-button:hover {
     background-color: #5a8dda;
 }
 
-/* Table container styling */
+/* Tables container */
 .spp-tables-container {
-    display: flex; /* Use flexbox to align tables horizontally */
-    width: 100%; /* Set width to 100% of parent */
-    gap: 20px; /* Space between tables */
+    display: flex; 
+    width: 100%; 
+    gap: 20px; 
 }
 
+/* Table container section */
 .spp-table-con {
     flex: 1;
 }
 
-/* Full-width table container for guardian details */
 .spp-table-con-full {
     width: 100%;
-    margin-top: 20px; /* Add space between the top tables and the bottom table */
+    margin-top: 20px; 
 }
 
-/* Personal info table styling */
+/* Tables styling */
 .spp-Personal-info,
 .spp-contact-details,
 .spp-guardian-details {
