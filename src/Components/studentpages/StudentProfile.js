@@ -40,24 +40,6 @@ const StudentProfile = () => {
       console.error("No access token found");
       setLoading(false); // Stop loading if no token
     }
-
-    // Update recently accessed
-    const newItem = { page: "/studentprofile", label: "Profile" };
-    try {
-      const storedRecentlyAccessed = JSON.parse(
-        localStorage.getItem("recentlyAccessed") || "[]"
-      );
-      const updatedItems = [
-        newItem,
-        ...storedRecentlyAccessed.filter(
-          (item) => item.page !== newItem.page || item.label !== newItem.label
-        ),
-      ].slice(0, 5);
-      localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
-      console.log("Saved recently accessed items:", updatedItems);
-    } catch (error) {
-      console.error("Error saving recently accessed items:", error);
-    }
   }, []);
 
   const handleInputChange = (e) => {
@@ -134,24 +116,38 @@ const StudentProfile = () => {
         <StudentSNav />
         <div className="main-contentSP">
           <div className="s-profile">
-         <table className="spp-header-bar">
-  <thead>
-    <tr>
-      <th className="profile-title">Your profile</th>
-      <th className="profile-actions">
-        {editMode ? (
-          <>
-            <button className="spp-save-button" onClick={handleSave}>Save</button>
-            <button className="spp-cancel-button" onClick={toggleEditMode}>Cancel</button>
-          </>
-        ) : (
-          <button className="spp-edit-button" onClick={toggleEditMode}>Edit</button>
-        )}
-      </th>
-    </tr>
-  </thead>
-</table>
-
+            <table className="spp-header-bar">
+              <thead>
+                <tr>
+                  <th className="profile-title">Your profile</th>
+                  <th className="profile-actions">
+                    {editMode ? (
+                      <>
+                        <button
+                          className="spp-save-button"
+                          onClick={handleSave}
+                        >
+                          Save
+                        </button>
+                        <button
+                          className="spp-cancel-button"
+                          onClick={toggleEditMode}
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="spp-edit-button"
+                        onClick={toggleEditMode}
+                      >
+                        Edit
+                      </button>
+                    )}
+                  </th>
+                </tr>
+              </thead>
+            </table>
 
             {/* Profile information tables */}
             <div className="spp-tables-container">
@@ -171,12 +167,12 @@ const StudentProfile = () => {
                         {editMode ? (
                           <input
                             type="text"
-                            name="class"
-                            value={updatedProfileData.class || ""}
+                            name="class_name"
+                            value={updatedProfileData.class_name || ""}
                             onChange={handleInputChange}
                           />
                         ) : (
-                          profileData.class
+                          profileData.class_name
                         )}
                       </td>
                     </tr>
@@ -187,15 +183,21 @@ const StudentProfile = () => {
                           <input
                             type="date"
                             name="date_of_birth"
-                            value={new Date(updatedProfileData.date_of_birth)
-                              .toISOString()
-                              .substr(0, 10)}
+                            value={
+                              updatedProfileData.date_of_birth
+                                ? new Date(updatedProfileData.date_of_birth)
+                                    .toISOString()
+                                    .substr(0, 10)
+                                : ""
+                            }
                             onChange={handleInputChange}
                           />
-                        ) : (
+                        ) : profileData.date_of_birth ? (
                           new Date(
                             profileData.date_of_birth
                           ).toLocaleDateString()
+                        ) : (
+                          "N/A"
                         )}
                       </td>
                     </tr>
@@ -210,7 +212,7 @@ const StudentProfile = () => {
                             onChange={handleInputChange}
                           />
                         ) : (
-                          profileData.gender
+                          profileData.gender || "N/A"
                         )}
                       </td>
                     </tr>
@@ -230,17 +232,19 @@ const StudentProfile = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td>Pronouns:</td>
+                      <td>Preferred First Name:</td>
                       <td>
                         {editMode ? (
                           <input
                             type="text"
-                            name="pronouns"
-                            value={updatedProfileData.pronouns || ""}
+                            name="preferred_first_name"
+                            value={
+                              updatedProfileData.preferred_first_name || ""
+                            }
                             onChange={handleInputChange}
                           />
                         ) : (
-                          profileData.pronouns
+                          profileData.preferred_first_name || "N/A"
                         )}
                       </td>
                     </tr>
@@ -282,7 +286,11 @@ const StudentProfile = () => {
                             onChange={handleInputChange}
                           />
                         ) : (
-                          `${profileData.address}, ${profileData.city}, ${profileData.state}, ${profileData.postal_code}`
+                          `${profileData.address || "N/A"}, ${
+                            profileData.city || "N/A"
+                          }, ${profileData.state || "N/A"}, ${
+                            profileData.postal_code || "N/A"
+                          }`
                         )}
                       </td>
                     </tr>
@@ -304,66 +312,6 @@ const StudentProfile = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
-
-            <div className="spp-table-con-full">
-        {/*
-              <table className="spp-guardian-details">
-                <thead>
-                  <tr>
-                    <th>Parent/Guardian Details</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Name:</td>
-                    <td>
-                      {editMode ? (
-                        <input
-                          type="text"
-                          name="guardian_name"
-                          value={updatedProfileData.guardian_name || ""}
-                          onChange={handleInputChange}
-                        />
-                      ) : (
-                        profileData.guardian_name
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Email:</td>
-                    <td>
-                      {editMode ? (
-                        <input
-                          type="email"
-                          name="guardian_email"
-                          value={updatedProfileData.guardian_email || ""}
-                          onChange={handleInputChange}
-                        />
-                      ) : (
-                        profileData.guardian_email
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Phone:</td>
-                    <td>
-                      {editMode ? (
-                        <input
-                          type="tel"
-                          name="guardian_phone"
-                          value={updatedProfileData.guardian_phone || ""}
-                          onChange={handleInputChange}
-                        />
-                      ) : (
-                        profileData.guardian_phone
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        */}
             </div>
           </div>
         </div>

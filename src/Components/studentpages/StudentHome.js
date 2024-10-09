@@ -3,6 +3,7 @@ import StudentHeader from "../objects/StudentHeader";
 import StudentSNav from "../objects/StudentSNav";
 import RecentlyAccessedBox from "../objects/RecentlyAccessedBox";
 import TaskBox from "../objects/TaskBox";
+import Footer from "../objects/Footer";
 import { useNavigate } from "react-router-dom";
 import "../studentstyle/StudentHome.css";
 

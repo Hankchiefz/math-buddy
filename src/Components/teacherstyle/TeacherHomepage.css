@@ -104,8 +104,8 @@
   width: 19rem;
   height: 6rem;
   padding: 10px 20px;
-  background-color: #fcdaab;
-  border: 2px solid #fac782;
+  background-color: #fdb2b2;
+  border: 2px solid #f77b7b;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -281,8 +281,8 @@
   }
 
   .THClassesButton {
-    background-color: #fcdaab;
-    border: 2px solid #fac782;
+    background-color: #fdb2b2;
+    border: 2px solid #f77b7b;
   }
 
   .THLessonsButton {

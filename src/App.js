@@ -40,6 +40,13 @@ import ParentProgress from "./Components/parentpages/ParentProgressReport.js";
 import ParentQuizComplete from "./Components/parentpages/parentinner/ParentQuizComplete.js";
 import TQuizView from "./Components/teacherinner/TQuizView.js";
 import TQuizEdit from "./Components/teacherinner/TQuizEdit.js";
+import Footer from "./Components/objects/Footer.js";
+import Year1Lessons from "./Components/lessons/Year1Lessons.js";
+import Year2Lessons from "./Components/lessons/Year2Lessons.js";
+import Year3Lessons from "./Components/lessons/Year3Lessons.js";
+import Year4Lessons from "./Components/lessons/Year4Lessons.js";
+import Year5Lessons from "./Components/lessons/Year5Lessons.js";
+import Year6Lessons from "./Components/lessons/Year6Lessons.js";
 
 function App() {
   const location = useLocation();
@@ -68,8 +75,14 @@ function App() {
     "/parentfeedback",
     "/tclassview",
     "/TQuizView",
-    "/TQuizEdit",,
-    "/parentquiz"
+    "/TQuizEdit",
+    "/parentquiz",
+    "/year1lessons",
+    "/year2lessons",
+    "/year3lessons",
+    "/year4lessons",
+    "/year5lessons",
+    "/year6lessons",
   ];
 
   return (
@@ -115,6 +128,12 @@ function App() {
         <Route path="/parentquizcomplete" element={<ParentQuizComplete />} />
         <Route path="/TQuizView" element={<TQuizView />} />
         <Route path="/TQuizEdit" element={<TQuizEdit />} />
+        <Route path="/year1lessons" element={<Year1Lessons />} />
+        <Route path="/year2lessons" element={<Year2Lessons />} />
+        <Route path="/year3lessons" element={<Year3Lessons />} />
+        <Route path="/year4lessons" element={<Year4Lessons />} />
+        <Route path="/year5lessons" element={<Year5Lessons />} />
+        <Route path="/year6lessons" element={<Year6Lessons />} />
       </Routes>
     </>
   );
@@ -124,6 +143,7 @@ function AppWrapper() {
   return (
     <Router>
       <App />
+      <Footer/>
     </Router>
   );
 }
