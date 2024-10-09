@@ -20,21 +20,21 @@ const StudentSNav = () => {
       
       <Link to="/studentLessons" className="student-nav-link">
         <div className="student-nav-item student-classes">
-          <img src="/images/home/lessons-purple.PNG" alt="Lessons Icon" className="student-nav-icon" />
+          <img src="/images/home/lessons-purple.png" alt="Lessons Icon" className="student-nav-icon" />
           <span className="student-nav-lessons-text">Lessons</span>
         </div>
       </Link>
       
       <Link to="/studentquiz" className="student-nav-link">
         <div className="student-nav-item">
-          <img src="/images/home/quizzes-orange.PNG" alt="Quizzes Icon" className="student-nav-icon" />
+          <img src="/images/home/quizzes-orange.png" alt="Quizzes Icon" className="student-nav-icon" />
           <span className="student-nav-quizzes-text">Quizzes</span>
         </div>
       </Link>
       
       <Link to="/studentfeedback" className="student-nav-link">
         <div className="student-nav-item">
-          <img src="/images/home/feedback-green.PNG" alt="Feedback Icon" className="student-nav-icon" />
+          <img src="/images/home/feedback-green.png" alt="Feedback Icon" className="student-nav-icon" />
           <span className="student-nav-feedback-text">Feedback</span>
         </div>
       </Link>
