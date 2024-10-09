@@ -86,7 +86,9 @@ const TeacherProfile = () => {
                 <TeacherSNav /> {/* Side navbar */}
                 <div className="main-contentTP">
                     {loading ? (
-                        <p>Loading profile...</p>
+                        <div className="loading-overlay">
+                            <div className="loading-spinner"></div>
+                        </div>
                     ) : !profileData ? (
                         <p>Error loading profile data.</p>
                     ) : (
@@ -114,7 +116,6 @@ const TeacherProfile = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
                                             <tr>
                                                 <td>DOB:</td>
                                                 <td>{editMode ? (
