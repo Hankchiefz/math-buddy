@@ -6,12 +6,12 @@ import StudentSNav from "../objects/StudentSNav";
 const StudentLessons = () => {
     const [grade, setGrade] = useState(null);
     const [LessonComponent, setLessonComponent] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchGrade = async () => {
             try {
                 const token = localStorage.getItem("access_token");
-                console.log(token);
                 const response = await fetch("https://mathbuddyapi.com/get_student_grade", {
                     method: "POST",
                     headers: {
@@ -28,6 +28,8 @@ const StudentLessons = () => {
                 }
             } catch (error) {
                 console.error("Error fetching grade:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -37,16 +39,19 @@ const StudentLessons = () => {
     useEffect(() => {
         if (grade) {
             const loadLessonComponent = async () => {
-                const module = await import(`../lessons/Year${grade}Lessons.js`);
-                setLessonComponent(() => module.default);
+                setLoading(true); // Show loading spinner while fetching
+                try {
+                    const module = await import(`../lessons/Year${grade}Lessons.js`);
+                    setLessonComponent(() => module.default);
+                } catch (error) {
+                    console.error("Error loading lesson component:", error);
+                } finally {
+                    setLoading(false); // Hide loading spinner once done
+                }
             };
             loadLessonComponent();
         }
     }, [grade]);
-
-    if (!LessonComponent) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div className="student-lessons-container">
@@ -54,9 +59,19 @@ const StudentLessons = () => {
             <div className="SLcontent-wrapper">
                 <StudentSNav />
                 <div className="SLmain-content">
-                    <Suspense fallback={<div>Loading lesson...</div>}>
-                        <LessonComponent />
-                    </Suspense>
+                    {loading ? (
+                        <div className="loading-overlay">
+                            <div className="loading-spinner"></div>
+                        </div>
+                    ) : (
+                        LessonComponent && (
+                            <div className="lessons-title-container">
+                                <Suspense fallback={<div className="loading-overlay"><div className="loading-spinner"></div></div>}>
+                                    <LessonComponent />
+                                </Suspense>
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
         </div>

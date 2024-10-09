@@ -14,18 +14,19 @@
 .SLmain-content {
   flex: 1;
   padding: 20px;
-  margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-  margin-top: 1.5rem; /* Adjust this value to provide space for the header */
+  margin-left: -0.5rem; 
+  margin-top: -1.5rem; 
 }
 
 .lessons-title-container {
   position: relative;
   margin-bottom: 20px;
-  padding: 0; /* Remove any padding */
+  padding: 0; 
 }
 
 .lessons-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  font-weight: 700;
   font-weight: bold;
   position: relative;
   font-family: 'itim', cursive;
