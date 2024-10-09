@@ -14,7 +14,7 @@ const Footer = () => {
           <img src="/images/home/Mathbuddylogo.png" alt="Mathbuddy logo" className="footer-logo" /> 
           <img src="/images/home/uow_logo.png" alt="UOW logo" className="footer-logo" /> 
           <img src="/images/home/React-logo.png" alt="React logo" className="footer-logo" /> 
-          <img src="/images/home/MySQL-logo.png" alt="MySQL logo" className="footer-logo" /> 
+          <img src="/images/home/mysqllogo.png" alt="MySQL logo" className="footer-logo" /> 
           <img src="/images/home/google_cloud_logo.png" alt="Google Cloud logo" className="footer-logo" /> 
           <img src="/images/home/aws_logo.png" alt="AWS logo" className="footer-logo" /> 
         </div>
