@@ -1,55 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from "react";
 import StudentHeader from '../objects/StudentHeader';
 import TeacherSNav from '../objects/TeacherSNav';
 import '../teacherstyle/TeacherLessons.css';
 
 const TeacherLessons = () => {
+    const [grade, setGrade] = useState(null);
+    const [LessonComponent, setLessonComponent] = useState(null);
 
-  // Save the "Lessons" page to recently accessed
-  useEffect(() => {
-    const newItem = { page: "/teacherlessons", label: "Lessons" };
+    // Fetch and set the appropriate lesson component when 'grade' changes
+    useEffect(() => {
+        if (grade) {
+            const loadLessonComponent = async () => {
+                try {
+                    const module = await import(`../lessons/Year${grade}Lessons.js`);
+                    setLessonComponent(() => module.default);
+                } catch (error) {
+                    console.error(`Error loading Year${grade} lessons:`, error);
+                }
+            };
+            loadLessonComponent();
+        }
+    }, [grade]);
 
-    try {
-      const storedRecentlyAccessed = JSON.parse(
-        localStorage.getItem("recentlyAccessed") || "[]"
-      );
-
-      const updatedItems = [
-        newItem,
-        ...storedRecentlyAccessed.filter(
-          (item) => item.page !== newItem.page || item.label !== newItem.label
-        ),
-      ].slice(0, 5); // Limit stored items to the latest 5
-
-      localStorage.setItem("recentlyAccessed", JSON.stringify(updatedItems));
-      console.log("Saved recently accessed items:", updatedItems);
-    } catch (error) {
-      console.error("Error saving recently accessed items:", error);
-    }
-  }, []); // Run once when component mounts
-
-  return (
-    <div className='teacher-lessons-container'>
-      <StudentHeader/>
-      <div className='TLcontent-wrapper'>
-        <TeacherSNav/>
-        <div className='TLmain-content'>
-          <h1 className='teacher-lessons-title'>Lessons</h1>
-          <p className='teacher-lessons-description'>Each year has their very own pre-generated lessons created for their age group!</p>
-          <p className='teacher-lessons-description'>Click on your chosen year group below to be taken to their pre-generated lessons.</p>
-        
-          <div className="teacher-lessons-button-container">
-            <button className="teacher-lessons-button">Year 1</button>
-            <button className="teacher-lessons-button">Year 2</button>
-            <button className="teacher-lessons-button">Year 3</button>
-            <button className="teacher-lessons-button">Year 4</button>
-            <button className="teacher-lessons-button">Year 5</button>
-            <button className="teacher-lessons-button">Year 6</button>
-          </div>
+    return (
+        <div className="teacher-lessons-container">
+            <StudentHeader />
+            <div className="TLcontent-wrapper">
+                <TeacherSNav />
+                <div className="TLmain-content">
+                    <h1 className="teacher-lessons-title">Lessons</h1>
+                    <p className="teacher-lessons-description">
+                        Each year has their very own pre-generated lessons created for their age group!
+                    </p>
+                    <p className="teacher-lessons-description">
+                        Click on your chosen year group below to load their pre-generated lessons.
+                    </p>
+                    {grade === null ? (
+                        // Display buttons if no grade is selected
+                        <div className="teacher-lessons-button-container">
+                            {[1, 2, 3, 4, 5, 6].map((year) => (
+                                <button
+                                    key={year}
+                                    className="teacher-lessons-button"
+                                    onClick={() => setGrade(year)}
+                                >
+                                    Year {year}
+                                </button>
+                            ))}
+                        </div>
+                    ) : (
+                        // Display the lesson component if a grade is selected
+                        <div className="lesson-content">
+                            <button className="back-button" onClick={() => setGrade(null)}>
+                                Back to Year Selection
+                            </button>
+                            <Suspense fallback={<div>Loading lesson...</div>}>
+                                {LessonComponent && <LessonComponent />}
+                            </Suspense>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default TeacherLessons;
