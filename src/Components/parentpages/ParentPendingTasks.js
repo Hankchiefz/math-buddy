@@ -15,7 +15,7 @@ const ParentPendingTasks = () => {
                 const token = localStorage.getItem("access_token");
 
                 if (!token) {
-                    throw new Error("Access token is missing");
+                    throw new Error("Access  token is missing");
                 }
 
                 // Send the POST request to the API
@@ -47,48 +47,62 @@ const ParentPendingTasks = () => {
         fetchPendingTasks();
     }, []); // Empty dependency array ensures this runs only once on mount
 
-    if (loading) {
-        return <div>Loading...</div>;  // Show loading message while fetching
-    }
-
-    if (error) {
-        return <div>Error fetching tasks: {error}</div>;  // Show error message if any
-    }
-
     return (
         <div className="parent-pending-tasks-container">
             <StudentHeader /> {/* Header at the top */}
             <div className="parent-content-area">
-                <ParentSNav /> {/* Sidebar on the left */}
-                <div className="parent-main-content"> 
-                    <h1 className="parent-tasks-heading">Pending Tasks</h1> {/* The heading */}
-                    <div className="parent-tasks-list">
-                        {tasks.map(task => (
-                            <div className="parent-task-card" key={task.quiz_id}>
-                                <div className="parent-task-content">
-                                    <div className="parent-task-icon"></div>
-                                    <div className="parent-task-details">
-                                        <h2>{task.quiz_title}</h2>
-                                        <p>{task.quiz_description}</p>
+                {/* Wrap ParentSNav in a div with className "parent-nav" */}
+                <div className="parent-nav">
+                    <ParentSNav /> {/* Sidebar on the left */}
+                </div>
+                <div className="parent-main-content">
+                    <h1 className="parent-tasks-heading">Pending Quizzes</h1> {/* The heading */}
+
+                    {/* Loading Spinner Overlay */}
+                    {loading && (
+                        <div className="loading-overlay">
+                            <div className="loading-spinner"></div>
+                        </div>
+                    )}
+
+                    {/* Error Message */}
+                    {error && (
+                        <div className="error-message">Error fetching tasks: {error}</div>
+                    )}
+
+                    {/* Main Content */}
+                    {!loading && !error && (
+                        <div className="parent-tasks-list">
+                            {tasks.length > 0 ? (
+                                tasks.map(task => (
+                                    <div className="parent-task-card" key={task.quiz_id}>
+                                        <div className="parent-task-content">
+                                            <div className="parent-task-icon"></div>
+                                            <div className="parent-task-details">
+                                                <h2>{task.quiz_title}</h2>
+                                                <p>{task.quiz_description}</p>
+                                            </div>
+                                            <div className="parent-task-due-date">
+                                                <p>Due by {new Date(task.quiz_due_date).toLocaleDateString('en-US', {
+                                                    year: 'numeric',
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                })}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="parent-task-due-date">
-                                        <p>Due by {new Date(task.quiz_due_date).toLocaleDateString('en-US', {
-                                            year: 'numeric',
-                                            month: 'long',
-                                            day: 'numeric',
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                        })}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                                ))
+                            ) : (
+                                <p className="no-tasks-message">No pending tasks available.</p>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
     );
 };
 
-// Ensure the component is properly exported as default
 export default ParentPendingTasks;

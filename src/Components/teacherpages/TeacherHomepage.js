@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import StudentHeader from '../objects/StudentHeader'; // Correct header import
+import StudentHeader from '../objects/StudentHeader';
 import TeacherSNav from '../objects/TeacherSNav';
-import RecentlyAccessedBox from '../objects/RecentlyAccessedBox'; // Import Recently Accessed Component
+import RecentlyAccessedBox from '../objects/RecentlyAccessedBox';
 import TaskBox from '../objects/TaskBox';
 import { useNavigate } from 'react-router-dom';
 import '../teacherstyle/TeacherHomepage.css';
 
 const TeacherHome = () => {
   const [fullName, setFullName] = useState('');
-  const [quizzes, setQuizzes] = useState([]); // State to hold the quiz data
-  const [recentlyAccessed, setRecentlyAccessed] = useState([]); // State to hold recently accessed items array
+  const [quizzesByClass, setQuizzesByClass] = useState({});
+  const [recentlyAccessed, setRecentlyAccessed] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the full name from localStorage
     const storedName = localStorage.getItem('full_name');
     if (storedName) {
       setFullName(storedName);
     }
 
-    // Fetch quizzes for the teacher
     const fetchQuizzes = async () => {
       try {
         const token = localStorage.getItem('access_token');
@@ -37,19 +37,21 @@ const TeacherHome = () => {
         }
 
         const data = await response.json();
-        setQuizzes(data); // Store all quizzes data
+        setQuizzesByClass(data);
       } catch (error) {
         console.error('Error fetching quizzes:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchQuizzes();
 
-    // Load recently accessed items from localStorage
     const loadRecentlyAccessed = () => {
       try {
         const storedRecentlyAccessed = JSON.parse(localStorage.getItem('recentlyAccessed') || '[]');
-        setRecentlyAccessed(storedRecentlyAccessed.slice(0, 3)); // Limit to the latest 3
+        setRecentlyAccessed(storedRecentlyAccessed.slice(0, 3));
       } catch (error) {
         console.error("Error loading recently accessed items:", error);
       }
@@ -59,34 +61,27 @@ const TeacherHome = () => {
   }, []);
 
   const handleNavigation = (page, label) => {
-    console.log(`Navigating to: ${page}, ${label}`);
-
-    // Update recently accessed items in an array format
     const newItem = { page, label };
     const updatedItems = [newItem, ...recentlyAccessed.filter(item =>
       item.page !== newItem.page || item.label !== newItem.label
-    )]; // Add the new item and filter out duplicates
+    )];
+    const limitedItems = updatedItems.slice(0, 3);
 
-    const limitedItems = updatedItems.slice(0, 3); // Limit stored items to the latest 3
-
-    // Save the updated array to state and localStorage
     setRecentlyAccessed(limitedItems);
 
     try {
       localStorage.setItem('recentlyAccessed', JSON.stringify(limitedItems));
-      console.log("Saved recently accessed items:", limitedItems);
     } catch (error) {
       console.error("Error saving recently accessed items:", error);
     }
 
-    // Ensure the page corresponds to teacher routes
     switch (page) {
-      case '/teacherclasses': // Teacher classes page
-      case '/teacherlessons': // Teacher lessons page
-      case '/tfeedback': // Teacher feedback page
-      case '/tprofile': // Teacher profile page
-      case '/TActiveTasks': // Active tasks for teacher
-        navigate(page); // Navigate to the correct teacher page
+      case '/teacherclasses':
+      case '/teacherlessons':
+      case '/tfeedback':
+      case '/tprofile':
+      case '/TActiveTasks':
+        navigate(page);
         break;
       default:
         console.error('Invalid navigation path:', page);
@@ -94,23 +89,31 @@ const TeacherHome = () => {
     }
   };
 
-  const handleClassesButton = () => {
-    handleNavigation('/teacherclasses', 'Classes');
+  const handleClassesButton = () => handleNavigation('/teacherclasses', 'Classes');
+  const handleLessonsButton = () => handleNavigation('/teacherlessons', 'Lessons');
+  const handleFeedbackButton = () => handleNavigation('/tfeedback', 'Feedback');
+
+  const filterActiveQuizzes = () => {
+    const activeQuizzes = {};
+    Object.keys(quizzesByClass).forEach((className) => {
+      const quizzes = quizzesByClass[className];
+      if (Array.isArray(quizzes)) {
+        const filteredQuizzes = quizzes.filter((quiz) => quiz.active === 'Active');
+        if (filteredQuizzes.length > 0) {
+          activeQuizzes[className] = filteredQuizzes;
+        }
+      }
+    });
+    return activeQuizzes;
   };
 
-  const handleLessonsButton = () => {
-    handleNavigation('/teacherlessons', 'Lessons');
-  };
-
-  const handleFeedbackButton = () => {
-    handleNavigation('/tfeedback', 'Feedback');
-  };
+  const activeQuizzes = filterActiveQuizzes();
 
   return (
     <div className="teacherhome-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader />
       <div className="THcontent-wrapper">
-        <TeacherSNav /> {/* Side navbar */}
+        <TeacherSNav />
         <div className="THmain-content">
           <div className="THhome-message">
             <div className="THwelcome-message">Welcome {fullName}</div>
@@ -144,22 +147,27 @@ const TeacherHome = () => {
               </button>
             </div>
 
-            {/* Task Box Section */}
             <div className="THTaskbox-Container">
-              {quizzes.length > 0 ? (
-                quizzes.map((quiz) => (
-                  <TaskBox
-                    key={quiz.quiz_id}
-                    title={quiz.title}
-                    task={`Completion: ${quiz.completion_percentage}%`}
-                  />
-                ))
+              <h2 className="THTaskbox-heading"></h2>
+              {error ? (
+                <p>Error: {error}</p>
               ) : (
+                Object.entries(activeQuizzes).map(([className, quizzes]) =>
+                  quizzes.map((quiz, quizIndex) => (
+                    <TaskBox
+                      key={`${className}-${quizIndex}`}
+                      title={`${className}: ${quiz.title}`}
+                      task={`Completion: ${quiz.completion_percentage.toFixed(2)}%`}
+                      onClick={() => navigate('/TQuizView', { state: { quizId: quiz.quiz_id } })}
+                    />
+                  ))
+                )
+              )}
+              {Object.keys(activeQuizzes).length === 0 && !loading && (
                 <p>No active quizzes available.</p>
               )}
             </div>
 
-            {/* Recently Accessed Section */}
             <div className="THrecently-accessed-container">
               <div className="THmessage-recently">Recently Accessed</div>
               {recentlyAccessed.length > 0 ? (
@@ -168,7 +176,7 @@ const TeacherHome = () => {
                     key={index}
                     iconColor="#FFA07A"
                     text={item.label}
-                    onClick={() => handleNavigation(item.page, item.label)} // Use handleNavigation on click
+                    onClick={() => handleNavigation(item.page, item.label)}
                   />
                 ))
               ) : (

@@ -1,129 +1,200 @@
+/* ParentPendingTasks.css */
+
 /* Container for the entire page layout */
 .parent-pending-tasks-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-/* Ensure the header stays at the top */
+/* Top navbar */
 .ParentHeader {
-    width: 100%;
-    background-color: #fff;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 10; /* Ensures the header is always above other elements */
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 /* Flexbox container for side navigation and main content */
 .parent-content-area {
-    display: flex;
-    flex-grow: 1;
-    width: 100%;  /* Take up full width */
-    padding: 20px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  margin-left:-1rem;
+  margin-top: -1rem;
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Style for the side navigation, placed on the left */
+/* Side navbar */
 .parent-nav {
-    width: 200px;
-    margin-right: 20px;  /* Space between the nav and the main content */
+  width: 200px; /* Fixed width for the side navigation */
+  flex-shrink: 0; /* Prevent the nav from shrinking */
 }
 
-/* Main content (where tasks are displayed) */
+/* Main content area */
 .parent-main-content {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    flex-grow: 1;
-    max-width: 800px;
-    width: 100%;
-    margin: 0;
-    border: 2px solid black;
+  flex-grow: 1;
+  padding: 20px;
+  /* Remove margins to prevent shifting */
+  margin-left: -3rem;
+  margin-top: -2rem;
 }
 
-/* Style the heading for Pending Tasks */
+/* Heading */
 .parent-tasks-heading {
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 10px 0;
-    text-align: center;
-    color: #333;
-    border-bottom: 2px solid #ddd;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 1px;
 }
 
-/* Task list container */
+.parent-tasks-heading::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #E8F1FF;
+  margin-top: 10px;
+}
+
+/* Main Container */
 .parent-tasks-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between task cards */
-    padding: 0;
-    margin-top: 20px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Task box container */
+.parent-task-card {
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 /* Individual task card styling */
 .parent-task-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 /* Task content styling */
 .parent-task-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 /* Task icon placeholder */
 .parent-task-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #f0ad4e;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #f0ad4e;
+  border-radius: 50%;
 }
 
 /* Task details styling */
 .parent-task-details h2 {
-    font-size: 1.25rem;
-    margin: 0;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .parent-task-details p {
-    margin: 5px 0 0 0;
-    font-size: 1rem;
-    color: #666;
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+  color: #666;
 }
 
 /* Task due date styling */
 .parent-task-due-date {
-    font-size: 0.9rem;
-    color: #999;
-    text-align: right;
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 5px;
+  
+}
+
+/* Loading spinner overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it overlays above all other content */
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error message styling */
+.error-message {
+  color: #ff4d4d;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Message for no tasks */
+.no-tasks-message {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Responsive layout for smaller screens */
 @media screen and (max-width: 768px) {
-    .parent-task-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .parent-content-area {
+    flex-direction: column;
+  }
 
-    .parent-task-content {
-        gap: 10px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .parent-nav {
+    width: 100%;
+  }
 
-    .parent-task-due-date {
-        text-align: left;
-        margin-top: 10px;
-    }
+  .parent-main-content {
+    margin-top: 20px;
+  }
+
+  .parent-task-card {
+    align-items: flex-start;
+  }
+
+  .parent-task-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .parent-task-due-date {
+    text-align: left;
+    align-self: flex-start;
+    margin-top: 10px;
+  }
 }
