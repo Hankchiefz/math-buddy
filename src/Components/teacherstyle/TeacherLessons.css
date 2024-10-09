@@ -1,33 +1,59 @@
 /* src/components/TeacherLessons.css */
-.teacher-lessons-container{
-display: flex;
-flex-direction: column;
-background-color: white;
-height: 100vh;
-font-family: 'Itim', sans-serif;
+.teacher-lessons-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+  font-family: 'Itim', sans-serif;
 }
 
-.TLcontent-wrapper{
+.TLcontent-wrapper {
   display: flex;
   flex-direction: row;
 }
 
-.TLmain-content{ 
-flex: 1;
-padding: 20px;
-margin-left: 1rem;
-margin-top: 1.5rem;
+.TLmain-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Title styling */
+.teacher-lessons-title-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.teacher-lessons-title {
+  font-size: 2rem;
+  font-weight: 700;
+  font-weight: bold;
+  font-family: 'Itim', cursive;
+  margin: 0;
+  position: relative;
+}
+
+/* Blue line below the title */
+.teacher-lessons-title::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Position the line just below the text */
+  left: 0; /* Align the line with the left edge of the parent */
+  width: 100%; /* Make the line span the full width of the parent */
+  height: 2px;
+  background-color: #E8F1FF; /* Blue line color */
+  margin-top: 10px; /* Add space between the text and the line */
 }
 
 /* Container for the buttons to align them in 3 rows of 2 */
 .teacher-lessons-button-container {
-  font-family: 'itim', cursive;
+  font-family: 'Itim', cursive;
   display: flex;
   flex-wrap: wrap; /* Allows the buttons to wrap into multiple rows */
   justify-content: center; /* Centers the buttons horizontally in each row */
   gap: 20px; /* Space between the buttons */
   margin: 20px auto; /* Center the container and add margin around it */
-  
 }
 
 /* Button styling to match the MathBuddy theme */
@@ -52,5 +78,3 @@ margin-top: 1.5rem;
   background-color: #71A2FF; /* Change background color on hover */
   color: white; /* Invert text color on hover */
 }
-
-

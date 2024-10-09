@@ -7,6 +7,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointEleme
 
 const ChildProgressChart = () => {
   const [quizData, setQuizData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("access_token");
@@ -32,6 +33,9 @@ const ChildProgressChart = () => {
       .catch((error) => {
         console.error("Error fetching quiz data:", error);
         setQuizData([]);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -58,14 +62,14 @@ const ChildProgressChart = () => {
         data: quizData.map((quiz) => (quiz.score !== null ? quiz.score : 0)),
         fill: false,
         borderColor: "rgba(255, 99, 132, 1)",
-        tension: 0.1, // Line smoothness
+        tension: 0.1,
       },
     ],
   };
 
   const chartOptions = {
     responsive: true,
-    maintainAspectRatio: false, // Allow custom sizing
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,
@@ -93,18 +97,24 @@ const ChildProgressChart = () => {
     },
   };
 
+  if (loading) {
+    return (
+      <div className="loading-overlay">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
   if (quizData.length === 0) {
-    return <p>No quiz data available</p>;
+    return <p>No quiz data available.</p>;
   }
 
   return (
     <div className="chart-wrapper">
-      {/* Bar Chart */}
+      {/* Display only one bar chart and one line chart */}
       <div className="chart">
         <Bar data={barChartData} options={chartOptions} />
       </div>
-
-      {/* Line Chart */}
       <div className="chart">
         <Line data={lineChartData} options={chartOptions} />
       </div>

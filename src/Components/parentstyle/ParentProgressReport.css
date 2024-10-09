@@ -1,18 +1,34 @@
-.chart-container {
-    width: 50%; /* or any percentage, px, rem */
-    height: 10px; /* Set the height to control vertical size */
-    margin-top: -40rem;
-    margin-left: 20rem;
-  }
+.chart-wrapper {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-between;
+  gap: 20px; /* Adjust spacing between the charts */
+}
 
-  .chart-wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Adjust spacing between the charts */
-  }
-  
-  .chart {
-    width: 50%; /* Each chart will take 50% of the container's width */
-    height: 400px; /* Set the height for the charts */
-  }
-  
+.chart {
+  width: 50%; /* Each chart will take 50% of the container's width */
+  height: 400px; /* Set the height for the charts */
+}
+
+
+/* Progress Report heading with blue line */
+.progress-title {
+  font-size: 2rem;
+  font-weight: 700;
+  font-weight: bold;
+  font-family: 'Itim', cursive;
+  position: relative;
+  text-align: left; /* Align the text to the left */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.progress-title::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Position the line just below the text */
+  left: 0; /* Align the line with the left edge of the heading */
+  width: 100%; /* Make the line span the full width of the heading */
+  height: 2px;
+  background-color: #E8F1FF; /* Blue line color */
+  margin-top: 10px; /* Space between the title and the line */
+}
