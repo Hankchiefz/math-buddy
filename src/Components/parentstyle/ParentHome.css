@@ -1,7 +1,6 @@
 
 
 .app-container {
-  
   display: flex;
 }
 
@@ -102,7 +101,7 @@ button:hover {
   font-family: 'itim', cursive;
   flex: 1;
   padding: 20px;
-  margin-left: 1rem; 
+  margin-left: 2rem; 
   margin-top: 1.5rem; 
 }
 

@@ -89,7 +89,7 @@ const TeacherHome = () => {
     }
   };
 
-  const handleClassesButton = () => handleNavigation('/teacherclasses', 'Classes');
+  const handleClassesButton = () => handleNavigation('/Tclasses', 'Classes');
   const handleLessonsButton = () => handleNavigation('/teacherlessons', 'Lessons');
   const handleFeedbackButton = () => handleNavigation('/tfeedback', 'Feedback');
 
