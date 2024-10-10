@@ -7,14 +7,14 @@ import Quizbox from "../objects/QuizBox";
 
 const StudentQuiz = () => {
   const [quizzes, setQuizzes] = useState([]); // State to hold quizzes
-  const [loading, setLoading] = useState(false); // State to manage loading overlay
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch pending quizzes once the component mounts
+    // Fetch pending quizzes 
     const fetchPendingQuizzes = async () => {
       try {
-        setLoading(true); // Show loading spinner
+        setLoading(true);
         const token = localStorage.getItem("access_token");
         const response = await fetch(
           "https://mathbuddyapi.com/getStudentPendingQuizzes",
@@ -36,11 +36,11 @@ const StudentQuiz = () => {
       } catch (error) {
         console.error("Error fetching quizzes:", error);
       } finally {
-        setLoading(false); // Hide loading spinner after fetching
+        setLoading(false); 
       }
     };
 
-    // Call the function to fetch quizzes
+    // Call function to fetch quiz
     fetchPendingQuizzes();
 
     // Update recently accessed
@@ -60,11 +60,11 @@ const StudentQuiz = () => {
     } catch (error) {
       console.error("Error saving recently accessed items:", error);
     }
-  }, []); // Empty dependency array ensures this runs only once when the component mounts
+  }, []); 
 
   const handleOpenQuiz = async (quizId) => {
     try {
-      setLoading(true); // Show loading spinner
+      setLoading(true);
       const token = localStorage.getItem("access_token");
       const response = await fetch("https://mathbuddyapi.com/current_quiz", {
         method: "POST",
@@ -83,15 +83,15 @@ const StudentQuiz = () => {
     } catch (error) {
       console.error("Error fetching quiz data:", error);
     } finally {
-      setLoading(false); // Hide loading spinner after navigating
+      setLoading(false); 
     }
   };
 
   return (
     <div className="studentquiz-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader /> 
       <div className="SQcontent-wrapper">
-        <StudentSNav /> {/* Side navbar */}
+        <StudentSNav /> 
         <div className="SQmain-content">
           <h1 className="Quiz-message">Quizzes</h1>
           <div className="SQMain-Container">
@@ -117,7 +117,6 @@ const StudentQuiz = () => {
           </div>
         </div>
       </div>
-      {/* Loading Spinner Overlay */}
       {loading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>

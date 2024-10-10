@@ -4,8 +4,8 @@ import StudentSNav from "../objects/StudentSNav";
 import "../studentstyle/StudentProfile.css";
 
 const StudentProfile = () => {
-  const [profileData, setProfileData] = useState(null); // State to hold profile data
-  const [loading, setLoading] = useState(true); // State to handle loading
+  const [profileData, setProfileData] = useState(null); 
+  const [loading, setLoading] = useState(true); 
   const [editMode, setEditMode] = useState(false); // State to manage edit mode
   const [updatedProfileData, setUpdatedProfileData] = useState({}); // State for editable inputs
 
@@ -19,7 +19,7 @@ const StudentProfile = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
-        body: JSON.stringify({ token }), // Optionally pass the token in the body as well if needed by the API
+        body: JSON.stringify({ token }), 
       })
         .then((response) => {
           if (!response.ok) {
@@ -30,7 +30,7 @@ const StudentProfile = () => {
         .then((data) => {
           setProfileData(data); // Set the profile data from the response
           setUpdatedProfileData(data); // Initialize the editable fields with the fetched data
-          setLoading(false); // Stop loading
+          setLoading(false); 
         })
         .catch((error) => {
           console.error("Error fetching profile data:", error);
@@ -148,11 +148,8 @@ const StudentProfile = () => {
                 </tr>
               </thead>
             </table>
-
-            {/* Profile information tables */}
             <div className="spp-tables-container">
               <div className="spp-table-con">
-                {/* Personal information */}
                 <table className="spp-Personal-info">
                   <thead>
                     <tr>
