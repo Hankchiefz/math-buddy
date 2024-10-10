@@ -186,7 +186,6 @@ const TeacherHome = () => {
           </div>
         </div>
       </div>
-      {/* Loading Spinner Overlay */}
       {loading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>

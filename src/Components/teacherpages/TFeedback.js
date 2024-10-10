@@ -7,8 +7,9 @@ import "../teacherstyle/TFeedback.css";
 const TFeedback = () => {
   const navigate = useNavigate();
 
-  // State to hold feedback data and loading status
+  // State to hold feedback data 
   const [feedbackData, setFeedbackData] = useState({});
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -33,7 +34,7 @@ const TFeedback = () => {
     } catch (error) {
       console.error("Error saving recently accessed items:", error);
     }
-  }, []); // Run once when the component mounts
+  }, []); 
 
   // Fetch feedback data on component mount
   useEffect(() => {
@@ -134,7 +135,6 @@ const TFeedback = () => {
     </div>
   );
 
-  // Render the component
   return (
     <div className="teacher-feedback-container">
       <StudentHeader />
@@ -142,12 +142,10 @@ const TFeedback = () => {
         <TeacherSNav />
         <div className="teacher-feedback-main-content">
           {loading ? (
-            // Show loading spinner while data is being fetched
             <div className="loading-overlay">
               <div className="loading-spinner"></div>
             </div>
           ) : error ? (
-            // Show error message if there is an error
             <p>Error: {error}</p>
           ) : // Render feedback tables if data is successfully fetched
           Object.keys(feedbackData).length > 0 ? (

@@ -6,7 +6,6 @@
   background-color: #f9f9f9;
 }
 
-/* Main content styling */
 .teacher-help-content {
   max-width: 800px;
   width: 100%;
@@ -14,10 +13,9 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   text-align: left;
-  margin: 0 auto; /* Centers content horizontally */
+  margin: 0 auto; 
 }
 
-/* Header styling */
 .teacher-help-header {
   text-align: center;
   margin-bottom: 20px;
@@ -29,7 +27,6 @@
   color: #333;
 }
 
-/* Text and body content styling */
 .teacher-help-text {
   margin-bottom: 20px;
   font-size: 1rem;

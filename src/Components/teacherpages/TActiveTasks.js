@@ -7,11 +7,13 @@ import "../teacherstyle/TActiveTasks.css";
 const TActiveTasks = () => {
   const navigate = useNavigate();
 
+  // State variables for quizzes, loading, error, and submission status
   const [quizzesByClass, setQuizzesByClass] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Fetch quizzes 
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
@@ -44,10 +46,12 @@ const TActiveTasks = () => {
     fetchQuizzes();
   }, []);
 
+  // Navigate to quiz creation page
   const handleCreateClassClick = () => {
     navigate("/tnewquiz");
   };
 
+  // Approve and assign a quiz to a class
   const handleApprove = async (className, quizId) => {
     setIsSubmitting(true);
     try {
@@ -74,10 +78,11 @@ const TActiveTasks = () => {
       console.error("Assignment error:", error);
     } finally {
       setIsSubmitting(false);
-      window.location.reload();
+      window.location.reload(); // Reload the page after assignment
     }
   };
 
+  // Filter quizzes based on their status
   const filterQuizzesByStatus = (status) => {
     const filteredQuizzes = {};
     Object.keys(quizzesByClass).forEach((className) => {
@@ -94,18 +99,21 @@ const TActiveTasks = () => {
     return filteredQuizzes;
   };
 
+  // Categorize quizzes by their status
   const activeQuizzes = filterQuizzesByStatus("Active");
   const notActiveQuizzes = filterQuizzesByStatus("Not Active");
   const completeQuizzes = filterQuizzesByStatus("Complete");
 
+  // Navigate to different pages based on quiz status when clicked
   const handleQuizClick = (quiz) => {
     if (quiz.active === "Active" || quiz.active === "Complete") {
-      navigate("/TQuizView", { state: { quizId: quiz.quiz_id } }); // Send quiz_id in state
+      navigate("/TQuizView", { state: { quizId: quiz.quiz_id } });
     } else {
-      navigate("/TQuizEdit", { state: { quizId: quiz.quiz_id } }); // Send quiz_id in state
+      navigate("/TQuizEdit", { state: { quizId: quiz.quiz_id } });
     }
   };
 
+  // Render the quiz table based on the filtered data
   const renderQuizTable = (quizzes, title) => (
     <div className="TQtable-container">
       <h2>{title}</h2>
@@ -130,7 +138,7 @@ const TActiveTasks = () => {
                 <tr
                   key={`${classIndex}-${quizIndex}`}
                   className="TQtable-row"
-                  onClick={() => handleQuizClick(quiz)} // Handle row click
+                  onClick={() => handleQuizClick(quiz)}
                 >
                   <td>
                     <div className="color"></div>
@@ -151,7 +159,7 @@ const TActiveTasks = () => {
                     <td>
                       <button
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent row click
+                          e.stopPropagation(); 
                           handleApprove(className, quiz.quiz_id);
                         }}
                         className="approve-button"

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
-import { useNavigate, useLocation } from "react-router-dom";
-import LoadingOverlay from "../LoadingOverlay"; // Import the LoadingOverlay
+import LoadingOverlay from "../LoadingOverlay"; 
 import "../teacherstyle/Tclassview.css";
 
 const Tclassview = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [studentEmail, setStudentEmail] = useState("");
   const [classData, setClassData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isOpen, setIsOpen] = useState(true); // To control the collapsible box
+  const [isOpen, setIsOpen] = useState(true);
 
+  // Function to fetch class data based on class ID and token
   const fetchClassData = async () => {
     const token = localStorage.getItem("access_token");
     const classId = location.state?.classId;
@@ -43,31 +45,37 @@ const Tclassview = () => {
     } catch (err) {
       setError(err.message);
     } finally {
-      setIsLoading(false); // Ensure loading state is updated
+      setIsLoading(false);
     }
   };
 
+  // Fetch class data when the component mounts or classId changes
   useEffect(() => {
     fetchClassData();
   }, [location.state?.classId]);
 
+  // Function to handle click on a student's overview
   const handleStudentOverview = (studentId) => {
     console.log("Student Overview clicked for student ID:", studentId);
   };
 
+  // Function to open the modal for adding a student
   const handleAddStudent = () => {
     setIsModalOpen(true);
   };
 
+  // Function to navigate to the quiz creation page
   const handleAddQuiz = () => {
     navigate("/tnewquiz");
   };
 
+  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setStudentEmail("");
   };
 
+  // Function to handle the submission of a new student to the class
   const handleSubmitStudent = async (e) => {
     e.preventDefault();
 
@@ -103,7 +111,6 @@ const Tclassview = () => {
     }
   };
 
-  // Render the header and side nav immediately
   return (
     <div className="tclassview-container">
       <StudentHeader />
@@ -111,7 +118,7 @@ const Tclassview = () => {
         <TeacherSNav />
         <div className="tclassview-main-content">
           {isLoading ? (
-            <LoadingOverlay /> // Show loading overlay for the main content
+            <LoadingOverlay />
           ) : (
             <>
               {error && <div>Error: {error}</div>}

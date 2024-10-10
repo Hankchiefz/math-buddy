@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
-import LoadingOverlay from "../LoadingOverlay"; // Import the LoadingOverlay
+import LoadingOverlay from "../LoadingOverlay";
 import "../teacherstyle/Tclasses.css";
 
 const Tclasses = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState(null); // State to store error messages
-  const [classes, setClasses] = useState([]); // State to store class data
-  const [loading, setLoading] = useState(true); // State to manage loading
+  const [error, setError] = useState(null); 
+  const [classes, setClasses] = useState([]); 
+  const [loading, setLoading] = useState(true); 
 
-  // Fetch the teacher classes upon component mount
+  // Fetch the teacher classes 
   useEffect(() => {
     const fetchTeacherClasses = async () => {
       const token = localStorage.getItem("access_token"); // Retrieve the token
@@ -52,7 +52,7 @@ const Tclasses = () => {
     };
 
     fetchTeacherClasses();
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []); 
 
   // Save the "Classes" page to recently accessed
   useEffect(() => {
@@ -87,8 +87,8 @@ const Tclasses = () => {
 
   return (
     <div className="teacherclasses-container">
-      <StudentHeader /> {/* Top navbar */}
-      {loading && <LoadingOverlay />} {/* Show loading overlay when loading */}
+      <StudentHeader /> 
+      {loading && <LoadingOverlay />} 
       <div className="TCcontent-wrapper">
         <TeacherSNav /> {/* Side navbar */}
         <div className="TCmain-content">

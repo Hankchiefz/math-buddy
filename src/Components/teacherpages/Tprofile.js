@@ -4,10 +4,10 @@ import TeacherSNav from "../objects/TeacherSNav";
 import '../teacherstyle/Tprofile.css';
 
 const TeacherProfile = () => {
-    const [profileData, setProfileData] = useState(null); // State to hold profile data
-    const [loading, setLoading] = useState(true); // State to handle loading
-    const [editMode, setEditMode] = useState(false); // State to manage edit mode
-    const [updatedProfileData, setUpdatedProfileData] = useState({}); // State for editable inputs
+    const [profileData, setProfileData] = useState(null); 
+    const [loading, setLoading] = useState(true); 
+    const [editMode, setEditMode] = useState(false); 
+    const [updatedProfileData, setUpdatedProfileData] = useState({}); 
 
     useEffect(() => {
         const token = localStorage.getItem('access_token');
@@ -81,9 +81,9 @@ const TeacherProfile = () => {
 
     return (
         <div className="teacher-profile-page">
-            <StudentHeader /> {/* Top navbar */}
+            <StudentHeader />
             <div className="Side-navbar">
-                <TeacherSNav /> {/* Side navbar */}
+                <TeacherSNav /> 
                 <div className="main-contentTP">
                     {loading ? (
                         <div className="loading-overlay">
