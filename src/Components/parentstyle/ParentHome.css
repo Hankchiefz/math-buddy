@@ -1,6 +1,7 @@
 
 
 .app-container {
+  
   display: flex;
 }
 
@@ -33,6 +34,7 @@
 }
 
 .main-content {
+  font-family: 'itim', cursive;
   flex-grow: 1;
   padding: 20px;
 }
@@ -42,6 +44,7 @@ h1 {
 }
 
 .profile-section {
+  
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -58,6 +61,7 @@ h1 {
 }
 
 button {
+  font-family: 'itim', cursive;
   display: block;
   margin: 10px 0;
   padding: 10px 20px;
@@ -95,6 +99,7 @@ button:hover {
 }
 
 .PHmain-content {
+  font-family: 'itim', cursive;
   flex: 1;
   padding: 20px;
   margin-left: 1rem; /* Adjust this value to provide space for the sidebar */

@@ -20,7 +20,7 @@ const ParentSNav = () => {
       <Link to="/parentLessons" className="parent-nav-link">
         <div className="parent-nav-item parent-classes">
           <img src="/images/home/pendingtasks-orange.png" alt="Lessons Icon" className="parent-nav-icon" />
-          <span className="parent-nav-pt-text">Pending Tasks</span>
+          <span className="parent-nav-pt-text">Pending Quiz</span>
         </div>
       </Link>
       

@@ -5,16 +5,6 @@
   height: 100vh;
 }
 
-/* Top navbar */
-.ParentHeader {
-  width: 100%;
-  background-color: #fff;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
 
 /* Flexbox container for side navigation and main content */
 .parent-content-area {
@@ -27,11 +17,12 @@
 /* Side navbar */
 .parent-nav {
   width: 200px;
-  flex-shrink: 0; /* Prevent the sidebar from shrinking */
+  flex-shrink: 0; 
 }
 
 /* Main content area */
 .parent-main-content {
+  font-family: 'itim', cursive;
   margin-top: -1rem;
   flex-grow: 1;
   padding: 20px;
