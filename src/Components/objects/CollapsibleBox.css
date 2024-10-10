@@ -1,11 +1,10 @@
-/* CollapsibleBox.css */
 .collapsible-box {
-    border: 2px solid #71A2FF; /* Blue border */
-    width: 80%; /* Span 70% of the page */
+    border: 2px solid #71A2FF; 
+    width: 80%; 
     border-radius: 5px;
     padding: 10px;
-    margin: 20px auto; /* Center the box horizontally */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    margin: 20px auto; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     cursor: pointer;
     transition: all 0.3s ease;
   }

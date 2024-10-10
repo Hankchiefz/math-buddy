@@ -1,4 +1,3 @@
-// ClassesBox.js
 import React from 'react';
 import './ClassBox.css';
 
