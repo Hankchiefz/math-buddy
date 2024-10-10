@@ -1,4 +1,5 @@
 .chart-wrapper {
+  margin-left: 5rem;
   display: flex;
   margin-top: 2rem;
   justify-content: space-between;
