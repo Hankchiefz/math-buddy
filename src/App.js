@@ -48,6 +48,7 @@ import Year4Lessons from "./Components/lessons/Year4Lessons.js";
 import Year5Lessons from "./Components/lessons/Year5Lessons.js";
 import Year6Lessons from "./Components/lessons/Year6Lessons.js";
 import HelpStudent from "./Components/studentinner/helpstudent.js";
+import HelpTeacher from "./Components/teacherinner/helpteacher.js";
 
 function App() {
   const location = useLocation();
@@ -84,7 +85,8 @@ function App() {
     "/year4lessons",
     "/year5lessons",
     "/year6lessons",
-    "/helpstudent"
+    "/helpstudent",
+    "/helpteacher"
   ];
 
   return (
@@ -137,6 +139,7 @@ function App() {
         <Route path="/year5lessons" element={<Year5Lessons />} />
         <Route path="/year6lessons" element={<Year6Lessons />} />
         <Route path="/helpstudent" element={<HelpStudent />} />
+        <Route path="/helpteacher" element={<HelpTeacher />} />
       </Routes>
     </>
   );
