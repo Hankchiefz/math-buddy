@@ -17,6 +17,7 @@
 
 /* Main Content Area */
 .TQmain-content {
+  font-family: 'itim', cursive;
   flex: 1;
   padding: 20px;
   margin-left: 1rem; /* Space for sidebar */

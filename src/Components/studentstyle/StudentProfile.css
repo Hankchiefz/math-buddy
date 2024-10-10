@@ -1,5 +1,6 @@
 /* Container styling */
 .student-profile-page {
+    font-family: 'itim', cursive;
     display: flex;
     flex-direction: column;
     background-color: white;

@@ -36,7 +36,7 @@ export default function StudentHeader() {
 
     if (userType === 'parent') {
         profileLink = '/parentprofile';
-        manualLink = '/parentmanual'; // Adjust if you have a specific manual for parents
+        manualLink = '/helpparent'; // Adjust if you have a specific manual for parents
     } else if (userType === 'teacher') {
         profileLink = '/tprofile'; // Adjust to your teacher profile route
         manualLink = '/helpteacher'; // Adjust if there's a specific manual for teachers
