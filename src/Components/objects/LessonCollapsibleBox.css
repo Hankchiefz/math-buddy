@@ -1,10 +1,9 @@
-/* src/components/LessonCollapsibleBox.css */
 .lesson-collapsible-box {
-    border: 3px solid #bf64fc; /* Blue border */
+    border: 3px solid #bf64fc; 
     border-radius: 5px;
     padding: 10px;
-    margin: 20px auto; /* Center the box horizontally */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 20px auto; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: #d89fff;
@@ -17,17 +16,17 @@
   }
   
   .lesson-collapsible-title {
-    font-size: 1.25rem; /* Similar font size as used in MathBuddy */
+    font-size: 1.25rem; 
     font-weight: bold;
-    color: white; /* Title text color for readability */
+    color: white;
     margin: 0;
-    text-align: center; /* Center the title text */
+    text-align: center; 
   }
   
   .lesson-collapsible-arrow {
     margin-left: auto;
     transition: transform 0.3s ease;
-    color: white; /* Arrow color consistent with title */
+    color: white;
   }
   
   .lesson-collapsible-arrow.open {
@@ -55,12 +54,12 @@
   .lesson-article,
   .lesson-video,
   .lesson-game-link {
-    color: #555; /* Standardized text color for readability */
+    color: #555; 
   }
   
   .lesson-video {
-    display: flex; /* Flexbox to center content */
-    justify-content: center; /* Center the video horizontally */
+    display: flex; 
+    justify-content: center;
     padding: 10px;
     border: 2px solid #71A2FF;
     border-radius: 5px;
@@ -68,9 +67,9 @@
   }
   
   .lesson-video iframe {
-    max-width: 100%; /* Ensures the video scales responsively */
-    width: 560px; /* Set a default width for the video */
-    height: 315px; /* Set a default height for the video */
+    max-width: 100%; 
+    width: 560px; 
+    height: 315px; 
   }
   
   .lesson-button {
@@ -80,7 +79,7 @@
   }
   
   .lesson-action-button {
-    display: block; /* Ensure the entire button area is clickable */
+    display: block; 
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: bold;
@@ -91,7 +90,7 @@
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    width: 100%; /* Ensure it takes up the full width of its container */
+    width: 100%; 
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   

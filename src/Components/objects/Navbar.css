@@ -14,7 +14,7 @@ body {
     align-items: center;
     padding: 0.5rem 1rem;
     height: 70px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .nav-left {
@@ -24,12 +24,12 @@ body {
 }
 
 .site-logo {
-    height: 150px; /* Adjust height as needed */
+    height: 150px; 
     width: auto;
 }
 
 .desc {
-    color: black; /* Set the color to black */
+    color: black; 
     font-size: 1rem;
 }
 
@@ -56,5 +56,5 @@ body {
 }
 
 .nav ul li a:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #0056b3; 
 }

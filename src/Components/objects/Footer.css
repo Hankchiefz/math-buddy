@@ -1,8 +1,6 @@
-/* src/Footer.css */
-
 .footer {
   background-color: #f0f4ff;
-  padding: 2px 20px; /* Reduce padding to make the footer thinner */
+  padding: 2px 20px; 
   text-align: center;
   border-top: 2px solid #71A2FF;
   width: 100%;
@@ -11,8 +9,8 @@
   left: 0;
   z-index: 100;
   display: flex;
-  justify-content: space-between; /* Space between text and logos */
-  align-items: center; /* Vertically center the content */
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 .footer-content {
@@ -24,16 +22,16 @@
 .footer-text {
   font-size: 0.4rem;
   color: #333;
-  line-height: 1.2; /* Reduce line-height to make text more compact */
+  line-height: 1.2; 
 }
 
 .footer-logos {
   display: flex;
-  gap: 10px; /* Add some space between the logos */
+  gap: 10px;
 }
 
 .footer-logo {
-  max-height: 15px; /* Adjust the logo height to be smaller */
-  height: auto; /* Maintain the aspect ratio */
-  width: auto;  /* Ensure logos are not stretched horizontally */
+  max-height: 15px;
+  height: auto;
+  width: auto;  
 }

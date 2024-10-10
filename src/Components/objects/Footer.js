@@ -1,10 +1,5 @@
-// src/components/Footer.js
 import React from 'react';
-import './Footer.css'; // Import the CSS file for the footer
-
-// Import the logo images
-
-
+import './Footer.css'; 
 const Footer = () => {
   return (
     <footer className="footer">
