@@ -1,4 +1,3 @@
-/* src/components/pagestyle/Help.css */
 .help-page {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -37,17 +36,17 @@ width: 100%;
 }
 
 .help-button-link {
-display: block; /* Make the link behave like a block element */
-width: 70%; /* Set the same width as the button */
-text-align: center; /* Center the text inside the link */
-margin: 10px 0; /* Same margin as the button */
+display: block; 
+width: 70%; 
+text-align: center; 
+margin: 10px 0; 
 }
 
 .help-button {
 border: 3px solid #71A2FF;
 background-color: white;
 border-radius: 5px;
-width: 100%; /* Use 100% width inside the link container */
+width: 100%; 
 font-size: medium;
 font-weight: bold;
 padding: 15px;
