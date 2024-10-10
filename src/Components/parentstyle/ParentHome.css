@@ -197,20 +197,28 @@ button:hover {
   margin-top: -7rem;
   margin-left: -2rem;
   margin-bottom: 5rem;
-  background-color: #f5c6ac;
-  border: 1px solid black;
+  width: 19rem;
+height: 6rem;
+padding: 10px 20px;
+  background-color: #fcdaab;
+  border: 2px solid #fac782;
   font-weight: 500;
   font-size: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .second-button{
 position: absolute;
 margin-top: 3rem;
 margin-left: -15rem;
-background-color: #d7ffc5;
-border: 1px solid black;
+width: 19rem;
+height: 6rem;
+padding: 10px 20px;
+background-color: #d89fff;
+border: 1px solid #bf64fc;
 font-weight: 500;
 font-size: 1.5rem;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -218,9 +226,13 @@ font-size: 1.5rem;
 position: absolute;
 margin-top: 13rem;
 margin-left: -35rem;
-background-color: #faffc5;
-border: 1px solid black;
+width: 19rem;
+height: 6rem;
+padding: 10px 20px;
+background-color: #baf8ba;
+border: 2px solid #79fc79;
 font-weight: 500;
 font-size: 1.5rem;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 }

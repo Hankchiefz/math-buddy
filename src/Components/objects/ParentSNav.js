@@ -19,22 +19,22 @@ const ParentSNav = () => {
       
       <Link to="/parentLessons" className="parent-nav-link">
         <div className="parent-nav-item parent-classes">
-          <img src="/images/home/lessons-icon.png" alt="Lessons Icon" className="parent-nav-icon" />
-          <span className="parent-nav-text">Pending Tasks</span>
+          <img src="/images/home/pendingtasks-orange.png" alt="Lessons Icon" className="parent-nav-icon" />
+          <span className="parent-nav-pt-text">Pending Tasks</span>
         </div>
       </Link>
       
       <Link to="/parentquiz" className="parent-nav-link">
         <div className="parent-nav-item">
-          <img src="/images/home/quizzes-icon.png" alt="Quizzes Icon" className="parent-nav-icon" />
-          <span className="parent-nav-text">Progress Report</span>
+          <img src="/images/home/progressreport-purple.png" alt="Quizzes Icon" className="parent-nav-icon" />
+          <span className="parent-nav-pr-text">Progress Report</span>
         </div>
       </Link>
       
       <Link to="/parentfeedback" className="parent-nav-link">
         <div className="parent-nav-item">
-          <img src="/images/home/feedback-icon.png" alt="Feedback Icon" className="parent-nav-icon" />
-          <span className="parent-nav-text">Feedback</span>
+          <img src="/images/home/feedback-green.png" alt="Feedback Icon" className="parent-nav-icon" />
+          <span className="parent-nav-feedback-text">Feedback</span>
         </div>
       </Link>
       

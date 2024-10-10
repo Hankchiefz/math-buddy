@@ -50,6 +50,27 @@
   text-decoration: none;
 }
 
+.parent-nav-pt-text{
+  font-size: 16px;
+  color: #fac782;
+  text-align: center;
+  text-decoration: none;
+}
+
+.parent-nav-pr-text{
+  font-size: 16px;
+  color: #bf64fc;
+  text-align: center;
+  text-decoration: none;
+}
+
+.parent-nav-feedback-text{
+  font-size: 16px;
+  color: #79fc79;
+  text-align: center;
+  text-decoration: none;
+}
+
 .parent-nav-link {
   display: flex;
   flex-direction: column;
