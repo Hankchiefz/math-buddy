@@ -32,6 +32,7 @@ import HelpFAQ from "./Components/homepages/HelpFAQ.js";
 import GuideTeacher from "./Components/homepages/GuideTeacher.js";
 import Help from "./Components/homepages/Help.js";
 import GuideStudent from "./Components/homepages/GuideStudent.js";
+import GuideParent from "./Components/homepages/GuideParent.js";
 import ParentHome from "./Components/parentpages/ParentHome.js";
 import ParentFeedback from "./Components/parentpages/ParentFeedback.js";
 import ParentInfo from "./Components/parentpages/ParentInfo.js";
@@ -137,6 +138,7 @@ function App() {
         <Route path="/year5lessons" element={<Year5Lessons />} />
         <Route path="/year6lessons" element={<Year6Lessons />} />
         <Route path="/helpstudent" element={<HelpStudent />} />
+        <Route path="/parentguide" element={<GuideParent/>}/>
       </Routes>
     </>
   );
