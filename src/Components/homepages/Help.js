@@ -1,6 +1,5 @@
-// src/components/pages/Help.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link } from 'react-router-dom'; 
 import '../homepagestyle/Help.css';
 
 const Help = () => {
@@ -10,7 +9,6 @@ const Help = () => {
         <h1 className="help-title">Hello, How can we Help?</h1>
         <div className="help-content">
           <div className="help-button-container">
-            {/* Add the new CSS class to the Link */}
             <Link to="/faq" className="help-button-link">
               <button className="help-button">Frequently asked questions</button>
             </Link>

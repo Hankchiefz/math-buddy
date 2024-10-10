@@ -1,4 +1,3 @@
-// src/components/pages/Help.js
 import React from 'react';
 import '../homepagestyle/HelpFAQ.css';
 import CollapsibleBox from '../objects/CollapsibleBox';

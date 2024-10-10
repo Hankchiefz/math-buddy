@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../homepagestyle/Tsignup.css'; // Assuming you have a CSS file for the signup page
+import '../homepagestyle/Tsignup.css'; 
 
 const Tsign = () => {
   const navigate = useNavigate();
@@ -11,8 +11,9 @@ const Tsign = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [passwordStrength, setPasswordStrength] = useState('');
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false); 
 
+  // Evaluates the strength of the password based on criteria
   const evaluatePasswordStrength = (password) => {
     let strength = 0;
     if (password.length >= 8) strength++;
@@ -36,6 +37,7 @@ const Tsign = () => {
     }
   };
 
+  // Handles the password change and evaluates the strength
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
@@ -43,17 +45,20 @@ const Tsign = () => {
     setPasswordStrength(strength);
   };
 
+  // Handles the form submission for signing up a teacher
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setLoading(true); // Start loading
+    setLoading(true);
 
+    // Validate if passwords match
     if (password !== confirmPassword) {
       setError('Passwords do not match');
-      setLoading(false); // Stop loading
+      setLoading(false); 
       return;
     }
 
+    // Prepare user data for submission
     const userData = {
       email,
       password,
@@ -62,6 +67,7 @@ const Tsign = () => {
     };
 
     try {
+      // API call to register a new teacher
       const response = await fetch('https://mathbuddyapi.com/signupTeach', {
         method: 'POST',
         headers: {

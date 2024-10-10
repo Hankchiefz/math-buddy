@@ -3,20 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import '../homepagestyle/Signup.css';
 
 const Signup = () => {
-  const navigate = useNavigate();
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-  const [passwordStrength, setPasswordStrength] = useState('');
-  const [loading, setLoading] = useState(false); // Add loading state
+  const navigate = useNavigate(); // Hook for navigation
+  const [fullName, setFullName] = useState(''); // State for full name
+  const [email, setEmail] = useState(''); // State for email
+  const [phone, setPhone] = useState(''); // State for phone number
+  const [password, setPassword] = useState(''); // State for password
+  const [confirmPassword, setConfirmPassword] = useState(''); // State for confirm password
+  const [error, setError] = useState(''); // State for error messages
+  const [passwordStrength, setPasswordStrength] = useState(''); // State for password strength display
+  const [loading, setLoading] = useState(false); // State for loading status
 
+  // Function to handle navigation to teacher signup
   const handleTeacherClick = () => {
     navigate('/teacher-signup');
   };
 
+  // Function to evaluate password strength based on criteria
   const evaluatePasswordStrength = (password) => {
     let strength = 0;
     if (password.length >= 8) strength++;
@@ -25,6 +27,7 @@ const Signup = () => {
     if (/[0-9]/.test(password)) strength++;
     if (/[\W]/.test(password)) strength++;
 
+    // Return password strength as a string based on criteria matched
     if (strength === 1) {
       return 'Very Weak';
     } else if (strength === 2) {
@@ -40,6 +43,7 @@ const Signup = () => {
     }
   };
 
+  // Function to handle password input changes and update password strength
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
@@ -47,17 +51,20 @@ const Signup = () => {
     setPasswordStrength(strength);
   };
 
+  // Function to handle form submission for signup
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true); // Start loading
+    e.preventDefault(); // Prevent default form submission behavior
+    setError(''); // Clear any previous error
+    setLoading(true); // Set loading to true
 
+    // Check if passwords match
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       setLoading(false); // Stop loading
       return;
     }
 
+    // Construct user data for signup
     const userData = {
       email,
       password,
@@ -66,6 +73,7 @@ const Signup = () => {
     };
 
     try {
+      // API call for signup
       const response = await fetch('https://mathbuddyapi.com/signupStu', {
         method: 'POST',
         headers: {
@@ -74,8 +82,9 @@ const Signup = () => {
         body: JSON.stringify(userData),
       });
 
+      // If signup is successful, redirect to login page
       if (response.ok) {
-        localStorage.setItem('showRegisterPopup', 'true'); // Set flag to show popup after registration
+        localStorage.setItem('showRegisterPopup', 'true'); // Set flag for popup display
         navigate('/login');
       } else {
         const data = await response.json();

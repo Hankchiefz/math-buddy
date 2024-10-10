@@ -1,4 +1,3 @@
-// src/components/pages/ParentGuide.js
 import React from 'react';
 import '../homepagestyle/GuideParent.css';
 

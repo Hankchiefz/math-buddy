@@ -1,4 +1,3 @@
-// src/components/pages/About.js
 import React from "react";
 import "../homepagestyle/About.css";
 
@@ -36,8 +35,6 @@ const About = () => {
                     />
                 </div>
             </div>
-            {/*test*/}
-            {/*test*/}
         </div>
     );
 };

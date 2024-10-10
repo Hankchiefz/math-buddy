@@ -1,4 +1,3 @@
-  // src/components/pages/Contact.js
   import React from "react";
   import "../homepagestyle/Contact.css";
 
@@ -33,7 +32,6 @@
                   </div>
                   <div className="form-section">
                       <h2>Feedback</h2>
-                       {/*test */}
                       <form>
                           <input type="text" placeholder="Name" required />
                           <input type="email" placeholder="Email" required />

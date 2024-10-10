@@ -1,9 +1,8 @@
-  // src/components/homepages/GuideTeacher.js
   import React from "react";
   import "../homepagestyle/GuideTeacher.css";
 
   const GuideTeacher = () => {
-      return ( /*test*/
+      return ( 
         <div className="teacher-guide">
         <div className="teacher-guide-header">
           <h1 className="teacher-guide-title">Welcome Teachers to the world of MathBuddy</h1>

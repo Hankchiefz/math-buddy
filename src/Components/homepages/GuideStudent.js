@@ -1,4 +1,3 @@
-// src/components/pages/StudentGuide.js
 import React from 'react';
 import '../homepagestyle/GuideStudent.css';
 
