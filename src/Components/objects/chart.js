@@ -1,9 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { Bar, Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, Title, Tooltip, Legend, PointElement } from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+} from "chart.js";
 
 // Register the necessary Chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const ChildProgressChart = () => {
   const [quizData, setQuizData] = useState([]);
@@ -70,6 +89,7 @@ const ChildProgressChart = () => {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: false, // Disable animations to prevent overlapping during double rendering
     plugins: {
       legend: {
         display: true,
@@ -111,7 +131,6 @@ const ChildProgressChart = () => {
 
   return (
     <div className="chart-wrapper">
-      {/* Display only one bar chart and one line chart */}
       <div className="chart">
         <Bar data={barChartData} options={chartOptions} />
       </div>
@@ -122,4 +141,4 @@ const ChildProgressChart = () => {
   );
 };
 
-export default ChildProgressChart;
+export default memo(ChildProgressChart);

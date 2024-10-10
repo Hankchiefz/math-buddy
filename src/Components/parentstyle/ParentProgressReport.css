@@ -2,11 +2,12 @@
   display: flex;
   margin-top: 2rem;
   justify-content: space-between;
-  gap: 20px; /* Adjust spacing between the charts */
+  gap: 10rem; /* Adjust spacing between the charts */
+
 }
 
 .chart {
-  width: 50%; /* Each chart will take 50% of the container's width */
+  width: 70%; /* Each chart will take 50% of the container's width */
   height: 400px; /* Set the height for the charts */
 }
 
