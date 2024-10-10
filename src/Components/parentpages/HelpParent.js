@@ -1,12 +1,11 @@
-// src/components/pages/Parenthelp.js
 import React from 'react';
-import StudentHeader from '../objects/StudentHeader'; // Import the StudentHeader component
+import StudentHeader from '../objects/StudentHeader'; 
 import "../parentstyle/HelpParent.css";
 
 const HelpParent = () => {
   return (
     <div className="parent-help">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader /> 
       <div className="parent-help-header">
         <h1 className="parent-help-title">Parents, Welcome to MathBuddy!</h1>
       </div>

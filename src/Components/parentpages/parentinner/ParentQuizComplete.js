@@ -103,9 +103,9 @@ const ParentQuizComplete = () => {
 
   return (
     <div className="studentquizcomplete-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader /> 
       <div className="sqc-content-wrapper">
-        <ParentSNav /> {/* Side navbar */}
+        <ParentSNav /> 
         <div className="sqc-main-content">
           <h1 className="sqc-h1">Quiz Complete!</h1>
           <hr className="sqc-line"></hr>

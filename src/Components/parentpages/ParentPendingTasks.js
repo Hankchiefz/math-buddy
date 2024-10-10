@@ -49,28 +49,21 @@ const ParentPendingTasks = () => {
 
     return (
         <div className="parent-pending-tasks-container">
-            <StudentHeader /> {/* Header at the top */}
-            <div className="parent-content-area">
-                {/* Wrap ParentSNav in a div with className "parent-nav" */}
+            <StudentHeader /> 
+            <div className="parent-content-area">     
                 <div className="parent-nav">
-                    <ParentSNav /> {/* Sidebar on the left */}
+                    <ParentSNav /> 
                 </div>
                 <div className="parent-main-content">
-                    <h1 className="parent-tasks-heading">Pending Quizzes</h1> {/* The heading */}
-
-                    {/* Loading Spinner Overlay */}
+                    <h1 className="parent-tasks-heading">Pending Quizzes</h1>
                     {loading && (
                         <div className="loading-overlay">
                             <div className="loading-spinner"></div>
                         </div>
                     )}
-
-                    {/* Error Message */}
                     {error && (
                         <div className="error-message">Error fetching tasks: {error}</div>
                     )}
-
-                    {/* Main Content */}
                     {!loading && !error && (
                         <div className="parent-tasks-list">
                             {tasks.length > 0 ? (

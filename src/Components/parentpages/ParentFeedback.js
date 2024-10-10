@@ -1,17 +1,18 @@
 import StudentHeader from "../objects/StudentHeader";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate } from "react-router-dom"; 
 import ParentSNav from "../objects/ParentSNav";
 import '../parentstyle/ParentFeedback.css';
 import React, { useEffect, useState } from 'react';
 import FeedbackBox from "../objects/Feedbackbox";
 
 const ParentFeedback = () => {
-    const [completedQuizzes, setCompletedQuizzes] = useState([]); // State to hold completed quizzes
-    const [loading, setLoading] = useState(true); // State for loading spinner
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    // State to hold completed quizzes data
+    const [completedQuizzes, setCompletedQuizzes] = useState([]); 
+    const [loading, setLoading] = useState(true); 
+    const navigate = useNavigate(); 
 
     useEffect(() => {
-        // Fetch quizzes once the component mounts
+        // Function to fetch completed quizzes from the API
         const fetchCompletedQuizzes = async () => {
             try {
                 const token = localStorage.getItem("access_token");
@@ -27,27 +28,32 @@ const ParentFeedback = () => {
                     }
                 );
 
+                // Handle non-200 responses
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
 
+                // Store the fetched quiz data in state
                 const data = await response.json();
-                setCompletedQuizzes(data); // Store completed quizzes data
+                setCompletedQuizzes(data); 
             } catch (error) {
                 console.error("Error fetching quizzes:", error);
             } finally {
-                setLoading(false); // Hide loading spinner after fetching
+                // Hide loading spinner after fetching
+                setLoading(false); 
             }
         };
 
-        fetchCompletedQuizzes(); // Call the function to fetch completed quizzes
+        // Call the function to fetch the quizzes when the component mounts
+        fetchCompletedQuizzes(); 
 
-        // Update recently accessed
+        // Update the recently accessed pages in local storage
         const newItem = { page: "/studentfeedback", label: "Feedback" };
         try {
             const storedRecentlyAccessed = JSON.parse(
                 localStorage.getItem("recentlyAccessed") || "[]"
             );
+            // Add the new item and keep only the last 5 items
             const updatedItems = [
                 newItem,
                 ...storedRecentlyAccessed.filter(
@@ -58,19 +64,19 @@ const ParentFeedback = () => {
         } catch (error) {
             console.error("Error saving recently accessed items:", error);
         }
-    }, []); // Empty dependency array ensures this runs only once when the component mounts
+    }, []); 
 
-    // Function to handle clicking on feedback box
+   
     const handleFeedbackClick = (quiz_id) => {
-        // Navigate to the feedback details page and pass the quiz_id via state
+        // Navigate to the quiz completion page with the quiz_id passed as state
         navigate(`/parentquizcomplete`, { state: { quiz_id } });
     };
 
     return (
         <div className="parentfeedback-container">
-            <StudentHeader /> {/* Top navbar */}
+            <StudentHeader /> 
             <div className="PFcontent-wrapper">
-                <ParentSNav /> {/* Side navbar */}
+                <ParentSNav /> 
                 <div className="PFmain-content">
                     <h1 className="Feedback-message">Feedback</h1>
                     {loading ? (
@@ -81,6 +87,7 @@ const ParentFeedback = () => {
                         <div className="PFMain-Container">
                             <div className="Feedback-box">
                                 {completedQuizzes.length > 0 ? (
+                                    // Render each feedback box for quizzes
                                     completedQuizzes.map((quiz) => (
                                         <div
                                             key={quiz.quiz_id}
@@ -97,6 +104,7 @@ const ParentFeedback = () => {
                                         </div>
                                     ))
                                 ) : (
+                                    // Display message if no quizzes are available
                                     <p>No completed feedback available.</p>
                                 )}
                             </div>

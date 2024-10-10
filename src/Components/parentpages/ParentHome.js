@@ -20,7 +20,6 @@ const ParentHome = () => {
     if (storedName) {
       setFullName(storedName);
     }
-    //Other stuff here
     // Fetch child info from the backend
     const fetchChildInfo = async () => {
       try {

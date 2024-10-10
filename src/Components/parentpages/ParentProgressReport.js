@@ -8,12 +8,11 @@ const ParentProgress = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate loading or fetch data if needed, then set loading to false
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 1000); // Adjust time or replace with actual data fetching logic
+        }, 1000); 
 
-        return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+        return () => clearTimeout(timer); 
     }, []);
 
     return (
@@ -21,15 +20,17 @@ const ParentProgress = () => {
             <StudentHeader />
             <div className="parent-content-area">
                 <div className="parent-nav">
-                    <ParentSNav />
+                    <ParentSNav /> 
                 </div>
                 <div className="parent-main-content">
                     <h1 className="progress-title">Progress Report</h1>
                     {loading ? (
+                        // Show loading spinner while data is being loaded
                         <div className="loading-overlay">
                             <div className="loading-spinner"></div>
                         </div>
                     ) : (
+                        // Display chart once loading is complete
                         <div className="chart-wrapper">
                             <div className="chart">
                                 <ChildProgressChart />
