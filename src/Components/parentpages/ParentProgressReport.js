@@ -34,10 +34,6 @@ const ParentProgress = () => {
                             <div className="chart">
                                 <ChildProgressChart />
                             </div>
-                            <div className="chart">
-                                {/* Only include ChildProgressChart once in each chart div */}
-                                <ChildProgressChart />
-                            </div>
                         </div>
                     )}
                 </div>

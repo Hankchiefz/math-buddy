@@ -1,5 +1,3 @@
-/* ParentPendingTasks.css */
-
 /* Container for the entire page layout */
 .parent-pending-tasks-container {
   display: flex;
@@ -20,46 +18,45 @@
 
 /* Flexbox container for side navigation and main content */
 .parent-content-area {
-  margin-left:-1rem;
-  margin-top: -1rem;
   display: flex;
+  flex-direction: row; /* Ensure content and sidebar are side by side */
   flex-grow: 1;
   width: 100%;
-  box-sizing: border-box;
 }
 
 /* Side navbar */
 .parent-nav {
-  width: 200px; /* Fixed width for the side navigation */
-  flex-shrink: 0; /* Prevent the nav from shrinking */
+  width: 200px;
+  flex-shrink: 0; /* Prevent the sidebar from shrinking */
 }
 
 /* Main content area */
 .parent-main-content {
+  margin-top: -1rem;
   flex-grow: 1;
   padding: 20px;
-  /* Remove margins to prevent shifting */
-  margin-left: -3rem;
-  margin-top: -2rem;
+  margin-left: -2rem; /* Adjust for space between the navbar and content */
+  box-sizing: border-box; /* Ensure padding and margins don't expand the element */
 }
 
 /* Heading */
 .parent-tasks-heading {
-  font-size: 24px;
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 20px;
+  padding-bottom: 5px;
   position: relative;
-  padding-bottom: 1px;
 }
 
 .parent-tasks-heading::after {
   content: "";
   position: absolute;
-  top: 100%;
+  top: 100%; /* Position the line just below the text */
   left: 0;
   width: 100%;
   height: 2px;
   background-color: #E8F1FF;
-  margin-top: 10px;
+  margin-top: 5px; /* Space between the title and the line */
 }
 
 /* Main Container */
@@ -69,13 +66,7 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Task box container */
-.parent-task-card {
-  margin-bottom: 20px;
-  cursor: pointer;
+  gap: 15px; /* Adjust spacing between task cards */
 }
 
 /* Individual task card styling */
@@ -87,7 +78,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+  cursor: pointer;
 }
 
 /* Task content styling */
@@ -122,7 +113,7 @@
   font-size: 0.9rem;
   color: #999;
   margin-top: 5px;
-  
+  text-align: right; /* Align the date to the right */
 }
 
 /* Loading spinner overlay */
@@ -132,7 +123,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,15 +163,16 @@
 /* Responsive layout for smaller screens */
 @media screen and (max-width: 768px) {
   .parent-content-area {
-    flex-direction: column;
+    flex-direction: column; /* Stack navbar and content vertically */
   }
 
   .parent-nav {
-    width: 100%;
+    width: 100%; /* Make navbar full width */
   }
 
   .parent-main-content {
     margin-top: 20px;
+    margin-left: 0; /* Reset margin */
   }
 
   .parent-task-card {
