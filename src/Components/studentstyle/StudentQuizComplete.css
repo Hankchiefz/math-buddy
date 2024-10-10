@@ -1,6 +1,5 @@
-/* src/Components/studentstyle/StudentQuizComplete.css */
-
 .studentquizcomplete-container {
+  font-family: 'itim', cursive;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -9,14 +8,19 @@
 
 .sqc-content-wrapper {
   display: flex;
-  flex-direction: row;
+  width: 100%; /* Make sure wrapper takes up full width */
+}
+
+.StudentSNav {
+  width: 200px; /* Fix the width of the sidebar */
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
 }
 
 .sqc-main-content {
-  flex: 1;
+  flex: 1; /* Allow main content to take the remaining width */
   padding: 20px;
-  margin-left: 1rem; /* Adjust this value to provide space for the sidebar */
-  margin-top: 20px; /* Adjust this value to provide space for the header */
+  margin: 0; /* Remove margin that pushes the content away */
+  box-sizing: border-box;
 }
 
 .sqc-feedback-table, .sqc-learning-table {
@@ -30,26 +34,6 @@
   overflow: hidden;
 }
 
-.sqc-feedback-table tr, .sqc-learning-table tr {
-  border-bottom: 2px solid #71A2FF;
-}
-
-.sqc-feedback-table tr:last-child, .sqc-learning-table tr:last-child {
-  border-bottom: none;
-}
-
-.sqc-feedback-table td, .sqc-feedback-table th, .sqc-learning-table td, .sqc-learning-table th {
-  padding: 10px;
-  text-align: left;
-  background-color: white;
-  border-right: none;
-  border-bottom: none;
-}
-
-.sqc-feedback-table td:last-child, .sqc-feedback-table th:last-child, .sqc-learning-table td:last-child, .sqc-learning-table th:last-child {
-  border-right: none;
-}
-
 .sqc-h1, .sqc-h2, .sqc-h3 {
   font-weight: 700;
   margin-top: 0.5rem;
@@ -59,14 +43,11 @@
   padding-left: 10px;
 }
 
-.sqc-h3 {
-  font-size: small;
-}
-
 .video-container {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+  height: 20rem;
 }
 
 iframe {
