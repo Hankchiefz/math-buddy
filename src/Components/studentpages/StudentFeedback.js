@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate } from "react-router-dom"; 
 import StudentHeader from "../objects/StudentHeader";
 import StudentSNav from "../objects/StudentSNav";
 import "../studentstyle/StudentFeedback.css";
 import FeedbackBox from "../objects/Feedbackbox";
 
 const StudentFeedback = () => {
-  const [completedQuizzes, setCompletedQuizzes] = useState([]); // State to hold completed quizzes
-  const [loading, setLoading] = useState(true); // State for loading
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const [completedQuizzes, setCompletedQuizzes] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    // Fetch quizzes once the component mounts
+    // Fetch quizzes 
     const fetchCompletedQuizzes = async () => {
       try {
         const token = localStorage.getItem("access_token");
@@ -35,7 +35,7 @@ const StudentFeedback = () => {
       } catch (error) {
         console.error("Error fetching quizzes:", error);
       } finally {
-        setLoading(false); // Hide loading spinner after fetching
+        setLoading(false); 
       }
     };
 
@@ -58,9 +58,8 @@ const StudentFeedback = () => {
     } catch (error) {
       console.error("Error saving recently accessed items:", error);
     }
-  }, []); // Empty dependency array ensures this runs only once when the component mounts
+  }, []); 
 
-  // Function to handle clicking on feedback box
   const handleFeedbackClick = (quiz_id) => {
     // Navigate to the feedback details page and pass the quiz_id via state
     navigate(`/StudentQuizComplete`, { state: { quiz_id } });
@@ -68,9 +67,9 @@ const StudentFeedback = () => {
 
   return (
     <div className="studentfeedback-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader />
       <div className="SFcontent-wrapper">
-        <StudentSNav /> {/* Side navbar */}
+        <StudentSNav /> 
         <div className="SFmain-content">
           <h1 className="Feedback-message">Feedback</h1>
 
@@ -81,8 +80,8 @@ const StudentFeedback = () => {
                   <div
                     key={quiz.quiz_id}
                     className="FeedBox1"
-                    onClick={() => handleFeedbackClick(quiz.quiz_id)} // Add onClick to navigate
-                    style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable box
+                    onClick={() => handleFeedbackClick(quiz.quiz_id)}
+                    style={{ cursor: "pointer" }} 
                   >
                     <FeedbackBox
                       status="complete"
@@ -99,7 +98,6 @@ const StudentFeedback = () => {
           </div>
         </div>
       </div>
-      {/* Loading Spinner Overlay */}
       {loading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>

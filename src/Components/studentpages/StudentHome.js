@@ -68,7 +68,7 @@ const StudentHome = () => {
         setRecentlyAccessed(prevItems => {
             const updatedItems = [newItem, ...prevItems.filter(item => 
                 item.page !== newItem.page || item.label !== newItem.label
-            )].slice(0, 3); // Limit stored items to the latest 3
+            )].slice(0, 3); 
 
             // Save to localStorage
             try {
@@ -81,7 +81,7 @@ const StudentHome = () => {
             return updatedItems;
         });
 
-        // Navigate to the desired page
+        // Navigate to the recent page
         navigate(page);
     };
 
@@ -143,7 +143,7 @@ const StudentHome = () => {
                                         key={index}
                                         iconColor="#FFA07A"
                                         text={item.label}
-                                        onClick={() => handleNavigation(item.page, item.label)} // Use handleNavigation on click
+                                        onClick={() => handleNavigation(item.page, item.label)} 
                                     />
                                 ))
                             ) : (

@@ -16,7 +16,7 @@ const StudentQuizI = () => {
     const fetchQuizData = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const quizId = location.state.quizId; // Assuming the quiz ID is passed from the previous page
+        const quizId = location.state.quizId; // quiz ID is passed from the previous page
 
         const response = await fetch("https://mathbuddyapi.com/current_quiz", {
           method: "POST",
@@ -35,7 +35,7 @@ const StudentQuizI = () => {
       } catch (error) {
         console.error("Error fetching quiz data:", error);
       } finally {
-        setLoading(false); // Hide loading spinner after fetching
+        setLoading(false);
       }
     };
 
@@ -75,12 +75,12 @@ const StudentQuizI = () => {
       // After successful submission, navigate back to the quiz list
       navigate("/studentquiz");
 
-      // Display "Thank you!" message after navigation
+      // Displays "Thank you!" message after navigation
       alert("Thank you for completing the quiz!");
     } catch (error) {
       console.error("Error submitting quiz:", error);
     } finally {
-      setSubmitting(false); // Hide loading spinner after submission
+      setSubmitting(false); 
     }
   };
 
@@ -107,9 +107,9 @@ const StudentQuizI = () => {
 
   return (
     <div className="studentquiz-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader />
       <div className="SQIcontent-wrapper">
-        <StudentSNav /> {/* Side navbar */}
+        <StudentSNav />
         <div className="SQImain-content">
           <h1 className="quiz-message">Quiz</h1>
           <div className="question-container">
@@ -133,7 +133,6 @@ const StudentQuizI = () => {
             ))}
           </div>
         </div>
-        {/* Question-box Section */}
         <div className="Question-box">
           <div className="header-box">Quiz Navigation</div>
           <div className="SQI-questionsbox">
@@ -161,14 +160,12 @@ const StudentQuizI = () => {
             Leave
           </button>
         </div>
-        {/* Spinner Overlay for submission */}
         {submitting && (
           <div className="loading-overlay">
             <div className="loading-spinner"></div>
           </div>
         )}
       </div>
-      {/* Global Loading Spinner Overlay for quiz data */}
       {loading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>

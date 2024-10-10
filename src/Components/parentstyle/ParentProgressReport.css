@@ -3,34 +3,34 @@
   display: flex;
   margin-top: 2rem;
   justify-content: space-between;
-  gap: 10rem; /* Adjust spacing between the charts */
+  gap: 10rem; 
 
 }
 
 .chart {
-  width: 70%; /* Each chart will take 50% of the container's width */
-  height: 400px; /* Set the height for the charts */
+  width: 70%; 
+  height: 400px; 
 }
 
 
-/* Progress Report heading with blue line */
+
 .progress-title {
   font-size: 2rem;
   font-weight: 700;
   font-weight: bold;
   font-family: 'Itim', cursive;
   position: relative;
-  text-align: left; /* Align the text to the left */
-  margin-bottom: 20px; /* Space below the heading */
+  text-align: left; 
+  margin-bottom: 20px; 
 }
 
 .progress-title::after {
   content: "";
   position: absolute;
-  top: 100%; /* Position the line just below the text */
-  left: 0; /* Align the line with the left edge of the heading */
-  width: 100%; /* Make the line span the full width of the heading */
+  top: 100%; 
+  left: 0; 
+  width: 100%; 
   height: 2px;
-  background-color: #E8F1FF; /* Blue line color */
-  margin-top: 10px; /* Space between the title and the line */
+  background-color: #E8F1FF; 
+  margin-top: 10px; 
 }

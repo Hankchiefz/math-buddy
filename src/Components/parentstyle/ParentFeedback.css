@@ -1,56 +1,46 @@
-/* Container for the entire page layout */
 .parentfeedback-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-
-
-/* Flexbox container for side navigation and main content */
 .PFcontent-wrapper {
   display: flex;
-  flex-direction: row; /* Ensure content and sidebar are side by side */
+  flex-direction: row;
   flex-grow: 1;
   width: 100%;
 }
 
-/* Style for the side navigation */
 .ParentSNav {
   width: 200px;
-  flex-shrink: 0; /* Prevent the sidebar from growing */
+  flex-shrink: 0;
 }
 
-/* Main content styling */
 .PFmain-content {
   font-family: 'itim', cursive;
   margin-top: 2rem;
-  flex: 1; /* Take up the remaining space */
+  flex: 1;
   padding: 20px;
-  margin-left: 1rem; /* Adjust as needed */
-  box-sizing: border-box; /* Ensure padding and margins don't expand the element */
+  margin-left: 1rem;
+  box-sizing: border-box;
 }
 
-/* Main container styling */
 .PFMain-Container {
   margin-top: 20px;
 }
 
-/* Feedback message styling */
 .Feedback-message {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-/* Feedback box styling */
 .Feedback-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* Loading spinner overlay */
 .loading-overlay {
   position: fixed;
   top: 0;

@@ -4,8 +4,11 @@ import StudentHeader from "../objects/StudentHeader";
 import StudentSNav from "../objects/StudentSNav";
 
 const StudentLessons = () => {
+    // State that stores the student's grade level
     const [grade, setGrade] = useState(null);
+    // State that stores  the dynamically loaded lesson component based on the grade
     const [LessonComponent, setLessonComponent] = useState(null);
+    // State that manages loading state for fetching data and components
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,42 +25,44 @@ const StudentLessons = () => {
 
                 const result = await response.json();
                 if (response.ok) {
-                    setGrade(result.grade);
+                    setGrade(result.grade); // Set the fetched grade in state
                 } else {
                     console.error(result.error);
                 }
             } catch (error) {
-                console.error("Error fetching grade:", error);
+                console.error("Error fetching grade:", error); 
             } finally {
-                setLoading(false);
+                setLoading(false); 
             }
         };
 
-        fetchGrade();
+        fetchGrade(); // Call fetchGrade
     }, []);
 
     useEffect(() => {
+        // Load the appropriate lesson component when the grade is there
         if (grade) {
             const loadLessonComponent = async () => {
-                setLoading(true); // Show loading spinner while fetching
+                setLoading(true); // Start loading
                 try {
+                    // Dynamically import the lesson component based on the grade
                     const module = await import(`../lessons/Year${grade}Lessons.js`);
-                    setLessonComponent(() => module.default);
+                    setLessonComponent(() => module.default); // Set the loaded component in state
                 } catch (error) {
-                    console.error("Error loading lesson component:", error);
+                    console.error("Error loading lesson component:", error); 
                 } finally {
-                    setLoading(false); // Hide loading spinner once done
+                    setLoading(false); 
                 }
             };
-            loadLessonComponent();
+            loadLessonComponent(); // Call loadLessonComponent when grade changes
         }
-    }, [grade]);
+    }, [grade]); // Effect runs when the grade value changes
 
     return (
         <div className="student-lessons-container">
-            <StudentHeader />
+            <StudentHeader /> 
             <div className="SLcontent-wrapper">
-                <StudentSNav />
+                <StudentSNav /> 
                 <div className="SLmain-content">
                     {loading ? (
                         <div className="loading-overlay">

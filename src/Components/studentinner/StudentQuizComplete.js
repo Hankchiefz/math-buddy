@@ -5,13 +5,13 @@ import StudentSNav from "../objects/StudentSNav";
 import "../studentstyle/StudentQuizComplete.css";
 
 const StudentQuizComplete = () => {
-  const { state } = useLocation(); // Get the state from the router
+  const { state } = useLocation(); 
   const [quizData, setQuizData] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true); 
 
   // Extract quiz_id from state
-  const quiz_id = state?.quiz_id; // Using optional chaining to avoid errors if state is undefined
+  const quiz_id = state?.quiz_id; 
 
   useEffect(() => {
     const fetchQuizCompletionData = async () => {
@@ -67,9 +67,9 @@ const StudentQuizComplete = () => {
 
   return (
     <div className="studentquizcomplete-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader /> 
       <div className="sqc-content-wrapper">
-        <StudentSNav /> {/* Side navbar */}
+        <StudentSNav /> 
         <div className="sqc-main-content">
           {loading ? (
             <div className="loading-overlay">
