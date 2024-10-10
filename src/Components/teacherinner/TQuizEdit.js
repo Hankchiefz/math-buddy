@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
-import "../teacherstyle/TQuizEdit.css"; // Ensure your CSS is in place
+import "../teacherstyle/TQuizEdit.css"; 
 
 const TQuizEdit = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const TQuizEdit = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch quiz details when the component loads
+  // Fetch quiz details 
   useEffect(() => {
     const fetchQuizDetails = async () => {
       try {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
+import { useNavigate, useLocation } from "react-router-dom"; 
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
-import "../teacherstyle/TQuizView.css"; // Create a separate CSS file for styling if needed
+import "../teacherstyle/TQuizView.css"; 
 
 const TQuizView = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Use useLocation to get the current location
+  const location = useLocation(); 
   const { quizId } = location.state || {}; // Extract quizId from state
 
   // State to hold student data and quiz questions
@@ -38,7 +38,6 @@ const TQuizView = () => {
           }
         );
 
-        // Check if the response is OK
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
@@ -50,7 +49,7 @@ const TQuizView = () => {
       } catch (error) {
         setError(error.message);
       } finally {
-        setLoading(false); // Hide loading spinner when data is fetched
+        setLoading(false); 
       }
     };
 
@@ -59,11 +58,10 @@ const TQuizView = () => {
       fetchQuizDetails();
     } else {
       setError("Quiz ID is missing");
-      setLoading(false); // Hide loading spinner in case of error
+      setLoading(false);
     }
-  }, [quizId]); // Dependency array includes quizId
+  }, [quizId]); 
 
-  // Render the student table
   const renderStudentTable = () => (
     <div className="TQtable-container">
       <h2>Students Assigned to the Quiz</h2>
@@ -83,7 +81,6 @@ const TQuizView = () => {
             {students.map((student) => (
               <tr key={student.student_id} className="TQtable-row">
                 <td>{student.student_name}</td>{" "}
-                {/* Changed to display student_name */}
                 <td>{student.score !== null ? student.score : "N/A"}</td>
                 <td>{student.completed ? "Completed" : "Not Completed"}</td>
               </tr>
@@ -106,7 +103,6 @@ const TQuizView = () => {
           {quizQuestions.map((question) => (
             <li key={question.question_id}>
               <strong>{question.question_text}</strong>{" "}
-              {/* Display question without type */}
             </li>
           ))}
         </ul>

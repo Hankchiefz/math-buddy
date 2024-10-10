@@ -8,18 +8,18 @@
 
 .sqc-content-wrapper {
   display: flex;
-  width: 100%; /* Make sure wrapper takes up full width */
+  width: 100%;
 }
 
 .StudentSNav {
-  width: 200px; /* Fix the width of the sidebar */
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  width: 200px; 
+  flex-shrink: 0; 
 }
 
 .sqc-main-content {
-  flex: 1; /* Allow main content to take the remaining width */
+  flex: 1; 
   padding: 20px;
-  margin: 0; /* Remove margin that pushes the content away */
+  margin: 0;
   box-sizing: border-box;
 }
 

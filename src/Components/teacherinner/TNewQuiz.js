@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import StudentHeader from "../objects/StudentHeader";
 import TeacherSNav from "../objects/TeacherSNav";
-import LoadingOverlay from "../LoadingOverlay"; // Import the LoadingOverlay
+import LoadingOverlay from "../LoadingOverlay";
 import "../teacherstyle/TNewQuiz.css";
 
 const TNewQuiz = () => {
@@ -13,7 +13,7 @@ const TNewQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -79,7 +79,7 @@ const TNewQuiz = () => {
       number_of_questions: parseInt(numberOfQuestions, 10),
     };
 
-    console.log("Payload being sent:", payload); // Debugging line
+    console.log("Payload being sent:", payload); 
 
     setLoading(true);
     setError(null);
@@ -114,12 +114,11 @@ const TNewQuiz = () => {
 
   return (
     <div className="TCQnewclass-container">
-      <StudentHeader /> {/* Top navbar */}
+      <StudentHeader /> 
       <div className="TCQcontent-wrapper">
-        <TeacherSNav /> {/* Side navbar */}
+        <TeacherSNav /> 
         <div className="TCQmain-content">
           {loading && <LoadingOverlay />}{" "}
-          {/* Show loading overlay when loading */}
           <div className="TCQform-container">
             <div className="createclass">
               <h1>Create Quiz</h1>

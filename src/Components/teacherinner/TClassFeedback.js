@@ -11,17 +11,17 @@ const TClassFeedback = () => {
   // Extract class_name, quiz_id, and quiz_title from location state
   const { class_name, quiz_id, quiz_title } = location.state || {};
 
-  // State to hold quiz completion data and loading status
+  // hold quiz completion data and loading status
   const [completionData, setCompletionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // State to handle modal visibility and feedback being edited
+  //handle modal visibility and feedback being edited
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState("");
   const [selectedStudentId, setSelectedStudentId] = useState(null);
 
-  // Fetch quiz completion data on component mount
+  // Fetch quiz completion data 
   useEffect(() => {
     const fetchCompletionData = async () => {
       try {
@@ -117,7 +117,6 @@ const TClassFeedback = () => {
     setSelectedFeedback("");
   };
 
-  // Format the date as needed
   const formatDate = (date) => {
     if (!date) return "Not completed";
     const formattedDate = new Date(date);
@@ -175,14 +174,12 @@ const TClassFeedback = () => {
         <TeacherSNav />
         <div className="teacher-feedback-main-content">
           {loading ? (
-            // Show loading spinner while data is being fetched
             <div className="loading-overlay">
               <div className="loading-spinner"></div>
             </div>
           ) : error ? (
-            // Show error message if there is an error
             <p>Error: {error}</p>
-          ) : // Render completion table if data is successfully fetched
+          ) : 
           completionData.length > 0 ? (
             renderCompletionTable(completionData)
           ) : (
@@ -191,7 +188,6 @@ const TClassFeedback = () => {
         </div>
       </div>
 
-      {/* Modal for editing feedback */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal">

@@ -1,9 +1,9 @@
 .student-lessons-container {
   display: flex;
   flex-direction: column;
-  background-color: inherit; /* Remove the specific white background */
+  background-color: inherit;
   height: 100vh;
-  font-family: 'Itim', sans-serif; /* Apply the Itim font globally */
+  font-family: 'Itim', sans-serif; 
 }
 
 .SLcontent-wrapper {
@@ -34,11 +34,11 @@
 
 .lessons-title::after {
   content: "";
-  position: absolute; /* Use absolute positioning */
-  top: 100%; /* Position the line just below the text */
-  left: 0; /* Align the line with the left edge of the parent */
-  width: 100%; /* Make the line span the full width of the parent */
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%; 
   height: 2px;
-  background-color: #E8F1FF; /* Line color */
-  margin-top: 10px; /* Add space between the text and the line */
+  background-color: #E8F1FF;
+  margin-top: 10px; 
 }

@@ -1,12 +1,11 @@
-// src/components/homepages/helpTeacher.js
 import React from "react";
-import StudentHeader from "../objects/StudentHeader"; // Import the StudentHeader component
+import StudentHeader from "../objects/StudentHeader"; 
 import "../teacherstyle/helpteacher.css";
 
 const HelpTeacher = () => {
     return (
         <div className="teacher-help">
-            <StudentHeader /> {/* Top navbar */}
+            <StudentHeader /> 
             <div className="teacher-help-header">
                 <h1 className="teacher-help-title">Welcome Teachers to the world of MathBuddy</h1>
             </div>

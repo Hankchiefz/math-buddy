@@ -6,13 +6,11 @@
   const TNewClass = () => {
     const [className, setClassName] = useState(""); // State for class name
     const [grade, setGrade] = useState(""); // State for grade
-    const [error, setError] = useState(null); // State for error handling
+    const [error, setError] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null); // State for success message
 
     const handleSubmit = async (e) => {
-      e.preventDefault(); // Prevent form from refreshing the page
-
-      // Retrieve token from localStorage
+      e.preventDefault(); 
       const token = localStorage.getItem("access_token");
       if (!token) {
         setError("No access token found");
@@ -53,9 +51,9 @@
 
     return (
       <div className="TCInewclass-container">
-        <StudentHeader /> {/* Top navbar */}
+        <StudentHeader /> 
         <div className="TCIcontent-wrapper">
-          <TeacherSNav /> {/* Side navbar */}
+          <TeacherSNav />
           <div className="TCImain-content">
             <div className="TCIform-container">
               <div className="createclass">
@@ -88,7 +86,7 @@
                     onChange={(e) => setGrade(e.target.value)}
                     required
                     min="1"
-                    max="12" // Assuming grades 1 to 12
+                    max="12" 
                   />
                 </div>
 
@@ -97,11 +95,9 @@
                 </button>
               </form>
               {error && <p className="error-message">{error}</p>}{" "}
-              {/* Display error */}
               {successMessage && (
                 <p className="success-message">{successMessage}</p>
               )}{" "}
-              {/* Display success message */}
             </div>
           </div>
         </div>
