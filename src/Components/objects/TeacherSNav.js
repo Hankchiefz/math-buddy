@@ -1,4 +1,3 @@
-// src/Components/objects/TeacherSNav.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './TeacherSNav.css';
@@ -8,7 +7,6 @@ const TeacherSNav = () => {
     <div className="teacher-sidebar">
       <Link to="/teacherhomepage" className="teacher-menu-link">
         <div className="teacher-menu-icon">
-          {/* Optionally, you can add an icon here */}
         </div>
       </Link>
 

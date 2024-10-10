@@ -51,8 +51,8 @@ body {
 }
 
 .icontest {
-    margin-top: 0.5rem; /* Reduced margin to bring icons higher */
-    height: 50px; /* Retained the height */
+    margin-top: 0.5rem; 
+    height: 50px; 
     width: auto;
 }
 
