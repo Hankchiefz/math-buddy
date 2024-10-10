@@ -74,7 +74,7 @@ const Login = () => {
             .catch((error) => {
                 setLoading(false); // Hide loading spinner
                 console.error("There was an error!", error);
-                setError("There was an error during login"); // Set generic error message
+                setError("There was an error during login"); // Set  error message
             });
     };
 
@@ -134,8 +134,6 @@ const Login = () => {
                     {loading ? "Logging in..." : "Sign In"}
                 </button>
             </form>
-
-            {/* Popup for "Thank you for registering" */}
             {showPopup && (
                 <div className="popup">
                     <div className="popup-content">
