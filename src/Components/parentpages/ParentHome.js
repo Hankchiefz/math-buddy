@@ -85,3 +85,4 @@ const ParentHome = () => {
 };
 
 export default ParentHome;
+/*Rhianan Williams, MD Zuhayer Aousaf & Nathan Suryadi, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */

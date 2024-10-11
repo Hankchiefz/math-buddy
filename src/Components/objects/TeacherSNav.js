@@ -19,7 +19,7 @@ const TeacherSNav = () => {
 
       <Link to="/Tclasses" className="teacher-nav-link">
         <div className="teacher-nav-item">
-          <img src="/images/home/classes-icon.png" alt="Classes Icon" className="teacher-nav-icon" />
+          <img src="/images/home/classes-red.png" alt="Classes Icon" className="teacher-nav-icon" />
           <span className="teacher-nav-classes-text">Classes</span>
         </div>
       </Link>
@@ -56,3 +56,4 @@ const TeacherSNav = () => {
 };
 
 export default TeacherSNav;
+/*Rhianan Williams & Nathan Suryadi, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */

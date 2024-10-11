@@ -19,3 +19,4 @@ const Footer = () => {
 };
 
 export default Footer;
+/*Rhianan Williams & Nathan Suryadi, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */
