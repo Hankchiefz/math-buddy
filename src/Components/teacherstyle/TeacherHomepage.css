@@ -134,20 +134,21 @@
 }
 
 .THrecently-accessed-container {
+  position: absolute;
   height: 60vh;
   width: 100%;
   border: 2px;
-  margin-top: -74rem;
+  margin-top: 23rem;
   display: flex;
   flex-direction: column;
 }
 
 .THrecently-accessed-box {
-  margin-top: -20rem;
+  margin-top: -10rem;
 }
 
 .THmessage-recently {
-  margin-top: 42rem;
+  margin-top: -10rem;
   margin-left: 1rem;
   font-weight: 700;
   font-size: 2rem;
@@ -167,7 +168,7 @@
   padding-left: 2rem;
   gap: 1rem;
   margin-top: -13rem;
-  margin-left: 17rem;
+  margin-left: 19rem;
 }
 
 @media (max-width: 1700px) {
