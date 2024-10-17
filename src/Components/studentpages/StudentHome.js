@@ -3,7 +3,6 @@ import StudentHeader from "../objects/StudentHeader";
 import StudentSNav from "../objects/StudentSNav";
 import RecentlyAccessedBox from "../objects/RecentlyAccessedBox";
 import TaskBox from "../objects/TaskBox";
-import Footer from "../objects/Footer";
 import { useNavigate } from "react-router-dom";
 import "../studentstyle/StudentHome.css";
 
@@ -173,3 +172,4 @@ const StudentHome = () => {
 };
 
 export default StudentHome;
+/*Rhianan Williams, Nathan Suryadi & Lachlan Angelis, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */ 

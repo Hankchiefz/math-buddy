@@ -127,3 +127,4 @@ const StudentQuiz = () => {
 };
 
 export default StudentQuiz;
+/*Rhianan Williams, Nathan Suryadi & Lachlan Angelis, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */ 

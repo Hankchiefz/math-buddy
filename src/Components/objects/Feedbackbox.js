@@ -23,3 +23,4 @@ const Quizbox = ({ status, title, dueDate, timeLimit, marks }) => {
 };
 
 export default Quizbox;
+/*Rhianan Williams & Nathan Suryadi, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */

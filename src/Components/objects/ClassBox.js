@@ -26,3 +26,4 @@ const ClassesBox = ({ icon, title, time, topics, tasks }) => {
 };
 
 export default ClassesBox;
+/*Rhianan Williams & Nathan Suryadi, 2024, MathBuddy FrontEnd Source code, npm 7.7.6 */
